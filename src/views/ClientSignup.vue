@@ -1,6 +1,6 @@
 <template>
     <div>
-        <page-header></page-header>
+ 
 
         <main>
 
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import PageHeader from '@/components/PageHeader.vue';
+
 import ClientLoginComponent from '@/components/ClientLoginComponent.vue';
 
 import axios from 'axios';
@@ -47,9 +47,8 @@ import axios from 'axios';
 
 export default {
     components: {
-
-        PageHeader,
-        ClientLoginComponent
+ 
+        ClientLoginComponent,
 
 
     },

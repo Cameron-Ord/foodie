@@ -1,13 +1,14 @@
 <template>
     <div>
-                <page-header></page-header>
+           
 
         <main>
 
             <section>
                 <article>
 
-                    <client-login-component></client-login-component>
+                    <restaurant-login-component></restaurant-login-component>
+                    
 
                 </article>
                 <article>
@@ -42,8 +43,7 @@
 
 <script>
 
-import PageHeader from '@/components/PageHeader.vue';
-import ClientLoginComponent from '@/components/ClientLoginComponent.vue';
+import RestaurantLoginComponent from '@/components/RestaurantLoginComponent.vue';
 
 import axios from 'axios';
 import Cookies from 'vue-cookies';
@@ -51,8 +51,7 @@ import Cookies from 'vue-cookies';
 
             components: {
 
-        PageHeader,
-        ClientLoginComponent
+                RestaurantLoginComponent,
 
 
     },

@@ -1,17 +1,7 @@
 <template>
     <div class="landing_parent">
 
-      
-        <header class="page_header">
-            <span class="header_span">
-
-            <img src="~@/assets/menu-icon.svg">
-
-            <h1>LOGO</h1>
-
-        </span>
-
-        </header>
+        <page-header></page-header>
 
         <main class="page_main">
             <section class="section_main">
@@ -25,70 +15,46 @@
                         <input placeholder="Enter Your Address" type="text">
 
                         <input placeholder="Apt/Unit Number" type="text">
-                        
+
                         <input placeholder="Delivery Instructions" type="text">
 
 
 
                     </span>
 
-                         <nav>
+                    <nav>
 
                         <router-link to="/OrderPage">Find restaurants nearby</router-link>
 
                     </nav>
 
-
                 </article>
-                
+
             </section>
+
         </main>
 
-      
-    
+
+
 
     </div>
 </template>
 
 <script>
+import PageHeader from '@/components/PageHeader.vue';
 
+export default {
 
-    export default {
-        
-        components:{
+    components: {
 
+        PageHeader
 
-        }
     }
+}
 </script>
 
 <style scoped>
-.page_header{
 
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-    justify-items: center;
-
-    align-items: center;
-
-    min-height: 10vh;
-}
-.page_header>.header_span{
-
-    display: grid;
-
-    grid-template-columns: 2fr 1fr;
-
-    align-items: center;
-}
-.page_header>.header_span>img{
-
-    width: 40px;
-    height: 40px;
-
-}
 
 .page_main{
 

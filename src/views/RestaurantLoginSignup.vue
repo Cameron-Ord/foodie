@@ -7,6 +7,11 @@
             <section>
                 <article>
 
+                    <client-login-component></client-login-component>
+
+                </article>
+                <article>
+
                     <span>
 
                         <input placeholder="your email"  type="text" ref="email_input">
@@ -17,6 +22,7 @@
                         <input placeholder="city"  type="text" ref="city_input">
                         <input placeholder="profile image" type="text" ref="profile_input">
                         <input placeholder="banner image" type="text" ref="banner_input">
+                        
                         <input placeholder="password" type="password" ref="password_input">
 
                         <button @click="sign_up">Create Account</button>
@@ -37,7 +43,7 @@
 <script>
 
 import PageHeader from '@/components/PageHeader.vue';
-
+import ClientLoginComponent from '@/components/ClientLoginComponent.vue';
 
 import axios from 'axios';
 import Cookies from 'vue-cookies';
@@ -45,7 +51,8 @@ import Cookies from 'vue-cookies';
 
             components: {
 
-        PageHeader
+        PageHeader,
+        ClientLoginComponent
 
 
     },

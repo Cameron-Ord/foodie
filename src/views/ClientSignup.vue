@@ -7,6 +7,12 @@
             <section>
                 <article>
 
+                    <client-login-component></client-login-component>
+
+                </article>
+
+                <article>
+
                     <span>
 
                         <input placeholder="your email" class="email" type="value">
@@ -33,16 +39,17 @@
 
 <script>
 import PageHeader from '@/components/PageHeader.vue';
-
+import ClientLoginComponent from '@/components/ClientLoginComponent.vue';
 
 import axios from 'axios';
-import Cookies from 'vue-cookies';
+
 
 
 export default {
     components: {
 
-        PageHeader
+        PageHeader,
+        ClientLoginComponent
 
 
     },
@@ -122,9 +129,6 @@ export default {
 
                 console.log(response);
 
-                Cookies.set(`token`, `${response[`data`][`token`]}`);
-
-                Cookies.set(`id`, `${response[`data`][`client_id`]}`)
 
 
             }).catch((error) => {

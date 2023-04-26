@@ -9,7 +9,8 @@
                 <div class="hero_div">
                     
 
-                <h3>Help Icon</h3>
+                 <router-link to="/RestaurantLogin">Restaurant signup</router-link>
+
 
                 <router-link to="/ClientSignup">Sign up</router-link>
 

@@ -11,12 +11,12 @@
 
                     <span class="input_span">
 
-                        <input placeholder="your email" class="email" type="value">
-                        <input placeholder="your name" class="name" type="value">
-                        <input placeholder="your last name" class="last_name" type="value">
-                        <input placeholder="your avatar" class="user_avatar" type="value">
-                        <input placeholder="username" class="username" type="value">
-                        <input placeholder="password" class="password" type="value">
+                        <input placeholder="your email" type="value" ref="email_input">
+                        <input placeholder="your name" type="value" ref="name_input">
+                        <input placeholder="your last name"  type="value" ref="last_name_input">
+                        <input placeholder="your avatar" type="value" ref="avatar_input">
+                        <input placeholder="username" type="value" ref="username_input">
+                        <input placeholder="password"  type="value" ref="password_input">
 
                     </span>
                     <span class="tinyspan">
@@ -38,6 +38,7 @@
 
 import PageHeader from '@/components/PageHeader.vue';
 import axios from 'axios';
+import Cookies from 'vue-cookies';
 
 
 
@@ -65,29 +66,6 @@ export default {
 
         sign_up() {
 
-            let email_input = document.querySelector(`.email`);
-
-            let email_input_value = email_input[`value`];
-
-            let name_input = document.querySelector(`.name`);
-
-            let first_name_value = name_input[`value`];
-
-            let last_name = document.querySelector(`.last_name`);
-
-            let last_name_value = last_name[`value`];
-
-            let avatar_input = document.querySelector(`.user_avatar`);
-
-            let image_url_value = avatar_input[`value`];
-
-            let username_input = document.querySelector(`.username`);
-
-            let username_value = username_input[`value`];
-
-            let password_input = document.querySelector(`.password`);
-
-            let password_value = password_input[`value`];
 
             axios({
 
@@ -104,17 +82,17 @@ export default {
                 data: {
 
 
-                    email: email_input_value,
+                    email: this.$refs[`email_input`].value,
 
-                    first_name: first_name_value,
+                    first_name: this.$refs[`name_input`].value,
 
-                    last_name: last_name_value,
+                    last_name: this.$refs[`last_name_input`].value,
 
-                    image_url: image_url_value,
+                    image_url: this.$refs[`avatar_input`].value,
 
-                    username: username_value,
+                    username: this.$refs[`username_input`].value,
 
-                    password: password_value
+                    password: this.$refs[`password_input`].value
 
 
                 }
@@ -124,6 +102,10 @@ export default {
             }).then((response) => {
 
                 console.log(response);
+
+                    Cookies.set(`client_login_token`, `${response[`data`][`token`]}`);
+
+                    Cookies.set(`client_id_token`, `${response[`data`][`client_id`]}`);
 
 
 

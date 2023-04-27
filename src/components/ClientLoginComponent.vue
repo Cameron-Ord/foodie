@@ -30,9 +30,17 @@ import Cookies from 'vue-cookies';
 
                     url: `https://foodie.bymoen.codes/api/client-login`,
 
+        
+                    headers:{
+
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
+
+                    },
+
                     data:{
 
-                        email: this.$refs[`email_input`].values,
+                        email: this.$refs[`email_input`].value,
                         password: this.$refs[`password_input`].value
 
                     }

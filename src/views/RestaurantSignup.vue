@@ -104,9 +104,9 @@ import Cookies from 'vue-cookies';
 
                 response;
 
-                Cookies.set(`token`, `${response[`data`][`token`]}`);
+                    Cookies.set(`rest_login_token`, `${response[`data`][`token`]}`);
 
-                Cookies.set(`id`, `${response[`data`][`restaurant_id`]}`)
+                    Cookies.set(`restaurant_id`, `${response[`data`][`restaurant_id`]}`);
 
 
             }).catch((error) => {

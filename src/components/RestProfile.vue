@@ -7,7 +7,55 @@
                     <span>
                         <h1>Welcome, {{ rest_data_holder[`username`] }}</h1>
                     </span>
-                    <span></span>
+                    <span>
+                        <h1>Account info:</h1>
+
+                        <img v-bind:src="rest_data_holder[`profile_url`]">
+
+                        <p>Email: {{ rest_data_holder[`email`] }}</p>
+
+                        <p>Address: {{ rest_data_holder[`address`] }}</p>
+                        
+                        <p>Phone Number: {{ rest_data_holder[`phone_number`] }}</p>
+                        
+                        <p>Bio: {{rest_data_holder[`bio`] }}</p>
+                        
+                        <p>Location: {{ rest_data_holder[`city`] }}</p>
+                    
+                    </span>
+                    <span>
+
+                        <h1>Edit your profile:</h1>
+
+                        <p>Change business email:</p>
+
+                        <input placeholder="enter a new email" type="text">
+
+                        <p>Change phone number:</p>
+
+                        <input placeholder="enter a new phone number" type="text">
+                    
+                        <p>Change address:</p>
+
+                        <input placeholder="enter your new address" type="text">
+                    
+                        <p>Edit your bio:</p>
+
+                        <input placeholder="write your information here" type="text">
+                   
+                        <p>Change banner:</p>
+                   
+                        <input placeholder="upload your image here" type="text">
+                   
+                   
+                    </span>
+
+                    <span>
+                        <h1>Account Settings:</h1>
+                    
+                        <button>Delete Account</button>
+                    
+                    </span>
                 </article>
             </section>
         </main>

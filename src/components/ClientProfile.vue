@@ -28,6 +28,10 @@
 
                         <h1>Edit your profile:</h1>
 
+                        <p>Change email:</p>
+
+                        <input placeholder="enter a new email" type="text">
+
                         <p>Change username:</p>
 
                         <input placeholder="enter a new username" type="text">
@@ -75,7 +79,7 @@ export default {
 
         delete_profile(){
 
-            
+
         }
 
     },

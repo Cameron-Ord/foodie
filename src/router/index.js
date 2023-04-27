@@ -2,11 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LandingPage from '@/views/LandingPage.vue'
 import ClientSignup from '@/views/ClientSignup'
-import ClientProfile from '@/views/ClientProfile.vue'
 import DiscoverPage from '@/views/DiscoverPage.vue'
 import OrderPage from '@/views/OrderPage.vue'
 import RestaurantSignup from '@/views/RestaurantSignup.vue'
-import RestaurantProfile from '@/views/RestaurantProfile.vue'
+import AccountProfile from '@/views/AccountProfile.vue'
 import ShoppingCart from '@/views/ShoppingCart.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import PartnerLogin from '@/views/PartnerLogin.vue'
@@ -79,34 +78,6 @@ const routes = [
 
 },
 
-{
-
-  path: `/ClientProfile`,
-
-  component: ClientProfile,
-
-  name :`client profile`,
-
-  meta: [
-    {
-      title: `client profile page`,
-    },
-    {
-      name: `description`,
-
-      content: `placeholder`,
-
-    
-    },
-    {
-
-      name: `author`,
-
-      content: `Cameron Ord`
-    }
-  ]
-
-},
 
 {
 
@@ -203,9 +174,9 @@ const routes = [
 
 {
 
-  path: `/RestaurantProfile`,
+  path: `/AccountProfile`,
 
-  component: RestaurantProfile,
+  component: AccountProfile,
 
   name: `restaurant profile`,
 
@@ -291,7 +262,7 @@ const routes = [
 
   component: PartnerLogin,
 
-  name: `log in`,
+  name: `restaurant log in`,
 
   meta: [
     {

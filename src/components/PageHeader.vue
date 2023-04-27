@@ -2,13 +2,6 @@
     <div>
         <header class="page_header">
 
-            <div class="divider">
-            <span>
-
-                <h1>DEV.</h1>
-
-            </span>
-       
 
             <nav class="header_span">
 
@@ -17,11 +10,17 @@
                     <div class="bar"></div>
                 </button>
 
+                <h1>DEV.</h1>
 
             </nav> 
 
-        </div>
+
         </header>
+        <nav class="mobile_nav">
+            <router-link to="/ClientSignup" class="nav_menu">Sign-up</router-link>
+            <router-link to="#" class="nav_menu">Log in</router-link>
+            <router-link to="/RestaurantLogin" class="nav_menu">Add your restaurant</router-link>
+        </nav>
     </div>
 </template>
 
@@ -35,8 +34,12 @@
 
                 let menu_btn = document.querySelector(`.hamburger`);
 
+                let mobile_menu = document.querySelector(`.mobile_nav`);
+
+
                 menu_btn.classList.toggle(`is-active`);
 
+                mobile_menu.classList.toggle(`is-active`);
             }
 
         },
@@ -67,21 +70,14 @@ background-color: #262626;
 color: white;
 }
 
-.page_header>.divider{
-    display: grid;
 
-    align-items: center;
-
-    grid-template-columns: 60vw 20vw;
-}
-
-.page_header>.divider>.header_span{
+.page_header>.header_span{
 
 display: grid;
 
 align-items: center;
 
-justify-items: center;
+grid-template-columns: 3fr 1fr;
 
 }
 
@@ -126,4 +122,45 @@ transform:rotate(45deg) translate(-9px, -8px);
     opacity: 0;
 }
 
+.mobile_nav{
+
+    position: fixed;
+    top:10vh;
+    right:100%;
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+    z-index: 98;
+    background-color: #262626;
+    padding-top: 120px;
+    transition: 0.4s;
+}
+
+.mobile_nav.is-active{
+
+    right: 0;
+}
+
+.mobile_nav>.nav_menu{
+
+
+
+    display: block;
+
+    text-align: center;
+
+    margin: 0 auto 16px;
+
+    width: 100%;
+
+    max-width: 200px;
+
+    padding: 12px 16px;
+
+    background-color: white;
+
+    color: black;
+
+    text-decoration: none;
+}
 </style>

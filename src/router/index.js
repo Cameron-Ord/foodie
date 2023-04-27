@@ -5,7 +5,7 @@ import ClientSignup from '@/views/ClientSignup'
 import ClientProfile from '@/views/ClientProfile.vue'
 import DiscoverPage from '@/views/DiscoverPage.vue'
 import OrderPage from '@/views/OrderPage.vue'
-import RestaurantLoginSignup from '@/views/RestaurantLoginSignup.vue'
+import RestaurantSignup from '@/views/RestaurantSignup.vue'
 import RestaurantProfile from '@/views/RestaurantProfile.vue'
 import ShoppingCart from '@/views/ShoppingCart.vue'
 
@@ -174,7 +174,7 @@ const routes = [
 
   path: `/RestaurantLogin`,
 
-  component: RestaurantLoginSignup,
+  component: RestaurantSignup,
 
   name: `restaurant login`,
 

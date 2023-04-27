@@ -10,9 +10,11 @@
                     <div class="bar"></div>
                 </button>
 
-                <router-link to="/" class="home_nav"><h1>DEV.</h1></router-link>
+                <router-link to="/" class="home_nav">
+                    <h1>DEV.</h1>
+                </router-link>
 
-            </nav> 
+            </nav>
 
 
         </header>
@@ -26,63 +28,62 @@
 </template>
 
 <script>
-    export default {
+export default {
 
-        methods:{
-
-
-            make_active(){
-
-                let menu_btn = document.querySelector(`.hamburger`);
-
-                let mobile_menu = document.querySelector(`.mobile_nav`);
+    methods: {
 
 
-                menu_btn.classList.toggle(`is-active`);
+        make_active() {
 
-                mobile_menu.classList.toggle(`is-active`);
-            }
+            let menu_btn = document.querySelector(`.hamburger`);
 
-        },
-        
-        mounted(){
+            let mobile_menu = document.querySelector(`.mobile_nav`);
 
-             
+
+            menu_btn.classList.toggle(`is-active`);
+
+            mobile_menu.classList.toggle(`is-active`);
         }
+
+    },
+
+    mounted() {
+
+
     }
+}
 </script>
 
 <style scoped>
+.page_header {
 
-.page_header{
+    display: grid;
 
-display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    place-items: center;
 
-place-items: center;
+    align-items: center;
 
-align-items: center;
+    min-height: 10vh;
 
-min-height: 10vh;
+    background-color: #262626;
 
-background-color: #262626;
-
-color: white;
+    color: white;
 }
 
 
-.page_header>.header_span{
+.page_header>.header_span {
 
-display: grid;
+    display: grid;
 
-align-items: center;
+    align-items: center;
 
-grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1fr;
 
 }
 
-.hamburger{
+.hamburger {
     position: relative;
 
     display: block;
@@ -95,39 +96,42 @@ grid-template-columns: 3fr 1fr;
     outline: none;
     border: none;
 }
-.hamburger>.bar, .hamburger::after, .hamburger::before{
- 
+
+.hamburger>.bar,
+.hamburger::after,
+.hamburger::before {
+
     content: '';
     display: block;
     width: 100%;
     height: 5px;
     background-color: white;
-    
+
     margin-top: 6px;
     margin-bottom: 6px;
     transition: 0.4s;
 }
 
-.hamburger.is-active::before{
+.hamburger.is-active::before {
 
-    transform:rotate(-45deg) translate(-8px, 6px);
+    transform: rotate(-45deg) translate(-8px, 6px);
 }
 
-.hamburger.is-active::after{
+.hamburger.is-active::after {
 
-transform:rotate(45deg) translate(-9px, -8px);
+    transform: rotate(45deg) translate(-9px, -8px);
 }
 
-.hamburger.is-active .bar{
+.hamburger.is-active .bar {
 
     opacity: 0;
 }
 
-.mobile_nav{
+.mobile_nav {
 
     position: fixed;
-    top:10vh;
-    right:100%;
+    top: 10vh;
+    right: 100%;
     width: 100%;
     min-height: 100vh;
     display: block;
@@ -137,12 +141,12 @@ transform:rotate(45deg) translate(-9px, -8px);
     transition: 0.4s;
 }
 
-.mobile_nav.is-active{
+.mobile_nav.is-active {
 
     right: 0;
 }
 
-.mobile_nav>.nav_menu{
+.mobile_nav>.nav_menu {
 
 
 
@@ -165,9 +169,8 @@ transform:rotate(45deg) translate(-9px, -8px);
     text-decoration: none;
 }
 
-.home_nav{
+.home_nav {
 
     text-decoration: none;
     color: white;
-}
-</style>
+}</style>

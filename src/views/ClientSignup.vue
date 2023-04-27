@@ -1,6 +1,6 @@
 <template>
     <div>
- 
+
         <page-header></page-header>
 
         <main class="page_main">
@@ -13,16 +13,16 @@
 
                         <input placeholder="your email" type="value" ref="email_input">
                         <input placeholder="your name" type="value" ref="name_input">
-                        <input placeholder="your last name"  type="value" ref="last_name_input">
+                        <input placeholder="your last name" type="value" ref="last_name_input">
                         <input placeholder="your avatar" type="value" ref="avatar_input">
                         <input placeholder="username" type="value" ref="username_input">
-                        <input placeholder="password"  type="value" ref="password_input">
+                        <input placeholder="password" type="value" ref="password_input">
 
                     </span>
                     <span class="tinyspan">
 
                         <button @click="sign_up">Create Account</button>
-                        
+
 
                         <h4>Already have an account? Log in</h4>
                     </span>
@@ -44,7 +44,7 @@ import Cookies from 'vue-cookies';
 
 export default {
     components: {
- 
+
 
 
         PageHeader,
@@ -103,11 +103,14 @@ export default {
 
                 console.log(response);
 
-                    Cookies.set(`client_login_token`, `${response[`data`][`token`]}`);
+                Cookies.set(`client_login_token`, `${response[`data`][`token`]}`);
 
-                    Cookies.set(`client_id_token`, `${response[`data`][`client_id`]}`);
+                Cookies.set(`client_id_token`, `${response[`data`][`client_id`]}`);
 
 
+                Cookies.remove(`rest_login_token`);
+
+                Cookies.remove(`restaurant_id`);
 
             }).catch((error) => {
 
@@ -123,8 +126,7 @@ export default {
 </script>
 
 <style scoped>
-
-.page_main{
+.page_main {
 
     display: grid;
 
@@ -139,7 +141,7 @@ export default {
 }
 
 
-.page_main>.section_main{
+.page_main>.section_main {
 
     display: grid;
 
@@ -148,7 +150,7 @@ export default {
     width: 100%;
 }
 
-.page_main>.section_main>.input_article{
+.page_main>.section_main>.input_article {
 
     display: grid;
 
@@ -161,8 +163,8 @@ export default {
     width: 100%;
 }
 
-.page_main>.section_main>.input_article>.input_span{
-    
+.page_main>.section_main>.input_article>.input_span {
+
     display: grid;
 
     align-items: center;
@@ -173,7 +175,8 @@ export default {
 
     width: 85%;
 }
-.page_main>.section_main>.input_article>.tinyspan{
+
+.page_main>.section_main>.input_article>.tinyspan {
 
     display: grid;
 
@@ -183,6 +186,4 @@ export default {
 
     width: 85%;
 }
-
-
 </style>

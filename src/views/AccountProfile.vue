@@ -2,112 +2,42 @@
     <div>
         <page-header></page-header>
 
+        <client-profile v-if="client_data !== undefined"></client-profile>
+        <rest-profile v-if="rest_data != undefined"></rest-profile>
+
     </div>
 </template>
 
 <script>
-import Cookies from 'vue-cookies';
-import axios from 'axios';
 import PageHeader from '@/components/PageHeader.vue';
+import ClientProfile from '@/components/ClientProfile.vue';
+import RestProfile from '@/components/RestProfile.vue';
+import Cookies from 'vue-cookies';
     export default {
-        data() {
-            return {
-                
-            }
-        },
-
-
+      
         components:{
 
-            PageHeader
+            PageHeader,
+            ClientProfile,
+            RestProfile
         },
 
-        methods:{
-
-
+        data() {
+            return {
+                client_data: undefined,
+                rest_data: undefined
+            }
         },
 
         mounted(){
 
+            let client_cookie_data = Cookies.get(`client_login_token`);
 
-            let restaurant_token = Cookies.get(`rest_login_token`);
+            this.client_data = client_cookie_data;
 
-            let client_token = Cookies.get(`client_login_token`);
+            let rest_cookie_data = Cookies.get(`rest_login_token`);
 
-            let client_id_value = Cookies.get(`client_id_token`);
-
-            let rest_id_value = Cookies.get(`rest_login_token`);
-
-            if(client_token !== undefined){
-
-                axios({
-
-                    method: `GET`,
-
-                    url: `https://foodie.bymoen.codes/api/client`,
-
-                    headers:{
-
-                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
-
-                    },
-
-                    params:{
-
-                        client_id: client_id_value,
-
-                    }
-                   
-                    
-                }).then((response)=>{
-
-                    response;
-                    console.log(`client profile api success`);
-
-
-                }).catch((error)=>{
-
-                    error;
-
-                })
-
-
-
-            }else if(restaurant_token !== undefined){
-
-                axios({
-
-                    method: `GET`,
-
-                    url: `https://foodie.bymoen.codes/api/restaurant`,
-
-                    headers:{
-
-                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
-
-                    },
-
-                    params:{
-
-                        restaurant_id: rest_id_value,
-                    }
-
-                    
-                }).then((response)=>{
-                    response;
-                    console.log(`restaurant profile api success`);
-
-
-                }).catch((error)=>{
-
-                    error
-                });
-
-            }else{
-
-                console.log(`failure`);
-            }
-
+            this.rest_data = rest_cookie_data;
 
         }
     }

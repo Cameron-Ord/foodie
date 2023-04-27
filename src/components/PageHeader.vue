@@ -23,12 +23,24 @@
             <router-link to="/Login" class="nav_menu">Log-in</router-link>
             <router-link to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
             <router-link to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
+            <router-link to="/AccountProfile" class="nav_menu" v-if="cookies_object != undefined">Your Profile</router-link>
         </nav>
     </div>
 </template>
 
 <script>
+import Cookies from 'vue-cookies';
+
+
 export default {
+
+
+    data() {
+    return {
+        cookies_object: undefined
+    }
+},
+
 
     methods: {
 
@@ -39,7 +51,6 @@ export default {
 
             let mobile_menu = document.querySelector(`.mobile_nav`);
 
-
             menu_btn.classList.toggle(`is-active`);
 
             mobile_menu.classList.toggle(`is-active`);
@@ -48,6 +59,21 @@ export default {
     },
 
     mounted() {
+
+     
+            let grab_cookies_rest = Cookies.get(`rest_login_token`);
+
+            this.cookies_object = grab_cookies_rest;
+            
+
+
+            let grab_cookies_client = Cookies.get(`client_login_token`);
+
+            this.cookies_object = grab_cookies_client;
+
+
+
+
 
 
     }

@@ -3,14 +3,13 @@
  
         <page-header></page-header>
 
-        <main>
+        <main class="page_main">
 
-            <section>
+            <section class="section_main">
 
+                <article class="input_article">
 
-                <article>
-
-                    <span>
+                    <span class="input_span">
 
                         <input placeholder="your email" class="email" type="value">
                         <input placeholder="your name" class="name" type="value">
@@ -19,12 +18,13 @@
                         <input placeholder="username" class="username" type="value">
                         <input placeholder="password" class="password" type="value">
 
+                    </span>
+                    <span class="tinyspan">
+
                         <button @click="sign_up">Create Account</button>
                         
 
                         <h4>Already have an account? Log in</h4>
-
-
                     </span>
                 </article>
             </section>
@@ -140,4 +140,67 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.page_main{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    min-height: 80vh;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+}
+
+
+.page_main>.section_main{
+
+    display: grid;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+.page_main>.section_main>.input_article{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-template-rows: 1fr 1fr;
+
+    width: 100%;
+}
+
+.page_main>.section_main>.input_article>.input_span{
+    
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-template-rows: 25px 25px 25px 25px 25px 25px;
+
+    width: 85%;
+}
+.page_main>.section_main>.input_article>.tinyspan{
+
+    display: grid;
+
+    align-items: center;
+
+    grid-template-rows: 50px 50px;
+
+    width: 85%;
+}
+
+
+</style>

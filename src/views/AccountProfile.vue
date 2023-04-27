@@ -1,5 +1,6 @@
 <template>
     <div>
+        <page-header></page-header>
 
     </div>
 </template>
@@ -7,6 +8,7 @@
 <script>
 import Cookies from 'vue-cookies';
 import axios from 'axios';
+import PageHeader from '@/components/PageHeader.vue';
     export default {
         data() {
             return {
@@ -14,6 +16,11 @@ import axios from 'axios';
             }
         },
 
+
+        components:{
+
+            PageHeader
+        },
 
         methods:{
 
@@ -31,7 +38,6 @@ import axios from 'axios';
 
             let rest_id_value = Cookies.get(`rest_login_token`);
 
-            console.log(client_id_value);
             if(client_token !== undefined){
 
                 axios({

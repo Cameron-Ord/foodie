@@ -3,13 +3,14 @@
            
 
         <page-header></page-header>
-        <main>
 
-            <section>
+        <main class="page_main">
 
-                <article>
+            <section class="section_main">
 
-                    <span>
+                <article class="input_article">
+
+                    <span class="input_span">
 
                         <input placeholder="your email"  type="text" ref="email_input">
                         <input placeholder="your name" type="text" ref="name_input">
@@ -22,11 +23,13 @@
                         
                         <input placeholder="password" type="password" ref="password_input">
 
+                    </span>
+                    <span class="tinyspan">
+
                         <button @click="sign_up">Create Account</button>
                         
 
                         <h4>Already have an account? Log in</h4>
-
 
                     </span>
                 </article>
@@ -121,5 +124,66 @@ import Cookies from 'vue-cookies';
 </script>
 
 <style scoped>
+.page_main{
 
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    min-height: 80vh;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+
+}
+.page_main>.section_main{
+
+    display: grid;
+
+    align-items: center;
+
+
+    width: 100%;
+
+}
+
+.page_main>.section_main>.input_article{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-template-rows: 1fr 1fr;
+
+    width: 100%;
+}
+
+.page_main>.section_main>.input_article>.input_span{
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-template-rows: 25px 25px 25px 25px 25px 25px 25px 25px 25px;
+
+    width: 85%;
+}
+
+.page_main>.section_main>.input_article>.tinyspan{
+
+        display: grid;
+
+    align-items: center;
+
+    grid-template-rows: 50px 50px;
+
+    width: 85%;
+
+
+}
 </style>

@@ -1,43 +1,43 @@
 <template>
-    <div class="landing_parent">
+        <div class="landing_parent">
 
-        <page-header></page-header>
+            <page-header></page-header>
 
-        <main class="page_main">
-            <section class="section_main">
+            <main class="page_main">
 
-                <article class="landing_article">
+                <section class="section_main">
 
-                    <span class="landing_span">
+                    <article class="landing_article">
 
-                        <h1>did somebody say eatfast</h1>
+                        <div> <h1>did somebody say eatfast</h1></div>
 
-                        <input placeholder="Enter Your Address" type="text">
+                        <span class="landing_span">
 
-                        <input placeholder="Apt/Unit Number" type="text">
+                            <input placeholder="Enter Your Address" type="text">
 
-                        <input placeholder="Delivery Instructions" type="text">
+                            <input placeholder="Apt/Unit Number" type="text">
 
-
-
-                    </span>
-
-                    <nav>
-
-                        <router-link to="/OrderPage">Find restaurants nearby</router-link>
-
-                    </nav>
-
-                </article>
-
-            </section>
-
-        </main>
+                            <input placeholder="Delivery Instructions" type="text">
 
 
+                        </span>
+
+                        <nav>
+
+                            <router-link to="/OrderPage">Find restaurants nearby</router-link>
+
+                        </nav>
+
+                    </article>
+
+                </section>
+
+            </main>
 
 
-    </div>
+
+
+        </div>
 </template>
 
 <script>
@@ -54,68 +54,51 @@ export default {
 </script>
 
 <style scoped>
-
-
 .page_main{
 
     display: grid;
 
+    align-items: center;
+
+    justify-items: center;
+
     min-height: 80vh;
 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-    justify-items: center;
-
-    align-items: center;
-
 }
 
 .page_main>.section_main{
-
     display: grid;
-
-    justify-items: center;
 
     align-items: center;
 
-    width: 100%;
-
-
-}
-.page_main>.section_main>.landing_article{
-
-    display: grid;
-
     justify-items: center;
 
-    align-items: center;
-
-    text-align: center;
-
     width: 100%;
-
-    grid-template-rows: 2fr 1fr;
-
-}
-
-
-
-.page_main>.section_main>.landing_article>.landing_span{
-
-    display: grid;
-
-    width: 80%;
-
-    grid-template-rows: 50px 50px 50px 50px;
     
 }
-.page_main>.section_main>.landing_article>.landing_span>input{
 
-    display: inline;
+.page_main>.section_main>.landing_article{
+    display: grid;
 
-    margin-top: 5px;
+    align-items: center;
 
-    margin-bottom: 5px;
+    justify-items: center;
+
+    grid-template-rows: 1fr 1fr 1fr;
+
+    width: 100%;
 }
+.page_main>.section_main>.landing_article>.landing_span{
 
+        display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-template-rows: 25px 25px 25px;
+
+    width: 85%;
+}
 </style>

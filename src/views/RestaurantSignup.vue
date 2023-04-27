@@ -2,6 +2,7 @@
     <div>
            
 
+        <page-header></page-header>
         <main>
 
             <section>
@@ -44,7 +45,7 @@
 <script>
 
 import RestaurantLoginComponent from '@/components/RestaurantLoginComponent.vue';
-
+import PageHeader from '@/components/PageHeader.vue';
 import axios from 'axios';
 import Cookies from 'vue-cookies';
     export default {
@@ -53,6 +54,7 @@ import Cookies from 'vue-cookies';
 
                 RestaurantLoginComponent,
 
+                PageHeader,
 
     },
 

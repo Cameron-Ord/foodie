@@ -8,7 +8,7 @@ import OrderPage from '@/views/OrderPage.vue'
 import RestaurantSignup from '@/views/RestaurantSignup.vue'
 import RestaurantProfile from '@/views/RestaurantProfile.vue'
 import ShoppingCart from '@/views/ShoppingCart.vue'
-
+import LoginPage from '@/views/LoginPage.vue'
 
 Vue.use(VueRouter)
 
@@ -240,6 +240,33 @@ const routes = [
 
     {
       title: `shopping cart`,
+    },
+    {
+      name: `description`,
+
+      content: `placeholder`,
+
+    
+    },
+    {
+
+      name: `author`,
+
+      content: `Cameron Ord`
+    }
+  ]
+},
+{
+  path: `/Login`,
+
+  component: LoginPage,
+
+  name: `log in`,
+
+  meta: [
+
+    {
+      title: `log-in page`,
     },
     {
       name: `description`,

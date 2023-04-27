@@ -10,7 +10,7 @@
                     <div class="bar"></div>
                 </button>
 
-                <h1>DEV.</h1>
+                <router-link to="/" class="home_nav"><h1>DEV.</h1></router-link>
 
             </nav> 
 
@@ -18,7 +18,7 @@
         </header>
         <nav class="mobile_nav">
             <router-link to="/ClientSignup" class="nav_menu">Sign-up</router-link>
-            <router-link to="#" class="nav_menu">Log in</router-link>
+            <router-link to="/Login" class="nav_menu">Log in</router-link>
             <router-link to="/RestaurantLogin" class="nav_menu">Add your restaurant</router-link>
         </nav>
     </div>
@@ -162,5 +162,11 @@ transform:rotate(45deg) translate(-9px, -8px);
     color: black;
 
     text-decoration: none;
+}
+
+.home_nav{
+
+    text-decoration: none;
+    color: white;
 }
 </style>

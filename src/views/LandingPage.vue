@@ -107,6 +107,7 @@ export default {
     width: 80%;
 
     grid-template-rows: 50px 50px 50px 50px;
+    
 }
 .page_main>.section_main>.landing_article>.landing_span>input{
 

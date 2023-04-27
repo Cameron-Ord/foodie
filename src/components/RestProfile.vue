@@ -3,7 +3,11 @@
         <main>
             <section>
                 <article>
-                    <h1>Welcome, {{ rest_data_holder[`username`] }}</h1>
+              
+                    <span>
+                        <h1>Welcome, {{ rest_data_holder[`username`] }}</h1>
+                    </span>
+                    <span></span>
                 </article>
             </section>
         </main>

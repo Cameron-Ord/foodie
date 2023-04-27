@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <span class="Client_Comp">
 
         <input type="text" ref="email_input">
         <input type="password" ref="password_input">
@@ -57,5 +57,15 @@ import Cookies from 'vue-cookies';
 </script>
 
 <style scoped>
+.Client_Comp{
 
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+grid-template-rows: 50px 50px;
+
+}
 </style>

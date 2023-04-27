@@ -3,11 +3,10 @@
 
         <page-header></page-header>
 
-        <main>
-            <section>
-                <article>
+        <main class="page_main">
+            <section class="section_main">
+                <article class="article_main"> 
 
-   
                     <restaurant-login-component></restaurant-login-component>
 
                 </article>
@@ -30,5 +29,18 @@ import RestaurantLoginComponent from '@/components/RestaurantLoginComponent.vue'
 </script>
 
 <style scoped>
+.page_main{
 
+
+}
+
+.page_main>.section_main{
+
+
+}
+
+.page_main>.section_main>.article_main{
+
+    
+}
 </style>

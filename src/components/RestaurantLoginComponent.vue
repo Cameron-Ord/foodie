@@ -1,9 +1,10 @@
 <template>
-    <span>
+    <span class="Rest_Comp">
 
         <input type="text" ref="email_input">
         <input type="password" ref="password_input">
         <button @click="rest_log_in" >log in</button>
+
     </span>
 </template>
 
@@ -55,5 +56,17 @@ import Cookies from 'vue-cookies';
 </script>
 
 <style scoped>
+
+.Rest_Comp{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    grid-template-rows: 50px 50px;
+
+}
 
 </style>

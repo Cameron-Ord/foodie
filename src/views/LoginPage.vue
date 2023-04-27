@@ -3,9 +3,9 @@
 
         <page-header></page-header>
 
-        <main>
-            <section>
-                <article>
+        <main class="page_main">
+            <section class="section_main">
+                <article class="article_main"> 
 
                     <client-login-component></client-login-component>
 
@@ -33,4 +33,18 @@ import PageHeader from '@/components/PageHeader.vue';
 
 <style scoped>
 
+.page_main{
+
+
+}
+
+.page_main>.section_main{
+
+
+}
+
+.page_main>.section_main>.article_main{
+
+    
+}
 </style>

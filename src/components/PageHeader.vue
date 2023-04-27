@@ -18,8 +18,9 @@
         </header>
         <nav class="mobile_nav">
             <router-link to="/ClientSignup" class="nav_menu">Sign-up</router-link>
-            <router-link to="/Login" class="nav_menu">Log in</router-link>
-            <router-link to="/RestaurantLogin" class="nav_menu">Add your restaurant</router-link>
+            <router-link to="/Login" class="nav_menu">Log-in</router-link>
+            <router-link to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
+            <router-link to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
         </nav>
     </div>
 </template>

@@ -6,11 +6,7 @@
         <main>
 
             <section>
-                <article>
 
-                    <client-login-component></client-login-component>
-
-                </article>
 
                 <article>
 
@@ -40,7 +36,6 @@
 
 <script>
 
-import ClientLoginComponent from '@/components/ClientLoginComponent.vue';
 import PageHeader from '@/components/PageHeader.vue';
 import axios from 'axios';
 
@@ -49,7 +44,7 @@ import axios from 'axios';
 export default {
     components: {
  
-        ClientLoginComponent,
+
 
         PageHeader,
 

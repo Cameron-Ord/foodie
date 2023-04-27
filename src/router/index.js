@@ -9,6 +9,7 @@ import RestaurantSignup from '@/views/RestaurantSignup.vue'
 import RestaurantProfile from '@/views/RestaurantProfile.vue'
 import ShoppingCart from '@/views/ShoppingCart.vue'
 import LoginPage from '@/views/LoginPage.vue'
+import PartnerLogin from '@/views/PartnerLogin.vue'
 
 Vue.use(VueRouter)
 
@@ -172,7 +173,7 @@ const routes = [
 
 {
 
-  path: `/RestaurantLogin`,
+  path: `/RestaurantSignup`,
 
   component: RestaurantSignup,
 
@@ -267,6 +268,34 @@ const routes = [
 
     {
       title: `log-in page`,
+    },
+    {
+      name: `description`,
+
+      content: `placeholder`,
+
+    
+    },
+    {
+
+      name: `author`,
+
+      content: `Cameron Ord`
+    }
+  ]
+},
+
+{
+
+  path: `/RestaurantLogin`,
+
+  component: PartnerLogin,
+
+  name: `log in`,
+
+  meta: [
+    {
+      title: `partner log-in page`,
     },
     {
       name: `description`,

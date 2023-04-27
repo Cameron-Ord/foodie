@@ -7,7 +7,8 @@
             <section>
                 <article>
 
-                    <client-login-component></client-login-component>
+   
+                    <restaurant-login-component></restaurant-login-component>
 
                 </article>
             </section>
@@ -17,16 +18,13 @@
 </template>
 
 <script>
-import ClientLoginComponent from '@/components/ClientLoginComponent.vue';
-
 import PageHeader from '@/components/PageHeader.vue';
+import RestaurantLoginComponent from '@/components/RestaurantLoginComponent.vue';
     export default {
+        
         components:{
-
             PageHeader,
-            ClientLoginComponent,
-
-
+            RestaurantLoginComponent
         }
     }
 </script>

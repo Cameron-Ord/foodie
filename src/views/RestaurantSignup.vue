@@ -6,12 +6,7 @@
         <main>
 
             <section>
-                <article>
 
-                    <restaurant-login-component></restaurant-login-component>
-                    
-
-                </article>
                 <article>
 
                     <span>
@@ -44,7 +39,7 @@
 
 <script>
 
-import RestaurantLoginComponent from '@/components/RestaurantLoginComponent.vue';
+
 import PageHeader from '@/components/PageHeader.vue';
 import axios from 'axios';
 import Cookies from 'vue-cookies';
@@ -52,7 +47,6 @@ import Cookies from 'vue-cookies';
 
             components: {
 
-                RestaurantLoginComponent,
 
                 PageHeader,
 

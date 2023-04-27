@@ -53,6 +53,14 @@ import Cookies from 'vue-cookies';
 
                     Cookies.set(`client_id_token`, `${response[`data`][`client_id`]}`);
 
+                    Cookies.remove(`rest_login_token`);
+
+                    Cookies.remove(`restaurant_id`);
+
+                    this.$router.push(`/`);
+
+
+
                 }).catch((error)=>{
 
                     error;

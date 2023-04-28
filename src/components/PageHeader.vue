@@ -19,11 +19,11 @@
 
         </header>
         <nav class="mobile_nav">
-            <router-link to="/ClientSignup" class="nav_menu">Sign-up</router-link>
-            <router-link to="/Login" class="nav_menu">Log-in</router-link>
-            <router-link to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
-            <router-link to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
-            <router-link to="/AccountProfile" class="nav_menu" v-if="cookies_object != undefined">Your Profile</router-link>
+            <router-link v-if="client_logged_in !== true && partner_logged_in !== true" to="/ClientSignup" class="nav_menu">Sign-up</router-link>
+            <router-link v-if="client_logged_in !== true && partner_logged_in !== true"  to="/Login" class="nav_menu">Log-in</router-link>
+            <router-link v-if="client_logged_in !== true || partner_logged_in !== false" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
+            <router-link v-if="client_logged_in !== true && partner_logged_in !== true" to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
+            <router-link v-if="client_logged_in !== false || partner_logged_in !== false" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
         </nav>
     </div>
 </template>
@@ -37,7 +37,10 @@ export default {
 
     data() {
     return {
-        cookies_object: undefined
+     
+        client_logged_in: false,
+
+        partner_logged_in: false,
     }
 },
 
@@ -61,18 +64,37 @@ export default {
     mounted() {
 
      
-            let grab_cookies_rest = Cookies.get(`rest_login_token`);
+        let client_cookies = Cookies.get(`client_login_token`);
 
-            this.cookies_object = grab_cookies_rest;
+        if(client_cookies != undefined){
+
+            console.log(`welcome`);
+
+            this.client_logged_in = true;
+        }else{
+
+            console.log(`not logged in`);
+            this.client_logged_in = false;
+        }
+
+
+        let partner_cookies = Cookies.get(`rest_login_token`);
+
+        if(partner_cookies != undefined){
+
+            console.log(`welcome, partner`);
+
+            this.partner_logged_in = true;
             
+        }else{
 
+            console.log(`not logged in as partner`);
+            this.partner_logged_in = false;
+        }
 
-            let grab_cookies_client = Cookies.get(`client_login_token`);
+        console.log(this.client_logged_in);
 
-            this.cookies_object = grab_cookies_client;
-
-
-
+        console.log(this.partner_logged_in);
 
 
 

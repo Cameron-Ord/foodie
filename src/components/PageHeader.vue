@@ -24,6 +24,8 @@
             <router-link v-if="client_logged_in !== true || partner_logged_in !== false" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
             <router-link v-if="client_logged_in !== true && partner_logged_in !== true" to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
             <router-link v-if="client_logged_in !== false || partner_logged_in !== false" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
+    
+            <router-link to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
         </nav>
     </div>
 </template>

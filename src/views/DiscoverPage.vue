@@ -14,7 +14,7 @@
                         <p>{{ restaurant[`bio`] }}</p>
 
 
-                        <button :clicked_rest="i" @click="rest_chose" >view menu</button>
+                        <button :clicked_rest="i" @click="rest_chose" ref="button_clicked">view menu</button>
 
                     </span>
                 </article>
@@ -40,9 +40,10 @@ import axios from 'axios';
 
             rest_chose(details){
 
-                let button = details.currentTarget;
 
-                let button_clicker = button.getAttribute(`clicked_rest`);
+                this.$refs[`button_clicked`] = details.currentTarget;
+              
+                let button_clicker = this.$refs[`button_clicked`].getAttribute(`clicked_rest`);
 
                 let restaurant = this.restaurants[button_clicker];
 

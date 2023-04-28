@@ -13,6 +13,9 @@
 
                         <p>{{ restaurant[`bio`] }}</p>
 
+
+                        <button :clicked_rest="i" @click="rest_chose" >view menu</button>
+
                     </span>
                 </article>
             </section>
@@ -33,6 +36,21 @@ import axios from 'axios';
             }
         },
 
+        methods:{
+
+            rest_chose(details){
+
+                let button = details.currentTarget;
+
+                let button_clicker = button.getAttribute(`clicked_rest`);
+
+                let restaurant = this.restaurants[button_clicker];
+
+                console.log(restaurant);
+
+            }
+        },
+
         mounted(){
 
             axios({
@@ -49,7 +67,7 @@ import axios from 'axios';
             }).then((response)=>{
 
                 response;
-                
+
                 for(let i = 0; i < response[`data`].length; i = i +1){
 
                     this.restaurants.push(response[`data`][i])

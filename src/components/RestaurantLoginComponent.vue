@@ -45,11 +45,11 @@ import Cookies from 'vue-cookies';
                     }
                 }).then((response)=>{
 
-                    response;
+                    console.log(response);
 
                     Cookies.set(`rest_login_token`, `${response[`data`][`token`]}`);
 
-                    Cookies.set(`restaurant_id`, `${response[`data`][`restaurant_id`]}`);
+                    Cookies.set(`restaurant_id`, `${response[`data`][`restaurantId`]}`);
 
                     Cookies.remove(`client_login_token`);
 

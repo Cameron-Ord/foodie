@@ -91,6 +91,8 @@ import Cookies from 'vue-cookies';
                 
 
             rest_data_holder: {},
+
+            menu_get_holder: []
            
         }
         },
@@ -99,16 +101,175 @@ import Cookies from 'vue-cookies';
 
             add_product(){
 
+                let restaurant_token = Cookies.get(`rest_login_token`);
+
+                let rest_id_value = Cookies.get(`restaurant_id`);
+
+                if(rest_id_value !== undefined){
+
+                    axios({
+
+                    method: `POST`,
+
+                    url: `https://foodie.bymoen.codes/api/menu`,
+
+                    headers:{
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                        token: restaurant_token
+
+                    },
+
+                    data:{
+
+
+                        name: this.$refs[`Name_Box`][`value`],
+                        description: this.$refs[`Desc_Box`][`value`],
+                        image_url: this.$refs[`Image_Box`][`value`],
+                        price: this.$refs[`Price_Box`][`value`]
+
+                    }
+
+
+                }).then((response)=>{
+
+                    console.log(response);
+
+                }).catch((error)=>{
+
+                    error;
+
+                    console.log(`MENU API FAILURE`);
+
+                });
+
+                }else{
+
+                    console.log(`restaurant id is undefined`);
+                }
+
+
 
             },
 
             edit_product(){
 
 
+                let restaurant_token = Cookies.get(`rest_login_token`);
+
+
+                let rest_id_value = Cookies.get(`restaurant_id`);
+
+                if(rest_id_value !== undefined){
+
+
+            
+                    axios({
+
+                        method: `GET`,
+
+                        url: `https://foodie.bymoen.codes/api/menu`,
+
+                        headers:{
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+                    
+                        },
+                        
+                        params:{
+
+                        restaurant_id: rest_id_value,
+
+                        },
+                     }).then((response)=>{
+
+                        response;
+
+                        for(let i = 0; i < response[`data`].length; i = i +1){
+
+                            this.menu_get_holder.push(response[`data`][i]);
+
+                           
+                        }
+
+                    }).catch((error)=>{
+
+                        error;
+
+                    });
+
+                }
+
+                if(this.menu_get_holder[`id`] !== undefined){
+
+
+                    axios({
+
+                        method: `PATCH`,
+
+                        url: `https://foodie.bymoen.codes/api/menu`,
+            
+                        headers:{
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                        token: restaurant_token
+
+                    },
+
+                    
+                    data:{
+
+
+                        name: this.$refs[`Name_Box`][`value`],
+                        description: this.$refs[`Desc_Box`][`value`],
+                        image_url: this.$refs[`Image_Box`][`value`],
+                        price: this.$refs[`Price_Box`][`value`]
+
+                    }
+
+
+                    }).then((response)=>{
+
+                        response;
+
+                        console.log(`MENU UPDATED`);
+
+
+                    }).catch((error)=>{
+
+                        error;
+
+                        console.log(`MENU API NOT UPDATED`);
+
+                    })
+
+                    
+
+
+                }
+           
+                
+
             },
 
             delete_product(){
 
+
+                axios({
+
+
+                }).then((response)=>{
+
+                    response;
+
+
+                }).catch((error)=>{
+
+                    error;
+
+                });
             }
 
         },
@@ -118,7 +279,7 @@ import Cookies from 'vue-cookies';
 
         let restaurant_token = Cookies.get(`rest_login_token`);
 
-        let rest_id_value = Cookies.get(`rest_login_token`);
+        let rest_id_value = Cookies.get(`restaurant_id`);
 
 
             if (restaurant_token !== undefined) {

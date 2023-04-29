@@ -9,7 +9,7 @@ import AccountProfile from '@/views/AccountProfile.vue'
 import ShoppingCart from '@/views/ShoppingCart.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import PartnerLogin from '@/views/PartnerLogin.vue'
-
+import PublicPage from '@/views/PublicPage.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -282,6 +282,35 @@ const routes = [
       content: `Cameron Ord`
     }
   ]
+},
+
+{
+
+  path: `/PublicPage`,
+
+  component: PublicPage,
+
+  name: `restaurant selected`,
+
+  meta: [
+        {
+      title: `partner log-in page`,
+    },
+    {
+      name: `description`,
+
+      content: `placeholder`,
+
+    
+    },
+    {
+
+      name: `author`,
+
+      content: `Cameron Ord`
+    }
+  ]
+
 }
 
 ]

@@ -26,8 +26,8 @@
 
 <script>
 import axios from 'axios';
-
-    export default {
+import Cookies from 'vue-cookies';
+     export default {
 
 
         data() {
@@ -47,7 +47,9 @@ import axios from 'axios';
 
                 let restaurant = this.restaurants[button_clicker];
 
-                console.log(restaurant);
+                Cookies.set(`restaurant_selected`, restaurant[`restaurant_id`]);
+
+                this.$router.push(`/PublicPage`);
 
             }
         },
@@ -71,13 +73,14 @@ import axios from 'axios';
 
                 for(let i = 0; i < response[`data`].length; i = i +1){
 
-                    this.restaurants.push(response[`data`][i])
+                    this.restaurants.push(response[`data`][i]);
 
        
                 }
 
 
                 console.log(this.restaurants);
+
             }).catch((error) =>{
 
                 error;

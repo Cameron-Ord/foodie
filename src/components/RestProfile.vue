@@ -51,6 +51,23 @@
                     </span>
 
                     <span>
+
+                        <h1>Add, modify, or remove your menu items:</h1>
+
+                        <p>Name</p>
+                        <input type="text" ref="Name_Box"> 
+                        <p>Description</p>
+                        <input type="text" ref="Desc_Box"> 
+                        <p>Image</p>
+                        <input type="text" ref="Image_Box"> 
+                        <p>Price</p>
+                        <input type="text" ref="Price_Box"> 
+  
+                        <button @click="add_product">Add</button><button @click="edit_product">Edit</button><button @click="delete_product">Delete</button>
+                    </span>
+
+                    <span>
+                        
                         <h1>Account Settings:</h1>
                     
                         <button>Delete Account</button>
@@ -78,6 +95,23 @@ import Cookies from 'vue-cookies';
         }
         },
 
+        methods:{
+
+            add_product(){
+
+
+            },
+
+            edit_product(){
+
+
+            },
+
+            delete_product(){
+
+            }
+
+        },
 
         mounted(){
 

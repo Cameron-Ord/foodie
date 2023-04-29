@@ -45,7 +45,7 @@ import Cookies from 'vue-cookies';
                     }
                 }).then((response)=>{
 
-                    console.log(response);
+
 
                     Cookies.set(`rest_login_token`, `${response[`data`][`token`]}`);
 

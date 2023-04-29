@@ -73,13 +73,13 @@ import Cookies from 'vue-cookies';
 
                 for(let i = 0; i < response[`data`].length; i = i +1){
 
+                    
+
                     this.restaurants.push(response[`data`][i]);
 
        
                 }
 
-
-                console.log(this.restaurants);
 
             }).catch((error) =>{
 

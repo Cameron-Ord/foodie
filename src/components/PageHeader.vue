@@ -21,7 +21,7 @@
         <nav class="mobile_nav">
             <router-link v-if="client_logged_in !== true && partner_logged_in !== true" to="/ClientSignup" class="nav_menu">Sign-up</router-link>
             <router-link v-if="client_logged_in !== true && partner_logged_in !== true"  to="/Login" class="nav_menu">Log-in</router-link>
-            <router-link v-if="client_logged_in !== true || partner_logged_in !== false" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
+            <router-link v-if="partner_logged_in !== true" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
             <router-link v-if="client_logged_in !== true && partner_logged_in !== true" to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
             <router-link v-if="client_logged_in !== false || partner_logged_in !== false" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
     
@@ -43,6 +43,10 @@ export default {
         client_logged_in: false,
 
         partner_logged_in: false,
+
+        client_token: undefined,
+
+        partner_token: undefined
     }
 },
 
@@ -65,24 +69,34 @@ export default {
 
     mounted() {
 
+        
      
-        let client_cookies = Cookies.get(`client_login_token`);
+        this.client_token = Cookies.get(`client_login_token`);
 
-        if(client_cookies != undefined){
+
+        console.log(this.client_token);
+
+        if(this.client_token !== null){
 
             console.log(`welcome`);
 
             this.client_logged_in = true;
+
         }else{
 
             console.log(`not logged in`);
             this.client_logged_in = false;
+            this.client_token = undefined;
+
+         
+  
         }
 
 
-        let partner_cookies = Cookies.get(`rest_login_token`);
+        this.partner_token = Cookies.get(`rest_login_token`);
 
-        if(partner_cookies != undefined){
+
+        if(this.partner_token !== null){
 
             console.log(`welcome, partner`);
 
@@ -92,6 +106,10 @@ export default {
 
             console.log(`not logged in as partner`);
             this.partner_logged_in = false;
+            this.partner_token = undefined;
+
+
+         
         }
 
         console.log(this.client_logged_in);

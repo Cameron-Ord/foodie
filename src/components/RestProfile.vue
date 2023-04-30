@@ -108,9 +108,11 @@
                         
                         <h1>Account Settings:</h1>
                     
-                        <button>Delete Account</button>
-                    
+                        <input  placeholder="enter your password to delete your account" type="text" ref="delete_acc">
                        
+
+                        <button @click="delete_account">Delete Account</button>
+
                     </span>
                 </article>
             </section>
@@ -142,6 +144,43 @@ import Cookies from 'vue-cookies';
         },
 
         methods:{
+
+            delete_account(){
+
+                let restaurant_token = Cookies.get(`rest_login_token`);
+
+                axios({
+
+                    method: `DELETE`,
+
+                    url: `https://foodie.bymoen.codes/api/restaurant`,
+
+                    headers:{
+
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+                        
+                        token: restaurant_token,
+                    },
+
+                    data:{
+
+                        password: this.$refs[`delete_acc`][`value`],
+
+                    }
+
+                }).then((response) => {
+
+                    response;
+
+                }).catch((error) => {
+
+                    error;
+
+                });
+
+
+            },
 
 
             change_email(){

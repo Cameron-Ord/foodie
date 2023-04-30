@@ -1,5 +1,8 @@
 <template>
     <div>
+
+        <page-header></page-header>
+
         <main>
             <section>
                 <article v-for="(restaurant, i) in restaurants" :key="i">
@@ -29,7 +32,15 @@
 <script>
 import axios from 'axios';
 import Cookies from 'vue-cookies';
+import PageHeader from '@/components/PageHeader.vue';
      export default {
+
+
+        components:{
+
+            PageHeader
+
+        },
 
 
         data() {

@@ -69,18 +69,18 @@
   
                         <button @click="add_product">Add</button>
 
-                        <div>
-                            <img :src="menu_get_holder[`image_url`]">
+             
+                    </span>
 
-                            
-                            <button @click="Prev">Previous</button>
-                            <button :clicked_item="this.index" @click="Select" ref="product_clicked">Select</button>
-                            <button @click="Next">Next</button>
-                         
-                        
-                        </div>
+                    </article>
 
+                    <article>
 
+                        <span v-for="(image, i) in menu_get_holder" :key="i">
+
+                      
+                        <img :src="image[`image_url`]">
+                      
                         <p></p>
                         <input type="text" ref="Name_Box"> 
                         <p></p>
@@ -90,7 +90,8 @@
                         <p></p>
                         <input type="text" ref="Price_Box"> 
   
-                        <button @click="edit_product">Edit</button><button @click="delete_product">Delete</button>
+                        <button :clicked_item="i" ref="product_clicked" @click="edit_product">Edit</button> <button :clicked_item="i" ref="product_clicked" @click="delete_product">Delete</button>
+
                     </span>
 
                     </article>
@@ -126,7 +127,7 @@ import Cookies from 'vue-cookies';
 
             menu_get_holder: [],
 
-            menu_image: {}
+         
 
            
         }
@@ -188,12 +189,19 @@ import Cookies from 'vue-cookies';
 
             },
 
-            edit_product(){
+            edit_product(details){
 
 
                 let restaurant_token = Cookies.get(`rest_login_token`);
 
-                let menu_id_value = Cookies.get(`product_selected`);
+
+                this.$refs[`product_clicked`] = details.currentTarget;
+
+                let button_clicked = this.$refs[`product_clicked`].getAttribute(`clicked_item`);
+
+                let image = this.menu_get_holder[button_clicked][`id`]; 
+                
+                Cookies.set(`selected`, image);
 
                     axios({
 
@@ -212,7 +220,7 @@ import Cookies from 'vue-cookies';
                     
                     data:{
 
-                        menu_id: menu_id_value,
+                        menu_id: image,
                         name: this.$refs[`Name_Box`][`value`],
                         description: this.$refs[`Desc_Box`][`value`],
                         image_url: this.$refs[`Image_Box`][`value`],
@@ -245,7 +253,12 @@ import Cookies from 'vue-cookies';
 
             },
 
-            Select(details){
+
+
+            delete_product(details){
+
+            
+                let restaurant_token = Cookies.get(`rest_login_token`);
 
                 this.$refs[`product_clicked`] = details.currentTarget;
 
@@ -253,40 +266,7 @@ import Cookies from 'vue-cookies';
 
                 let image = this.menu_get_holder[button_clicked][`id`]; 
 
-                Cookies.set(`product_selected`, image);
-
-            },
-
-            Next(){
-
-                this.index++;
-                
-                if(this.index > this.menu_get_holder[this.index][`image_url`].length -1){
-
-                    this.index = 0;
-                }
-
-    
-            },
-
-            Prev(){
-
-                this.index--;
-                
-                if(this.index < 0){
-
-                    this.index = this.menu_get_holder[this.index][`image_url`].length -1;
-                }
-
-
-            },
-
-            delete_product(){
-
-            
-                let restaurant_token = Cookies.get(`rest_login_token`);
-
-                let menu_id_value = Cookies.get(`product_selected`);
+               
 
                 axios({
 
@@ -304,7 +284,7 @@ import Cookies from 'vue-cookies';
 
                     data:{
 
-                        menu_id: menu_id_value,
+                        menu_id: image,
                     }
 
 
@@ -403,10 +383,6 @@ import Cookies from 'vue-cookies';
             });
 
 
-            this.menu_image = this.menu_get_holder[0]
-
-
-            console.log(this.menu_get_holder);
 
 
 

@@ -58,20 +58,21 @@
 
                         <h1>Add, modify, or remove your menu items:</h1>
 
-                        <p></p>
-                        <input type="text" ref="Name_Box"> 
-                        <p></p>
-                        <input type="text" ref="Desc_Box"> 
-                        <p></p>
-                        <input type="text" ref="Image_Box"> 
-                        <p></p>
-                        <input type="text" ref="Price_Box"> 
+                        <p>Name</p>
+                        <input type="text" ref="Name_Box_Add"> 
+                        <p>Description</p>
+                        <input type="text" ref="Desc_Box_Add"> 
+                        <p>Image</p>
+                        <input type="text" ref="Image_Box_Add"> 
+                        <p>Price</p>
+                        <input type="text" ref="Price_Box_Add"> 
   
                         <button @click="add_product">Add</button>
 
                         <div>
-                            <img :src="menu_get_holder[this.index][`image_url`]">
+                            <img :src="menu_get_holder[`image_url`]">
 
+                            
                             <button @click="Prev">Previous</button>
                             <button :clicked_item="this.index" @click="Select" ref="product_clicked">Select</button>
                             <button @click="Next">Next</button>
@@ -125,6 +126,7 @@ import Cookies from 'vue-cookies';
 
             menu_get_holder: [],
 
+            menu_image: {}
 
            
         }
@@ -157,12 +159,12 @@ import Cookies from 'vue-cookies';
                     data:{
 
 
-                        name: this.$refs[`Name_Box`][`value`],
-                        description: this.$refs[`Desc_Box`][`value`],
-                        image_url: this.$refs[`Image_Box`][`value`],
-                        price: this.$refs[`Price_Box`][`value`]
+                        name: this.$refs[`Name_Box_Add`][`value`],
+                        description: this.$refs[`Desc_Box_Add`][`value`],
+                        image_url: this.$refs[`Image_Box_Add`][`value`],
+                        price: this.$refs[`Price_Box_Add`][`value`]
 
-                    }
+                    },
 
 
                 }).then((response)=>{
@@ -191,6 +193,7 @@ import Cookies from 'vue-cookies';
 
                 let restaurant_token = Cookies.get(`rest_login_token`);
 
+                let menu_id_value = Cookies.get(`product_selected`);
 
                     axios({
 
@@ -209,14 +212,13 @@ import Cookies from 'vue-cookies';
                     
                     data:{
 
-               
-
+                        menu_id: menu_id_value,
                         name: this.$refs[`Name_Box`][`value`],
                         description: this.$refs[`Desc_Box`][`value`],
                         image_url: this.$refs[`Image_Box`][`value`],
                         price: this.$refs[`Price_Box`][`value`]
 
-                    }
+                    },
 
 
                     }).then((response)=>{
@@ -281,14 +283,34 @@ import Cookies from 'vue-cookies';
 
             delete_product(){
 
+            
+                let restaurant_token = Cookies.get(`rest_login_token`);
+
+                let menu_id_value = Cookies.get(`product_selected`);
 
                 axios({
+
+                    method: `DELETE`,
+
+                        url: `https://foodie.bymoen.codes/api/menu`,
+            
+                        headers:{
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                        token: restaurant_token
+
+                    },
+
+                    data:{
+
+                        menu_id: menu_id_value,
+                    }
 
 
                 }).then((response)=>{
 
-                    response;
-
+                  console.log(response)
 
                 }).catch((error)=>{
 
@@ -299,15 +321,55 @@ import Cookies from 'vue-cookies';
 
         },
 
+
+
+
         mounted(){
 
+            console.log(this.menu_image);
 
-        let restaurant_token = Cookies.get(`rest_login_token`);
 
         let rest_id_value = Cookies.get(`restaurant_id`);
+           
+                    axios({
+
+                        method: `GET`,
+
+                        url: `https://foodie.bymoen.codes/api/menu`,
+
+                        headers:{
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+                    
+                        },
+                        
+                        params:{
+
+                        restaurant_id: rest_id_value,
+
+                        },
+                     }).then((response)=>{
+
+                        response;
+
+                        for(let i = 0; i < response[`data`].length; i = i +1){
+
+                            this.menu_get_holder.push(response[`data`][i]);
 
 
-            if (restaurant_token !== undefined) {
+
+                            
+                           
+                        }
+
+                    }).catch((error)=>{
+
+                        error;
+
+                    });
+                    
+               
+
 
             axios({
 
@@ -340,54 +402,21 @@ import Cookies from 'vue-cookies';
                 error
             });
 
+
+            this.menu_image = this.menu_get_holder[0]
+
+
+            console.log(this.menu_get_holder);
+
+
+
+
         }
 
-                if(rest_id_value !== undefined){
 
+          
 
-            
-                    axios({
-
-                        method: `GET`,
-
-                        url: `https://foodie.bymoen.codes/api/menu`,
-
-                        headers:{
-
-                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
-                    
-                        },
-                        
-                        params:{
-
-                        restaurant_id: rest_id_value,
-
-                        },
-                     }).then((response)=>{
-
-                        response;
-
-                        for(let i = 0; i < response[`data`].length; i = i +1){
-
-                            this.menu_get_holder.push(response[`data`][i]);
-
-                        
-                     
-
-                            
-                           
-                        }
-
-                    }).catch((error)=>{
-
-                        error;
-
-                    });
-                    
-
-                }
-  
-        }
+        
     }
 </script>
 

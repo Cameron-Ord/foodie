@@ -19,11 +19,15 @@
 
         </header>
         <nav class="mobile_nav">
-            <router-link v-if="client_logged_in !== true && partner_logged_in !== true" to="/ClientSignup" class="nav_menu">Sign-up</router-link>
-            <router-link v-if="client_logged_in !== true && partner_logged_in !== true"  to="/Login" class="nav_menu">Log-in</router-link>
-            <router-link v-if="partner_logged_in !== true" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
-            <router-link v-if="client_logged_in !== true && partner_logged_in !== true" to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
-            <router-link v-if="client_logged_in !== false || partner_logged_in !== false" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
+            <router-link v-if="(client_logged_in === false && partner_logged_in === false)" to="/ClientSignup" class="nav_menu">Sign-up</router-link>
+           
+            <router-link v-if="(client_logged_in === false && partner_logged_in === false)"  to="/Login" class="nav_menu">Log-in</router-link>
+           
+            <router-link v-if="(client_logged_in === false && partner_logged_in === false) || (client_logged_in === true && partner_logged_in === false)" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
+           
+            <router-link v-if="(client_logged_in === false && partner_logged_in === false)" to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
+           
+            <router-link v-if="(client_logged_in === true) || (partner_logged_in === true)" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
     
             <router-link to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
         </nav>
@@ -31,6 +35,7 @@
 </template>
 
 <script>
+
 import Cookies from 'vue-cookies';
 
 
@@ -40,9 +45,9 @@ export default {
     data() {
     return {
      
-        client_logged_in: false,
+        client_logged_in: undefined,
 
-        partner_logged_in: false,
+        partner_logged_in: undefined,
 
         client_token: undefined,
 
@@ -73,49 +78,42 @@ export default {
      
         this.client_token = Cookies.get(`client_login_token`);
 
-
-        console.log(this.client_token);
-
-        if(this.client_token !== null){
-
-            console.log(`welcome`);
-
-            this.client_logged_in = true;
-
-        }else{
-
-            console.log(`not logged in`);
-            this.client_logged_in = false;
-            this.client_token = undefined;
-
-         
-  
-        }
-
-
         this.partner_token = Cookies.get(`rest_login_token`);
 
 
+        console.log(this.client_token);
+        console.log(this.partner_token);
+
+        if(this.client_token !== null){
+
+            this.client_logged_in = true;
+
+            console.log(this.client_logged_in, `client logged`);
+        }
+      
+
+        if(this.client_token === null){
+
+            this.client_logged_in = false;
+            console.log(this.client_logged_in, `client not logged`);
+        } 
+        
         if(this.partner_token !== null){
-
-            console.log(`welcome, partner`);
-
-            this.partner_logged_in = true;
-            
-        }else{
-
-            console.log(`not logged in as partner`);
-            this.partner_logged_in = false;
-            this.partner_token = undefined;
-
-
          
+            this.partner_logged_in = true;
+
+            console.log(this.partner_logged_in,`partner logged`);
+
+        } 
+        
+        if(this.partner_token === null){
+
+            this.partner_logged_in = false;
+       
+            console.log(this.partner_logged_in,`partner not logged`);
         }
 
-        console.log(this.client_logged_in);
-
-        console.log(this.partner_logged_in);
-
+      
 
 
     }

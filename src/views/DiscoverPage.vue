@@ -7,6 +7,8 @@
 
                         <h1>{{ restaurant[`name`] }}</h1>
 
+                        <img :src="restaurant[`banner_url`]">
+
                         <p> {{ restaurant[`phone_number`] }}</p>
 
                         <p>{{ restaurant[`address`] }}</p>

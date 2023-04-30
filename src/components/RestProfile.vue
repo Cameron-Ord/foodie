@@ -58,18 +58,24 @@
 
                         <h1>Add, modify, or remove your menu items:</h1>
 
+                        <p></p>
+                        <input type="text" ref="Name_Box"> 
+                        <p></p>
+                        <input type="text" ref="Desc_Box"> 
+                        <p></p>
+                        <input type="text" ref="Image_Box"> 
+                        <p></p>
+                        <input type="text" ref="Price_Box"> 
+  
+                        <button @click="add_product">Add</button>
 
                         <div>
-                            <img :src="menu_image[this.index]">
+                            <img :src="menu_get_holder[this.index][`image_url`]">
 
+                            <button @click="Prev">Previous</button>
+                            <button :clicked_item="this.index" @click="Select" ref="product_clicked">Select</button>
                             <button @click="Next">Next</button>
                          
-                            
-
-                           
-
-
-
                         
                         </div>
 
@@ -83,7 +89,7 @@
                         <p></p>
                         <input type="text" ref="Price_Box"> 
   
-                        <button @click="add_product">Add</button><button @click="edit_product">Edit</button><button @click="delete_product">Delete</button>
+                        <button @click="edit_product">Edit</button><button @click="delete_product">Delete</button>
                     </span>
 
                     </article>
@@ -118,8 +124,6 @@ import Cookies from 'vue-cookies';
             rest_data_holder: {},
 
             menu_get_holder: [],
-
-            menu_image: []
 
 
            
@@ -239,12 +243,23 @@ import Cookies from 'vue-cookies';
 
             },
 
+            Select(details){
+
+                this.$refs[`product_clicked`] = details.currentTarget;
+
+                let button_clicked = this.$refs[`product_clicked`].getAttribute(`clicked_item`);
+
+                let image = this.menu_get_holder[button_clicked][`id`]; 
+
+                Cookies.set(`product_selected`, image);
+
+            },
 
             Next(){
 
                 this.index++;
                 
-                if(this.index > this.menu_image.length -1){
+                if(this.index > this.menu_get_holder[this.index][`image_url`].length -1){
 
                     this.index = 0;
                 }
@@ -252,6 +267,17 @@ import Cookies from 'vue-cookies';
     
             },
 
+            Prev(){
+
+                this.index--;
+                
+                if(this.index < 0){
+
+                    this.index = this.menu_get_holder[this.index][`image_url`].length -1;
+                }
+
+
+            },
 
             delete_product(){
 
@@ -346,8 +372,7 @@ import Cookies from 'vue-cookies';
                             this.menu_get_holder.push(response[`data`][i]);
 
                         
-                            this.menu_image.push(response[`data`][i][`image_url`]);
-
+                     
 
                             
                            
@@ -361,9 +386,7 @@ import Cookies from 'vue-cookies';
                     
 
                 }
-         
-                console.log(this.menu_image);
-
+  
         }
     }
 </script>

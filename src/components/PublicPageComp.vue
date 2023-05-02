@@ -1,7 +1,7 @@
 <template>
     <div>
-    <article>
-    <span>
+    <article class="article_1">
+    <span class="span_rest">
 
         <h1>{{ restaurant_object[`name`] }}</h1>
 
@@ -18,11 +18,13 @@
 
     </span>
 </article>
-<article>
+<article class="article_2">
 
-    <span v-for="(menu_item, i) in rest_menu" :key="i">
+    <span class="span_menu" v-for="(menu_item, i) in rest_menu" :key="i">
 
-        <h1>{{ menu_item[`name`] }}</h1>
+        <h1>Menu Items:</h1>
+
+        <h4>{{ menu_item[`name`] }}</h4>
 
         <img :src="menu_item[`image_url`]">
 
@@ -137,4 +139,76 @@ import Cookies from 'vue-cookies';
 
 <style scoped>
 
+.article_1{
+
+    display: grid;
+
+    grid-auto-flow: row;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+
+}
+
+.article_1>.span_rest{
+
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    grid-template-rows: 10vh 20vh 5vh 5vh 5vh 1fr;
+
+    
+}
+
+
+.article_1>.span_rest>p{
+
+    width: 75%;
+}
+
+.article_1>.span_rest>img{
+
+    width: 125px;
+    height: 125px;
+}
+
+.article_2{
+
+    display: grid;
+
+    grid-auto-flow: row;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.article_2>.span_menu{
+
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    grid-template-rows: 10vh 10vh 20vh 5vh;
+
+}
+
+.article_2>.span_menu>img{
+
+    height: 125px;
+    width: 125px;
+}
 </style>

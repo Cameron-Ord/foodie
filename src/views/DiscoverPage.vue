@@ -3,10 +3,10 @@
 
         <page-header></page-header>
 
-        <main>
-            <section>
-                <article v-for="(restaurant, i) in restaurants" :key="i">
-                    <span>
+        <main class="page_main">
+            <section class="section_main">
+                <article class="page_article_1">
+                    <span class="rest_span" v-for="(restaurant, i) in restaurants" :key="i"> 
 
                         <h1>{{ restaurant[`name`] }}</h1>
 
@@ -108,5 +108,92 @@ import PageHeader from '@/components/PageHeader.vue';
 </script>
 
 <style scoped>
+.page_main{
+
+    display: grid;
+
+    min-height: 80vh;
+
+    justify-items: center;
+    
+    align-items: center;
+}
+
+.page_main>.section_main{
+
+
+    display: grid;
+
+    justify-items: center;
+    
+    align-items: center;
+
+    width: 100%;
+}
+
+.page_main>.section_main>.page_article_1{
+
+    display: grid;
+
+    justify-items: center;
+    
+    align-items: center;
+
+    grid-auto-flow: row;
+}
+
+.page_main>.section_main>.page_article_1>.rest_span{
+
+    display: grid;
+
+    justify-items: center;
+    
+    align-items: center;
+
+    text-align: center;
+
+    grid-auto-flow: row;
+
+    width: 80%;
+
+    margin-top: 25px;
+
+    margin-bottom: 25px;
+
+}
+
+.page_main>.section_main>.page_article_1>.rest_span>img{
+
+    width: 125px;
+    height: 125px;
+
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.page_main>.section_main>.page_article_1>.rest_span>p{
+
+
+    margin-bottom: 10px;
+
+    margin-top: 10px;
+
+    width: 75%;
+}
+
+.page_main>.section_main>.page_article_1>.rest_span>h1{
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+}
+
+
+.page_main>.section_main>.page_article_1>.rest_span>button{
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 </style>

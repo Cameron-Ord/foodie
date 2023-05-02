@@ -30,6 +30,8 @@
             <router-link v-if="(client_logged_in === true) || (partner_logged_in === true)" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
     
             <router-link to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
+
+            <button class="nav_menu" @click="log_out">Logout</button>
         </nav>
     </div>
 </template>
@@ -57,6 +59,19 @@ export default {
 
 
     methods: {
+
+        log_out(){
+
+            Cookies.remove(`client_login_token`);
+            Cookies.remove(`client_id_token`);
+            Cookies.remove(`rest_login_token`);
+            Cookies.remove(`restaurant_id`);
+
+            this.client_logged_in = false;
+            this.partner_logged_in = false;
+
+            this.$router.push(`/`)
+        },
 
 
         make_active() {

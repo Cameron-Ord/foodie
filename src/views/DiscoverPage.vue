@@ -16,7 +16,7 @@
 
                         <p>{{ restaurant[`address`] }}</p>
 
-                        <p>{{ restaurant[`bio`] }}</p>
+                        <p class="bio_p">{{ restaurant[`bio`] }}</p>
 
 
                         <button :clicked_rest="i" @click="rest_chose" ref="button_clicked">view menu</button>
@@ -152,7 +152,7 @@ import PageHeader from '@/components/PageHeader.vue';
 
     text-align: center;
 
-    grid-auto-flow: row;
+    grid-template-rows: 10vh 25vh 5vh 5vh 1fr 5vh;
 
     width: 80%;
 
@@ -168,32 +168,27 @@ import PageHeader from '@/components/PageHeader.vue';
     height: 125px;
 
 
-    margin-top: 10px;
-    margin-bottom: 10px;
+
 }
 
 .page_main>.section_main>.page_article_1>.rest_span>p{
-
-
-    margin-bottom: 10px;
-
-    margin-top: 10px;
 
     width: 75%;
 }
 
 .page_main>.section_main>.page_article_1>.rest_span>h1{
 
-    margin-top: 10px;
-
-    margin-bottom: 10px;
 }
 
 
 .page_main>.section_main>.page_article_1>.rest_span>button{
 
+
+}
+
+.bio_p{
+
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 </style>

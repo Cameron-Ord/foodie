@@ -89,8 +89,10 @@
 
                         <span class="span_1" v-for="(image, i) in menu_get_holder" :key="i">
 
-                      
+                      <h2>{{ image[`name`] }}</h2>
                         <img :src="image[`image_url`]">
+
+
                       
                         <p>Change Name</p>
                         <input type="text" ref="Name_Box"> 
@@ -403,7 +405,8 @@ import Cookies from 'vue-cookies';
 
                 }).then((response)=>{
 
-                    console.log(response);
+                  
+                    response;
 
                 }).catch((error)=>{
 
@@ -523,7 +526,7 @@ import Cookies from 'vue-cookies';
 
                 }).then((response)=>{
 
-                  console.log(response)
+                  response;
 
                 }).catch((error)=>{
 
@@ -539,8 +542,7 @@ import Cookies from 'vue-cookies';
 
         mounted(){
 
-            console.log(this.menu_image);
-
+       
 
         let rest_id_value = Cookies.get(`restaurant_id`);
            
@@ -729,7 +731,7 @@ import Cookies from 'vue-cookies';
 
     text-align: center;
 
-    grid-template-rows: 25vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+    grid-template-rows: 10vh 25vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
  
 
 }

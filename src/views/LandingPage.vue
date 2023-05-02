@@ -24,7 +24,7 @@
 
                         <nav>
 
-                            <router-link to="/OrderPage">Find restaurants nearby</router-link>
+                            <router-link to="/DiscoverPage">Find restaurants nearby</router-link>
 
                         </nav>
 

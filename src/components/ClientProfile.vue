@@ -308,6 +308,78 @@ export default {
 
         }
 
+        axios({
+
+            method:`GET`,
+
+            url: `https://foodie.bymoen.codes/api/client-order`,
+
+            headers:{
+
+                'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                token: client_token
+
+            },
+
+            params:{
+
+                is_confirmed: `true`,
+
+                is_complete: `false`
+            }
+
+
+        }).then((response)=>{
+
+          response;
+          
+          console.log(response);
+
+
+        }).catch((error)=>{
+
+            error;
+
+        });
+
+         axios({
+
+            method:`GET`,
+
+            url: `https://foodie.bymoen.codes/api/client-order`,
+
+            headers:{
+
+                'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                token: client_token
+
+            },
+
+            params:{
+
+                is_confirmed: `true`,
+
+                is_complete: `true`
+            }
+
+
+        }).then((response)=>{
+
+          response;
+
+          console.log(response);
+
+
+        }).catch((error)=>{
+
+            error;
+
+        });
+
+
+
     }
 }
 </script>

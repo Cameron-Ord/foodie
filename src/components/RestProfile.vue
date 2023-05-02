@@ -586,38 +586,153 @@ import Cookies from 'vue-cookies';
                
 
 
-            axios({
+            
+                    axios({
 
-                method: `GET`,
+                
+                        method: `GET`,
 
-                url: `https://foodie.bymoen.codes/api/restaurant`,
+                
+                        url: `https://foodie.bymoen.codes/api/restaurant`,
 
-                headers: {
+                
+                        headers: {
 
-                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
+                
+                            'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
 
-                },
+                
+                        },
 
-                params: {
+                
+                        params: {
 
-                    restaurant_id: rest_id_value,
+                
+                            restaurant_id: rest_id_value,
                 }
 
 
+
+           
             }).then((response) => {
+           
                 response;
+           
                 console.log(`restaurant profile api success`);
 
     
                 this.rest_data_holder = response[`data`][0];
 
 
+           
             }).catch((error) => {
 
+           
                 error
+           
             });
 
 
+           let rest_token = Cookies.get(`rest_login_token`);
+
+            axios({
+
+                method: `GET`,
+
+                url:`https://foodie.bymoen.codes/api/restaurant-order`,
+
+                headers:{
+
+                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                    token: rest_token,
+
+
+                },
+                
+                params:{
+
+                    is_confirmed: `false`,
+
+                    is_complete: `false`
+                }
+                
+            }).then((response)=>{
+
+                response;
+
+
+            }).catch((error)=>{
+
+                error;
+
+            });
+
+        axios({
+
+                method: `GET`,
+
+                url:`https://foodie.bymoen.codes/api/restaurant-order`,
+
+                headers:{
+
+                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                    token: rest_token,
+
+
+                },
+                
+                params:{
+
+                    is_confirmed: `true`,
+
+                    is_complete: `false`
+                }
+                
+            }).then((response)=>{
+
+                response;
+
+
+            }).catch((error)=>{
+
+                error;
+
+            });
+
+            axios({
+
+                method: `GET`,
+
+                url:`https://foodie.bymoen.codes/api/restaurant-order`,
+
+                headers:{
+
+                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                    token: rest_token,
+
+
+                },
+                
+                params:{
+
+                    is_confirmed: `true`,
+
+                    is_complete: `true`
+                }
+                
+            }).then((response)=>{
+
+                response;
+
+
+            }).catch((error)=>{
+
+                error;
+
+            });
 
 
 

@@ -43,7 +43,10 @@ import Cookies from 'vue-cookies';
             return {
                
 
-                shopping_cart_items: undefined
+                shopping_cart_items: undefined,
+
+                product_id: []
+
             }
         },
         
@@ -52,23 +55,52 @@ import Cookies from 'vue-cookies';
 
             Order(){
 
+                let token_var = Cookies.get(`client_login_token`);
+
+                let rest_id_var = Cookies.get(`restaurant_selected`);
+
+                let menu_item_no = this.product_id;
+               
+
+                console.log(this.product_id);
+
+
+                console.log(token_var , `token`);
+
+           
+            
+                
                 axios({
 
-                    method:`GET`,
+                    method:`POST`,
 
-                    url:``,
+                    url:`https://foodie.bymoen.codes/api/client-order`,
 
                     headers:{
 
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                        token: token_var,
 
                     },
 
                     data:{
 
-                        
+                        menu_items: menu_item_no,
+                        restaurant_id: rest_id_var,
+
                     }
 
-                }).then((response)=>{response;}).catch((error)=>{error;})
+                }).then((response)=>{
+                    
+                    response;
+                
+                
+                }).catch((error)=>{
+                    
+                    error;
+                
+                })
 
             }
 
@@ -79,7 +111,16 @@ import Cookies from 'vue-cookies';
         mounted(){
 
             this.shopping_cart_items = Cookies.get(`food_cart`);
-            console.log(this.shopping_cart_items, `cart`)
+            console.log(this.shopping_cart_items, `cart`);
+        
+
+            for(let i = 0; i < this.shopping_cart_items.length; i++){
+
+                this.product_id.push(this.shopping_cart_items[i][`id`]);
+
+            }
+
+            console.log(this.product_id);
 
         }
     }

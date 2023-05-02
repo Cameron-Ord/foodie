@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Cookies from 'vue-cookies';
     export default {
 
@@ -51,6 +52,23 @@ import Cookies from 'vue-cookies';
 
             Order(){
 
+                axios({
+
+                    method:`GET`,
+
+                    url:``,
+
+                    headers:{
+
+
+                    },
+
+                    data:{
+
+                        
+                    }
+
+                }).then((response)=>{response;}).catch((error)=>{error;})
 
             }
 

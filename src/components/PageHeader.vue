@@ -31,7 +31,7 @@
     
             <router-link to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
 
-            <button class="nav_menu" @click="log_out">Logout</button>
+            <button v-if="(client_logged_in === true) || (partner_logged_in === true)" class="nav_menu" @click="log_out">Logout</button>
         </nav>
     </div>
 </template>

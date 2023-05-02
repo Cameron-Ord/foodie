@@ -1,16 +1,18 @@
 <template>
     <div>
-        <main>
-            <section>
-                <article>
-              
-                    <span>
-                        <h1>Welcome, {{ rest_data_holder[`username`] }}</h1>
-                    </span>
-                    <span>
-                        <h1>Account info:</h1>
+        <main class="page_main">
+            <section class="section_main">
+                <article class="article_1">
 
-                        <img v-bind:src="rest_data_holder[`profile_url`]">
+                    <div class="article_1_div">
+
+                    <h1>Welcome, {{ rest_data_holder[`name`] }}</h1>
+
+                    <img v-bind:src="rest_data_holder[`profile_url`]">
+                
+                </div>
+
+                    <span class="span_1">
 
                         <p>Email: {{ rest_data_holder[`email`] }}</p>
 
@@ -23,7 +25,7 @@
                         <p>Location: {{ rest_data_holder[`city`] }}</p>
                     
                     </span>
-                    <span>
+                    <span class="span_2">
 
                         <h1>Edit your profile:</h1>
 
@@ -59,10 +61,11 @@
                    
                     </span>
 
-                    <article>
+                </article>
 
+                <article class="article_2">
 
-                    <span>
+                    <span class="span_1">
 
                         <h1>Add, modify, or remove your menu items:</h1>
 
@@ -80,31 +83,33 @@
              
                     </span>
 
-                    </article>
+                </article>
 
-                    <article>
+                <article class="article_3">
 
-                        <span v-for="(image, i) in menu_get_holder" :key="i">
+                        <span class="span_1" v-for="(image, i) in menu_get_holder" :key="i">
 
                       
                         <img :src="image[`image_url`]">
                       
-                        <p></p>
+                        <p>Change Name</p>
                         <input type="text" ref="Name_Box"> 
-                        <p></p>
+                        <p>Change Description</p>
                         <input type="text" ref="Desc_Box"> 
-                        <p></p>
+                        <p>Change Image</p>
                         <input type="text" ref="Image_Box"> 
-                        <p></p>
+                        <p>Change Price</p>
                         <input type="text" ref="Price_Box"> 
   
                         <button :clicked_item="i" ref="product_clicked" @click="edit_product">Edit</button> <button :clicked_item="i" ref="product_clicked" @click="delete_product">Delete</button>
 
                     </span>
 
-                    </article>
-
-                    <span>
+                </article>
+              
+                <article class="article_4">
+              
+                    <span class="span_1">
                         
                         <h1>Account Settings:</h1>
                     
@@ -114,6 +119,7 @@
                         <button @click="delete_account">Delete Account</button>
 
                     </span>
+         
                 </article>
             </section>
         </main>
@@ -625,4 +631,134 @@ import Cookies from 'vue-cookies';
 
 <style scoped>
 
+.article_1{
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+}
+
+.article_1>.article_1_div{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    grid-template-rows: 10vh 1fr;
+}
+
+.article_1>.article_1_div>img{
+
+    width: 100%;
+
+    object-fit: cover;
+
+}
+
+.article_1>.span_1{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+    
+    grid-template-rows: 7vh 7vh 7vh 1fr 7vh;
+
+}
+
+.article_1>.span_2{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    grid-template-rows: 15vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+    
+}
+.article_2{
+ 
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+}
+
+.article_2>.span_1{
+
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    grid-template-rows: 15vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+
+}
+.article_3{
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    grid-auto-flow: row;
+}
+
+.article_3>.span_1{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    grid-template-rows: 25vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+ 
+
+}
+
+.article_3>.span_1>img{
+
+    width: 125px;
+    height: 125px;
+
+}
+.article_4{
+    display: grid;
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+.article_4>.span_1{
+
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    grid-template-rows: 15vh 5vh 5vh;
+}
 </style>

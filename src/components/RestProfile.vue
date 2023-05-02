@@ -639,6 +639,8 @@ import Cookies from 'vue-cookies';
     justify-items: center;
 
     align-items: center;
+
+    width: 100%;
 }
 
 .article_1>.article_1_div{
@@ -650,6 +652,8 @@ import Cookies from 'vue-cookies';
     align-items: center;
 
     grid-template-rows: 10vh 1fr;
+
+    width: 100%;
 }
 
 .article_1>.article_1_div>img{
@@ -671,6 +675,8 @@ import Cookies from 'vue-cookies';
     text-align: center;
     
     grid-template-rows: 7vh 7vh 7vh 1fr 7vh;
+
+    width: 100%;
 
 }
 

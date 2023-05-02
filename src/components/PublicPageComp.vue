@@ -3,9 +3,13 @@
     <article class="article_1">
     <span class="span_rest">
 
+        <div>
+
         <h1>{{ restaurant_object[`name`] }}</h1>
 
-      <img :src="restaurant_object[`banner_url`]">
+      <img :src="restaurant_object[`profile_url`]">
+
+    </div>
 
       <p>{{ restaurant_object[`city`] }}</p>
 
@@ -30,6 +34,8 @@
 
         <p>{{ menu_item[`price`] }}</p>
 
+        <button @click="add_to_cart" ref="button_clicked" :clicked_menu_item="i">Add to cart</button>
+
     </span>
 
 </article>
@@ -46,10 +52,33 @@ import Cookies from 'vue-cookies';
             return {
                restaurant_object: {},
 
-               rest_menu: []
+               rest_menu: [],
+
+               menu_items: []
             }
         },
 
+        methods:{
+
+            add_to_cart(details, menu_item){
+
+                this.$refs[`button_clicked`] = details.currentTarget;
+
+                let button_clicker = this.$refs[`button_clicked`].getAttribute(`clicked_menu_item`);
+
+                menu_item = this.rest_menu[button_clicker];
+
+                this.menu_items.push(menu_item);
+
+                Cookies.set(`menu_item_added`, this.menu_items);
+
+
+
+                console.log(this.menu_items);
+
+            }
+
+        },
 
         mounted(){
 
@@ -81,7 +110,7 @@ import Cookies from 'vue-cookies';
  
                     this.restaurant_object = response[`data`][0];
 
-                    console.log(this.restaurant_object);
+                  
 
                 }).catch((error)=>{
 
@@ -116,7 +145,7 @@ import Cookies from 'vue-cookies';
 
             }).then((response)=>{
 
-                console.log(response)
+                response;
 
                 for (let i = 0; i < response[`data`].length; i++){
 
@@ -162,7 +191,7 @@ import Cookies from 'vue-cookies';
 
     align-items: center;
 
-    grid-template-rows: 10vh 20vh 5vh 5vh 5vh 1fr;
+    grid-template-rows: 1fr 5vh 5vh 5vh 10vh;
 
     
 }
@@ -173,10 +202,22 @@ import Cookies from 'vue-cookies';
     width: 75%;
 }
 
-.article_1>.span_rest>img{
+.article_1>.span_rest>div{
 
-    width: 125px;
-    height: 125px;
+    display: grid;
+
+    grid-template-rows: 5vh 1fr;
+
+    align-items: center;
+
+    justify-items: center;
+}
+
+.article_1>.span_rest>div>img{
+
+    width: 100%;
+    object-fit: cover;
+    
 }
 
 .article_2{

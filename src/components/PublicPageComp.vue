@@ -70,9 +70,9 @@ import Cookies from 'vue-cookies';
 
                 this.menu_items.push(menu_item);
 
-                Cookies.set(`menu_item_added`, this.menu_items);
+                let cart_json = JSON.stringify(this.menu_items);
 
-
+                Cookies.set(`food_cart`, cart_json);
 
                 console.log(this.menu_items);
 

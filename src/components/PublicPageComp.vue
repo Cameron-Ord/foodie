@@ -121,7 +121,7 @@ import Cookies from 'vue-cookies';
                     this.rest_menu.push(response[`data`][i]);
                 }
 
-                console.log(this.rest_menu);
+           
 
             }).catch((error)=>{
 

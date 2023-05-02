@@ -5,9 +5,9 @@
         <main>
 
             <section>
-                <article>
+              
                     <public-page-comp></public-page-comp>
-                </article>
+                
             </section>
         </main>
         

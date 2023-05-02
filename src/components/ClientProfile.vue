@@ -1,14 +1,11 @@
 <template>
     <div>
-        <main>
-            <section>
-                <article>
-                    <span>
+        <main class="page_main">
+            <section class="section_main">
+                <article class="article_1">
+                    <span class="article_1_span_2">
 
                         <h1>Welcome, {{ client_data_holder[`username`] }}</h1>
-
-                    </span>
-                    <span>
 
                         <h1>Account info:</h1>
 
@@ -24,7 +21,7 @@
 
                     </span>
 
-                    <span>
+                    <span class="article_1_span_3">
 
                         <h1>Edit your profile:</h1>
 
@@ -53,7 +50,7 @@
                         <button @click="change_password">Update Password</button>
                     </span>
 
-                    <span>
+                    <span class="article_1_span_4">
 
                         <h1>Account settings:</h1>
 
@@ -317,4 +314,94 @@ export default {
 
 <style scoped>
 
+.page_main{
+
+    display: grid;
+
+    min-height: 80vh;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    align-items: center;
+
+    justify-items: center;
+}
+
+.page_main>.section_main{
+
+    display: grid;
+
+    grid-auto-flow: row;
+
+    align-items: center;
+
+    justify-items: center;
+
+    width: 100%;
+
+}
+
+.page_main>.section_main>.article_1{
+
+    display: grid;
+
+    grid-auto-flow: row;
+
+    align-items: center;
+
+    justify-items: center;
+
+    width: 100%;
+
+}
+
+
+
+.page_main>.section_main>.article_1>.article_1_span_2{
+
+display: grid;
+
+grid-template-rows: auto;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 10vh 5vh 30vh 5vh 5vh 5vh 5vh;
+
+
+}
+
+.page_main>.section_main>.article_1>.article_1_span_2>img{
+
+    height: 125px;
+    width: 125px;
+}
+
+.page_main>.section_main>.article_1>.article_1_span_3{
+
+display: grid;
+
+grid-template-rows: auto;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 10vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+}
+
+
+.page_main>.section_main>.article_1>.article_1_span_4{
+
+display: grid;
+
+grid-template-rows: auto;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 10vh 5vh 5vh;
+}
 </style>

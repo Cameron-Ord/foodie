@@ -306,22 +306,24 @@ export default {
 
         groupedIDs(){
 
-            
-            const groupArrayObject = this.incomplete_orders.reduce((group, arr) => {
 
 
-                const {order_id} = arr;
+            console.log(this.incomplete_orders);
 
-                group[order_id] = group[order_id] ?? [];
+            let orders = Cookies.get(`orders`);
 
-                group[order_id].push(arr);
+            let groups = Object.values(orders.reduce((groups, item) => {
 
-                return group;
-            })
+                const group = (groups[item.order_id] || []);
+                group.push(item);
+                groups[item.order_id] = group;
+                return groups;
 
-            console.log(groupArrayObject);
-                
 
+
+            }, {}));
+
+            console.log(groups);
 
             
         }
@@ -409,6 +411,8 @@ export default {
 
                 this.incomplete_orders.push(response[`data`][i])
 
+                Cookies.set(`orders`, this.incomplete_orders);
+
             }
         }).catch((error) => {
 
@@ -445,6 +449,7 @@ export default {
             for (let i = 0; i < response[`data`].length; i++) {
 
                 this.completed_orders.push(response[`data`][i]);
+
 
 
             }

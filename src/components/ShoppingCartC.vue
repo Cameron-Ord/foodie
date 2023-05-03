@@ -92,8 +92,8 @@ import Cookies from 'vue-cookies';
                     }
 
                 }).then((response)=>{
-                    
-                    response;
+                 
+                    console.log(response);
                 
                     
 

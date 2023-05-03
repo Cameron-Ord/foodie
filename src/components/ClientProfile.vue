@@ -297,47 +297,6 @@ export default {
 
         },
 
-        groupedIDs(){
-
-
-
-            console.log(this.incomplete_orders);
-
-            let orders = Cookies.get(`orders`);
-
-            let groups = Object.values(orders.reduce((groups, item) => {
-
-                const group = (groups[item.order_id] || []);
-                group.push(item);
-                groups[item.order_id] = group;
-                return groups;
-
-
-
-            }, {}));
-
-            let permittedValues = [];
-
-            for(let i = 0; i < groups.length; i++){
-
-                permittedValues.push(groups[i][i][`order_id`]);
-
-
-            }
-
-            this.IncompGroupId = groups;
-
-
-            this.PermittedValueofID = permittedValues;
-
-            console.log(this.PermittedValueofID, `perm`)
-           
-    
-
-            console.log(this.IncompGroupId, `incomp` );
-
-        }
-     
 
 
 
@@ -412,11 +371,8 @@ export default {
 
         }).then((response) => {
 
-            response;
-
-
-
-
+            console.log(response);
+            
             for (let i = 0; i < response[`data`].length; i++) {
 
                 this.incomplete_orders.push(response[`data`][i])
@@ -473,9 +429,30 @@ export default {
         });
 
 
-        this.groupedIDs();
-     
+       
+            console.log(this.incomplete_orders);
 
+            let orders = Cookies.get(`orders`);
+
+            console.log(orders, `order before group`)
+            
+            let groups = Object.values(orders.reduce((groups, item) => {
+
+                const group = (groups[item.order_id] || []);
+                group.push(item);
+                groups[item.order_id] = group;
+                return groups;
+
+
+
+            }, {}));
+   
+
+            console.log(groups, `grouped`)
+
+            let permittedValues = groups.map(value => value[0].order_id);
+
+            console.log(permittedValues, `permitted`);
 
 
     }

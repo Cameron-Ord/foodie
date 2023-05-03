@@ -107,6 +107,8 @@
 
 import axios from 'axios';
 import Cookies from 'vue-cookies';
+import { set } from 'vue/types/umd';
+
 export default {
     data() {
         return {
@@ -126,8 +128,6 @@ export default {
     methods: {
 
         delete_profile() {
-
-            this.completed_orders.groupBy()
 
             let client_token = Cookies.get(`client_login_token`);
 
@@ -304,29 +304,26 @@ export default {
 
         },
 
-        GroupArray(){
+     
 
+        names(orders){
 
-        this.groupByOrderID = Object.values(this.incomplete_orders.reduce((groups, item) => {
-
-            console.log(item);
-
-            const group = (groups[item.order_id] || []);
-            group.push(item);
-            groups[item.order_id] = group;
-            return groups;
-
-        }, {}));
+            return this.incomplete_orders
+            .filter(order)
 
         }
-
-
         
 
     },
 
     computed:{
 
+        orders(){
+
+            const orders = new set();
+            this.incomplete_orders.forEach(order_number => orders.add(order_number.order_id));
+            return Array.from(orders);
+        }
 
 
     },
@@ -441,7 +438,7 @@ export default {
 
             for (let i = 0; i < response[`data`].length; i++) {
 
-                this.completed_orders.push(response[`data`][i])
+                this.completed_orders.push(response[`data`][i]);
 
             }
 
@@ -453,41 +450,10 @@ export default {
         });
 
 
-        this.GroupArray();
+     
 
 
-        let numbers = [1,2,3,4,5,6];
 
-        let even = numbers.filter(isEven);
-
-        function isEven(value) {
-
-            return value % 2 === 0;
-        }
-
-        console.log(even);
-
-        let people = [
-            {
-                name: `florin`, 
-                age: 26
-            },
-
-            {
-
-                name:`ivan`,
-
-                age:18
-            },
-            {
-                name:`jai`,
-                age:15
-            }
-        ];
-
-        let adults = people.filter(person => person.age >= 18);
-
-        console.log(adults);
     }
 }
 </script>

@@ -107,7 +107,7 @@
 
 import axios from 'axios';
 import Cookies from 'vue-cookies';
-import { set } from 'vue/types/umd';
+
 
 export default {
     data() {
@@ -304,32 +304,38 @@ export default {
 
         },
 
+        groupedIDs(){
+
+            
+            const groupArrayObject = this.incomplete_orders.reduce((group, arr) => {
+
+
+                const {order_id} = arr;
+
+                group[order_id] = group[order_id] ?? [];
+
+                group[order_id].push(arr);
+
+                return group;
+            })
+
+            console.log(groupArrayObject);
+                
+
+
+            
+        }
      
 
-        names(orders){
 
-            return this.incomplete_orders
-            .filter(order)
 
-        }
         
 
     },
 
-    computed:{
 
-        orders(){
-
-            const orders = new set();
-            this.incomplete_orders.forEach(order_number => orders.add(order_number.order_id));
-            return Array.from(orders);
-        }
-
-
-    },
 
     mounted() {
-
 
 
 
@@ -440,8 +446,10 @@ export default {
 
                 this.completed_orders.push(response[`data`][i]);
 
+
             }
 
+            
 
         }).catch((error) => {
 
@@ -450,6 +458,7 @@ export default {
         });
 
 
+        this.groupedIDs();
      
 
 

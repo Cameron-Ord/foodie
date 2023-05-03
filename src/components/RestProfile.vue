@@ -150,7 +150,7 @@
                         <h1>Order number: {{ completed.order_id }}</h1>
 
                         <p>{{ completed.name }}</p>
-                        
+
                     </div>
 
                         
@@ -202,12 +202,6 @@ import Cookies from 'vue-cookies';
             completed_orders: [],
 
 
-
-      
-
-        
-
-           
         }
         },
 
@@ -699,8 +693,6 @@ import Cookies from 'vue-cookies';
 
         mounted(){
 
-       
-
         let rest_id_value = Cookies.get(`restaurant_id`);
            
                     axios({
@@ -903,6 +895,9 @@ import Cookies from 'vue-cookies';
                 for(let i = 0; i < response[`data`].length; i++){
 
                     this.completed_orders.push(response[`data`][i]);
+
+
+
 
                 } 
 

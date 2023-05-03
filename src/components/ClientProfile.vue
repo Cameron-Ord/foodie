@@ -69,15 +69,17 @@
 
                     <h1>Current Orders</h1>
 
-                    <span v-for="(order, i) in incomplete_orders" :key="i">
+                    <span v-for="(perm, i) in PermittedValueofID" :key="i">
 
-                        <div v-if="incomplete_orders[i][`is_complete`] != 1">
 
-                            <h1>{{ order.name }}</h1>
+                        <h1>{{ perm }}</h1>
 
-                            <p>{{ order.order_id }}</p>
-                        </div>
+                        <p v-for="(incomp, i) in IncompGroupId" :key="i">{{ incomp[i].name }}</p>
+
+                        
+
                     </span>
+
 
                 </article>
 
@@ -85,17 +87,6 @@
 
                     <h1>Order History</h1>
 
-                    <span v-for="(order, i) in completed_orders" :key="i">
-
-                        <div v-if="completed_orders[i][`is_complete`] != 0">
-
-                            <h1>{{ order.name }}</h1>
-
-                            <p>{{ order.order_id }}</p>
-
-                        </div>
-
-                    </span>
                 </article>
             </section>
         </main>
@@ -119,7 +110,9 @@ export default {
 
             completed_orders: [],
 
-            groupByOrderID: undefined
+            IncompGroupId: undefined,
+
+            PermittedValueofID: undefined
         }
     },
 
@@ -323,9 +316,26 @@ export default {
 
             }, {}));
 
-            console.log(groups);
+            let permittedValues = [];
 
-            
+            for(let i = 0; i < groups.length; i++){
+
+                permittedValues.push(groups[i][i][`order_id`]);
+
+
+            }
+
+            this.IncompGroupId = groups;
+
+
+            this.PermittedValueofID = permittedValues;
+
+            console.log(this.PermittedValueofID, `perm`)
+           
+    
+
+            console.log(this.IncompGroupId, `incomp` );
+
         }
      
 

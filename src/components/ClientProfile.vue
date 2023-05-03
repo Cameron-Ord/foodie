@@ -333,7 +333,7 @@ export default {
         }).then((response)=>{
 
           response;
-          
+
           console.log(response);
 
 
@@ -359,9 +359,9 @@ export default {
 
             params:{
 
-                is_confirmed: `true`,
+                is_confirmed: "true",
 
-                is_complete: `true`
+                is_complete: "true"
             }
 
 

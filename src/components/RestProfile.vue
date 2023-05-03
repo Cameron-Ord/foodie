@@ -108,7 +108,57 @@
                     </span>
 
                 </article>
-              
+
+                <article class="incoming_orders">
+
+                    <div v-for="(order, i) in unconfirmed_orders" :key="i">
+
+                        <div v-if="unconfirmed_orders[i][`is_confirmed`] != 1">
+
+                        <h1>Order number: {{ order.order_id }} </h1>
+
+                        <p>{{ order.name }}</p>
+
+                        <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Order</button>
+         
+                    </div>
+                </div>
+                </article>
+                <article class="confirmed_orders">
+
+                    <span v-for="(confirmed, i) in confirmed_orders" :key="i">
+
+                        <div v-if="(confirmed_orders[i][`is_confirmed`] != 0 && confirmed_orders[i][`is_completed`] != 1)">
+                        <h1>Order number: {{ confirmed.order_id }}</h1>
+
+                        <p>{{ confirmed.name }}</p>
+
+                        <button :clicked_complete="i" @click="complete_order" ref="completed_order">Complete Order</button>
+                    </div>
+
+                    </span>
+
+                </article>
+            
+            
+                <article class="completed_orders">
+
+                    <span v-for="(completed, i) in completed_orders" :key="i">
+
+                        <div v-if="(completed_orders[i][`is_completed`] !=0 && completed_orders[i][`is_confirmed`] !=0)">
+
+                        <h1>Order number: {{ completed.order_id }}</h1>
+
+                        <p>{{ completed.name }}</p>
+                        
+                    </div>
+
+                        
+                    </span>
+
+
+                </article>
+
                 <article class="article_4">
               
                     <span class="span_1">
@@ -145,13 +195,120 @@ import Cookies from 'vue-cookies';
 
             menu_get_holder: [],
 
-         
+            unconfirmed_orders: [],
+
+            confirmed_orders: [],
+
+            completed_orders: [],
+
+
+
+      
+
+        
 
            
         }
         },
 
         methods:{
+
+            confirm_order(details){
+
+                let restaurant_token = Cookies.get(`rest_login_token`);
+
+                this.$refs[`confirmed_order`] = details.currentTarget;
+
+                let button_clicker = this.$refs[`confirmed_order`].getAttribute(`clicked_confirm`);
+
+                let confirmed_item = this.unconfirmed_orders[button_clicker][`order_id`];
+
+                console.log(this.confirmed_orders);
+
+                axios({
+
+                    method: `PATCH`,
+
+                    url: `https://foodie.bymoen.codes/api/restaurant-order`,
+
+                    headers:{
+
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+
+                        token:restaurant_token,
+                    },
+
+                    data:{
+
+                        order_id: confirmed_item,
+                     
+                        is_confirmed: "true",
+
+                     
+                    },
+
+                }).then((response)=>{
+
+                    response;
+
+                }).catch((error)=>{
+
+                    error;
+
+                })
+
+            },
+
+            complete_order(details){
+
+                let restaurant_token = Cookies.get(`rest_login_token`);
+
+                this.$refs[`completed_order`] = details.currentTarget;
+
+                let button_clicker = this.$refs[`completed_order`].getAttribute(`clicked_complete`);
+
+                let completed_item = this.confirmed_orders[button_clicker][`order_id`];
+
+                console.log(completed_item, `confirmed`);
+
+                axios({
+
+                    method: `PATCH`,
+
+                    url: `https://foodie.bymoen.codes/api/restaurant-order`,
+
+                    headers:{
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+                        
+                        token: restaurant_token,                    
+                    },
+
+                    data:{
+
+                        order_id: completed_item,
+
+                        is_complete: "true",
+                        
+
+                    },
+
+
+                }).then((response)=>{
+
+                    response;
+
+
+                }).catch((error)=>{
+                    error;
+
+
+                });
+
+
+    
+
+            },
+
 
             delete_account(){
 
@@ -570,11 +727,7 @@ import Cookies from 'vue-cookies';
                         for(let i = 0; i < response[`data`].length; i = i +1){
 
                             this.menu_get_holder.push(response[`data`][i]);
-
-
-
-                            
-                           
+                        
                         }
 
                     }).catch((error)=>{
@@ -652,21 +805,30 @@ import Cookies from 'vue-cookies';
                 
                 params:{
 
-                    is_confirmed: `false`,
+                    is_confirmed: "false",
 
-                    is_complete: `false`
+                    is_complete: "false"
                 }
                 
             }).then((response)=>{
 
+                console.log(response, `response`);
                 response;
 
+                for(let i = 0; i < response[`data`].length; i++){
 
+                    this.unconfirmed_orders.push(response[`data`][i]);
+                   
+                } 
+
+        
+   
             }).catch((error)=>{
 
                 error;
 
             });
+
 
         axios({
 
@@ -685,15 +847,25 @@ import Cookies from 'vue-cookies';
                 
                 params:{
 
-                    is_confirmed: `true`,
+                    is_confirmed: "true",
 
-                    is_complete: `false`
+                    is_complete: "false"
+
+                
                 }
                 
             }).then((response)=>{
 
                 response;
 
+                console.log(response, `response`);
+            for(let i = 0; i < response[`data`].length; i++){
+
+                    this.confirmed_orders.push(response[`data`][i]);
+
+                } 
+
+              
 
             }).catch((error)=>{
 
@@ -718,16 +890,23 @@ import Cookies from 'vue-cookies';
                 
                 params:{
 
-                    is_confirmed: `true`,
+            
+                    is_complete: "true",
 
-                    is_complete: `true`
+               
                 }
                 
             }).then((response)=>{
 
                 response;
 
+                for(let i = 0; i < response[`data`].length; i++){
 
+                    this.completed_orders.push(response[`data`][i]);
+
+                } 
+
+              
             }).catch((error)=>{
 
                 error;
@@ -735,7 +914,7 @@ import Cookies from 'vue-cookies';
             });
 
 
-
+        
 
         }
 

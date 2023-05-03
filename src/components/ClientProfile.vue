@@ -54,7 +54,8 @@
 
                         <h1>Account settings:</h1>
 
-                        <input placeholder="enter your password to delete your account" type="password" ref="delete_account">
+                        <input placeholder="enter your password to delete your account" type="password"
+                            ref="delete_account">
 
                         <button @click="delete_profile">Delete Account</button>
 
@@ -71,11 +72,11 @@
                     <span v-for="(order, i) in incomplete_orders" :key="i">
 
                         <div v-if="incomplete_orders[i][`is_complete`] != 1">
-                    
-                        <h1>{{ order.name }}</h1>
-                    
-                        <p>{{ order.order_id }}</p>
-                    </div>
+
+                            <h1>{{ order.name }}</h1>
+
+                            <p>{{ order.order_id }}</p>
+                        </div>
                     </span>
 
                 </article>
@@ -86,15 +87,15 @@
 
                     <span v-for="(order, i) in completed_orders" :key="i">
 
-                    <div v-if="completed_orders[i][`is_complete`] != 0">
-                    
-                    <h1>{{ order.name }}</h1>
-                    
-                    <p>{{ order.order_id }}</p>
+                        <div v-if="completed_orders[i][`is_complete`] != 0">
 
-                    </div>
+                            <h1>{{ order.name }}</h1>
 
-                </span>
+                            <p>{{ order.order_id }}</p>
+
+                        </div>
+
+                    </span>
                 </article>
             </section>
         </main>
@@ -112,9 +113,11 @@ export default {
 
             client_data_holder: {},
 
-            incomplete_orders:[],
+            incomplete_orders: [],
 
-            completed_orders:[]
+            completed_orders: [],
+
+            groupByOrderID: undefined
         }
     },
 
@@ -122,7 +125,9 @@ export default {
 
     methods: {
 
-        delete_profile(){
+        delete_profile() {
+
+            this.completed_orders.groupBy()
 
             let client_token = Cookies.get(`client_login_token`);
 
@@ -132,7 +137,7 @@ export default {
 
                 url: `https://foodie.bymoen.codes/api/client`,
 
-                headers:{
+                headers: {
 
                     'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
 
@@ -140,17 +145,17 @@ export default {
 
                 },
 
-                data:{
+                data: {
 
                     password: this.$refs[`delete_account`].value,
                 }
-                
-            }).then((response)=>{
+
+            }).then((response) => {
 
                 response;
 
                 this.$router.push(`/`);
-            }).catch((error)=>{
+            }).catch((error) => {
 
                 error;
             })
@@ -159,7 +164,7 @@ export default {
         },
 
 
-        change_email(){
+        change_email() {
 
             let client_token = Cookies.get(`client_login_token`);
 
@@ -169,7 +174,7 @@ export default {
 
                 url: `https://foodie.bymoen.codes/api/client`,
 
-                headers:{
+                headers: {
 
                     'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
 
@@ -177,16 +182,16 @@ export default {
 
                 },
 
-                data:{
+                data: {
 
                     email: this.$refs[`email_change`].value,
                 }
 
-            }).then((response)=>{
+            }).then((response) => {
 
                 response;
 
-            }).catch((error)=>{
+            }).catch((error) => {
 
                 error;
 
@@ -194,7 +199,7 @@ export default {
 
         },
 
-        change_username(){
+        change_username() {
             let client_token = Cookies.get(`client_login_token`);
 
             axios({
@@ -203,7 +208,7 @@ export default {
 
                 url: `https://foodie.bymoen.codes/api/client`,
 
-                headers:{
+                headers: {
 
                     'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
 
@@ -211,16 +216,16 @@ export default {
 
                 },
 
-                data:{
+                data: {
 
                     username: this.$refs[`username_change`].value,
                 }
 
-            }).then((response)=>{
+            }).then((response) => {
 
                 response;
 
-            }).catch((error)=>{
+            }).catch((error) => {
 
                 error;
 
@@ -228,8 +233,8 @@ export default {
 
         },
 
-        change_avatar(){
-  
+        change_avatar() {
+
             let client_token = Cookies.get(`client_login_token`);
 
             axios({
@@ -238,7 +243,7 @@ export default {
 
                 url: `https://foodie.bymoen.codes/api/client`,
 
-                headers:{
+                headers: {
 
                     'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
 
@@ -246,16 +251,16 @@ export default {
 
                 },
 
-                data:{
+                data: {
 
                     image_url: this.$refs[`avatar_change`].value,
                 }
 
-            }).then((response)=>{
+            }).then((response) => {
 
                 response;
 
-            }).catch((error)=>{
+            }).catch((error) => {
 
                 error;
 
@@ -263,9 +268,9 @@ export default {
 
         },
 
-        change_password(){
+        change_password() {
 
-  
+
             let client_token = Cookies.get(`client_login_token`);
 
             axios({
@@ -274,7 +279,7 @@ export default {
 
                 url: `https://foodie.bymoen.codes/api/client`,
 
-                headers:{
+                headers: {
 
                     'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
 
@@ -282,29 +287,54 @@ export default {
 
                 },
 
-                data:{
+                data: {
 
                     password: this.$refs[`password_change`].value,
                 }
 
-            }).then((response)=>{
+            }).then((response) => {
 
                 response;
 
-            }).catch((error)=>{
+            }).catch((error) => {
 
                 error;
 
             });
 
+        },
+
+        GroupArray(){
+
+
+        this.groupByOrderID = Object.values(this.incomplete_orders.reduce((groups, item) => {
+
+            console.log(item);
+
+            const group = (groups[item.order_id] || []);
+            group.push(item);
+            groups[item.order_id] = group;
+            return groups;
+
+        }, {}));
+
         }
+
+
+        
+
+    },
+
+    computed:{
+
+
 
     },
 
     mounted() {
 
 
- 
+
 
         let client_token = Cookies.get(`client_login_token`);
 
@@ -334,8 +364,6 @@ export default {
             }).then((response) => {
 
                 response;
-                console.log(`client profile api success`);
-
                 this.client_data_holder = response[`data`][0];
 
             }).catch((error) => {
@@ -346,13 +374,14 @@ export default {
 
         }
 
+
         axios({
 
-            method:`GET`,
+            method: `GET`,
 
             url: `https://foodie.bymoen.codes/api/client-order`,
 
-            headers:{
+            headers: {
 
                 'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
 
@@ -360,37 +389,37 @@ export default {
 
             },
 
-            params:{
+            params: {
 
                 is_complete: `false`
             }
 
 
-        }).then((response)=>{
+        }).then((response) => {
 
-          response;
-
-          console.log(response);
+            response;
 
 
-          for(let i = 0; i < response[`data`].length; i++){
 
-            this.incomplete_orders.push(response[`data`][i])
-            
-          }
-        }).catch((error)=>{
+
+            for (let i = 0; i < response[`data`].length; i++) {
+
+                this.incomplete_orders.push(response[`data`][i])
+
+            }
+        }).catch((error) => {
 
             error;
 
         });
 
-         axios({
+        axios({
 
-            method:`GET`,
+            method: `GET`,
 
             url: `https://foodie.bymoen.codes/api/client-order`,
 
-            headers:{
+            headers: {
 
                 'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
 
@@ -398,39 +427,73 @@ export default {
 
             },
 
-            params:{
+            params: {
 
                 is_complete: "true"
             }
 
 
-        }).then((response)=>{
+        }).then((response) => {
 
-          response;
-
-          console.log(response);
-
-          for(let i = 0; i < response[`data`].length; i++){
-            this.completed_orders.push(response[`data`][i])
-
-          }
+            response;
 
 
-        }).catch((error)=>{
+
+            for (let i = 0; i < response[`data`].length; i++) {
+
+                this.completed_orders.push(response[`data`][i])
+
+            }
+
+
+        }).catch((error) => {
 
             error;
 
         });
 
 
+        this.GroupArray();
 
+
+        let numbers = [1,2,3,4,5,6];
+
+        let even = numbers.filter(isEven);
+
+        function isEven(value) {
+
+            return value % 2 === 0;
+        }
+
+        console.log(even);
+
+        let people = [
+            {
+                name: `florin`, 
+                age: 26
+            },
+
+            {
+
+                name:`ivan`,
+
+                age:18
+            },
+            {
+                name:`jai`,
+                age:15
+            }
+        ];
+
+        let adults = people.filter(person => person.age >= 18);
+
+        console.log(adults);
     }
 }
 </script>
 
 <style scoped>
-
-.page_main{
+.page_main {
 
     display: grid;
 
@@ -443,7 +506,7 @@ export default {
     justify-items: center;
 }
 
-.page_main>.section_main{
+.page_main>.section_main {
 
     display: grid;
 
@@ -457,7 +520,7 @@ export default {
 
 }
 
-.page_main>.section_main>.article_1{
+.page_main>.section_main>.article_1 {
 
     display: grid;
 
@@ -473,51 +536,51 @@ export default {
 
 
 
-.page_main>.section_main>.article_1>.article_1_span_2{
+.page_main>.section_main>.article_1>.article_1_span_2 {
 
-display: grid;
+    display: grid;
 
-grid-template-rows: auto;
+    grid-template-rows: auto;
 
-align-items: center;
+    align-items: center;
 
-justify-items: center;
+    justify-items: center;
 
-grid-template-rows: 10vh 5vh 30vh 5vh 5vh 5vh 5vh;
+    grid-template-rows: 10vh 5vh 30vh 5vh 5vh 5vh 5vh;
 
 
 }
 
-.page_main>.section_main>.article_1>.article_1_span_2>img{
+.page_main>.section_main>.article_1>.article_1_span_2>img {
 
     height: 125px;
     width: 125px;
 }
 
-.page_main>.section_main>.article_1>.article_1_span_3{
+.page_main>.section_main>.article_1>.article_1_span_3 {
 
-display: grid;
+    display: grid;
 
-grid-template-rows: auto;
+    grid-template-rows: auto;
 
-align-items: center;
+    align-items: center;
 
-justify-items: center;
+    justify-items: center;
 
-grid-template-rows: 10vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+    grid-template-rows: 10vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
 }
 
 
-.page_main>.section_main>.article_1>.article_1_span_4{
+.page_main>.section_main>.article_1>.article_1_span_4 {
 
-display: grid;
+    display: grid;
 
-grid-template-rows: auto;
+    grid-template-rows: auto;
 
-align-items: center;
+    align-items: center;
 
-justify-items: center;
+    justify-items: center;
 
-grid-template-rows: 10vh 5vh 5vh;
+    grid-template-rows: 10vh 5vh 5vh;
 }
 </style>

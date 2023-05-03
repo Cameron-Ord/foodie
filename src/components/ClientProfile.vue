@@ -62,6 +62,40 @@
                     </span>
 
                 </article>
+
+                <article class="orders">
+
+
+                    <h1>Current Orders</h1>
+
+                    <span v-for="(order, i) in incomplete_orders" :key="i">
+
+                        <div v-if="incomplete_orders[i][`is_complete`] != 1">
+                    
+                        <h1>{{ order.name }}</h1>
+                    
+                        <p>{{ order.order_id }}</p>
+                    </div>
+                    </span>
+
+                </article>
+
+                <article class="completed_orders">
+
+                    <h1>Order History</h1>
+
+                    <span v-for="(order, i) in completed_orders" :key="i">
+
+                    <div v-if="completed_orders[i][`is_complete`] != 0">
+                    
+                    <h1>{{ order.name }}</h1>
+                    
+                    <p>{{ order.order_id }}</p>
+
+                    </div>
+
+                </span>
+                </article>
             </section>
         </main>
 
@@ -76,7 +110,11 @@ export default {
     data() {
         return {
 
-            client_data_holder: {}
+            client_data_holder: {},
+
+            incomplete_orders:[],
+
+            completed_orders:[]
         }
     },
 
@@ -324,8 +362,6 @@ export default {
 
             params:{
 
-                is_confirmed: `true`,
-
                 is_complete: `false`
             }
 
@@ -337,6 +373,11 @@ export default {
           console.log(response);
 
 
+          for(let i = 0; i < response[`data`].length; i++){
+
+            this.incomplete_orders.push(response[`data`][i])
+            
+          }
         }).catch((error)=>{
 
             error;
@@ -359,8 +400,6 @@ export default {
 
             params:{
 
-                is_confirmed: "true",
-
                 is_complete: "true"
             }
 
@@ -370,6 +409,11 @@ export default {
           response;
 
           console.log(response);
+
+          for(let i = 0; i < response[`data`].length; i++){
+            this.completed_orders.push(response[`data`][i])
+
+          }
 
 
         }).catch((error)=>{

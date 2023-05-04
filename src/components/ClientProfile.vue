@@ -71,8 +71,15 @@
 
                     <span v-if="IncompGroupValue != 1">
 
+        
+         
+                        <span v-for="(item, i) in item_array" :key="i">
 
-                        <h1 v-for="(id, i) in IncompGroupId" :key="i"></h1>
+                             <h1>{{ item }}</h1>
+
+                            </span>
+
+                        <h1></h1>
 
 
                       
@@ -122,6 +129,10 @@ export default {
             IncompGroupValue: undefined,
 
             grouped_incomp: undefined,
+
+            ID_Var: undefined,
+
+            item_array: undefined
         }
     },
 
@@ -308,10 +319,16 @@ export default {
 
 
 
-        grouping(GroupedID){
+        grouping(GroupedID, Items){
 
            
             GroupedID = [];
+
+            
+
+            Items = {};
+
+
 
             console.log(this.incomplete_orders,`incomplete`);
 
@@ -320,23 +337,36 @@ export default {
             for(let i = 0; i<orders.length; i++){
 
                 if(GroupedID.includes(orders[i][`order_id`])){
-
+                  
+                
+                    console.log(`nice`)
       
-                    console.log(`oops`);
-
-
+          
                 }else{
 
 
-                GroupedID.push(orders[i][`order_id`]);
+             
 
-                    Cookies.set(`IDS`, GroupedID);
+                GroupedID.push(orders[i][`order_id`]);
+           
+
+
+                }
+
+                if(GroupedID !== undefined){
+
+                    Items = orders[i][`name`];
+
+                    GroupedID.push(Items);
 
                 }
 
             }
 
-            console.log(GroupedID,`grouped`);
+            this.item_array = GroupedID;
+
+        
+            console.log(this.item_array)
 
             }
     

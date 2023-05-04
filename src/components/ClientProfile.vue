@@ -319,54 +319,48 @@ export default {
 
 
 
-        grouping(GroupedID, Items){
+        grouping(temp_holder, temp_holder_name, the_array, giga_array){
 
-           
-            GroupedID = [];
+            giga_array = [];
+
+            the_array = [];
+
+            temp_holder_name = {};
+  
+            temp_holder = undefined;
+
+            let get_order = Cookies.get(`orders`);
+
+
+            for(let i = 0; i < get_order.length; i++){
+
+                if(temp_holder === get_order[i][`order_id`]){
+                   
+                    console.log(`array`)
 
             
 
-            Items = {};
+                }else if(temp_holder !== get_order[i][`order_id`]){
 
 
+                    temp_holder = get_order[i][`order_id`];
 
-            console.log(this.incomplete_orders,`incomplete`);
+                    console.log(temp_holder);
 
-            let orders = Cookies.get(`orders`)
+                    the_array.push(temp_holder);
 
-            for(let i = 0; i<orders.length; i++){
-
-                if(GroupedID.includes(orders[i][`order_id`])){
-                  
-                
-                    console.log(`nice`)
-      
-          
-                }else{
-
-
-             
-
-                GroupedID.push(orders[i][`order_id`]);
-           
-
-
-                }
-
-                if(GroupedID !== undefined){
-
-                    Items = orders[i][`name`];
-
-                    GroupedID.push(Items);
-
-                }
-
+                   
+                 }
+            
+            
             }
 
-            this.item_array = GroupedID;
 
-        
-            console.log(this.item_array)
+           
+
+     
+
+            console.log(giga_array,`giga`, temp_holder, the_array, temp_holder_name); 
 
             }
     

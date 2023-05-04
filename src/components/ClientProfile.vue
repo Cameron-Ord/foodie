@@ -71,14 +71,16 @@
 
                     <span v-if="IncompGroupValue != 1">
 
-        
-         
-                        <span v-for="(item, i) in item_array" :key="i">
 
-                             <h1>{{ item }}</h1>
-
-                            </span>
-
+                        <div v-for="(item, i) in item_array" :key="i">
+                        
+                        
+                            <h1>{{ item.order_id }} - {{ item.name }}</h1>
+                        
+                        
+                        
+                        
+                        </div>
                         <h1></h1>
 
 
@@ -128,9 +130,9 @@ export default {
 
             IncompGroupValue: undefined,
 
-            grouped_incomp: undefined,
+     
 
-            ID_Var: undefined,
+
 
             item_array: undefined
         }
@@ -319,48 +321,44 @@ export default {
 
 
 
-        grouping(temp_holder, temp_holder_name, the_array, giga_array){
+        grouping(the_array, the_array_name){
 
-            giga_array = [];
-
+         
             the_array = [];
+ 
+            the_array_name = [];
 
-            temp_holder_name = {};
-  
-            temp_holder = undefined;
+          
 
             let get_order = Cookies.get(`orders`);
 
 
             for(let i = 0; i < get_order.length; i++){
 
-                if(temp_holder === get_order[i][`order_id`]){
-                   
-                    console.log(`array`)
+            if(the_array.includes(get_order[i][`order_id`])){
 
-            
-
-                }else if(temp_holder !== get_order[i][`order_id`]){
+                console.log(`try`)
+            }else{
 
 
-                    temp_holder = get_order[i][`order_id`];
+                the_array.push(get_order[i][`order_id`]);
+            }
 
-                    console.log(temp_holder);
+            if(the_array_name !== get_order[i][`order_id`]){
 
-                    the_array.push(temp_holder);
-
-                   
-                 }
-            
+                the_array_name.push(get_order[i]);
+            }
+  
             
             }
 
+            
 
-           
+            console.log(the_array, the_array_name);
 
-     
+            this.item_array = the_array_name;
 
-            console.log(giga_array,`giga`, temp_holder, the_array, temp_holder_name); 
+
 
             }
     

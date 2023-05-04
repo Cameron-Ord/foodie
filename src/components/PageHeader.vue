@@ -15,9 +15,7 @@
                 </router-link>
 
             </nav>
-
-
-        </header>
+        
         <nav class="mobile_nav">
             <router-link v-if="(client_logged_in === false && partner_logged_in === false)" to="/ClientSignup" class="nav_menu">Sign-up</router-link>
            
@@ -29,12 +27,15 @@
            
             <router-link v-if="(client_logged_in === true) || (partner_logged_in === true)" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
     
-            <router-link to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
+            <router-link v-if="(client_logged_in === true)" to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
 
-            <router-link to="/ShoppingCart" class="nav_menu">Checkout</router-link>
+            <router-link v-if="(client_logged_in === true)" to="/ShoppingCart" class="nav_menu">Checkout</router-link>
 
             <button v-if="(client_logged_in === true) || (partner_logged_in === true)" class="nav_menu" @click="log_out">Logout</button>
         </nav>
+
+
+    </header>
     </div>
 </template>
 
@@ -85,6 +86,9 @@ export default {
             menu_btn.classList.toggle(`is-active`);
 
             mobile_menu.classList.toggle(`is-active`);
+
+            document.body.classList.toggle(`no-scroll`);
+           
         }
 
     },
@@ -98,8 +102,6 @@ export default {
         this.partner_token = Cookies.get(`rest_login_token`);
 
 
-        console.log(this.client_token);
-        console.log(this.partner_token);
 
         if(this.client_token !== null){
 
@@ -150,7 +152,7 @@ export default {
 
     min-height: 10vh;
 
-    background-color: #262626;
+    background-color: #003F91;
 
     color: white;
 }
@@ -219,7 +221,7 @@ export default {
     min-height: 100vh;
     display: block;
     z-index: 98;
-    background-color: #262626;
+    background-color: #FFFFFF;
     padding-top: 120px;
     transition: 0.4s;
 }
@@ -232,7 +234,8 @@ export default {
 .mobile_nav>.nav_menu {
 
 
-
+    
+  
     display: block;
 
     text-align: center;
@@ -245,9 +248,9 @@ export default {
 
     padding: 12px 16px;
 
-    background-color: white;
+    background-color: #003F91;
 
-    color: black;
+    color: #FFFFFF;
 
     text-decoration: none;
 }
@@ -256,4 +259,22 @@ export default {
 
     text-decoration: none;
     color: white;
-}</style>
+}
+
+.no-scroll{
+
+    position: fixed;
+    overflow-y: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+</style>

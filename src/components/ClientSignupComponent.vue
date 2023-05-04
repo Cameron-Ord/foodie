@@ -1,33 +1,33 @@
 <template>
     <div>
 
-        <main class="page_main">
+            <main class="page_main">
 
-<section class="section_main">
+    <section class="section_main">
 
-    <article class="input_article">
+        <article class="input_article">
 
-        <span class="input_span">
+            <span class="input_span">
 
-            <input placeholder="your email" type="value" ref="email_input">
-            <input placeholder="your name" type="value" ref="name_input">
-            <input placeholder="your last name" type="value" ref="last_name_input">
-            <input placeholder="your avatar" type="value" ref="avatar_input">
-            <input placeholder="username" type="value" ref="username_input">
-            <input placeholder="password" type="value" ref="password_input">
+                <h1>Enter your information</h1>
 
-        </span>
-        <span class="tinyspan">
+                <input placeholder="your email" type="value" ref="email_input">
+                <input placeholder="your name" type="value" ref="name_input">
+                <input placeholder="your last name" type="value" ref="last_name_input">
+                <input placeholder="your avatar" type="value" ref="avatar_input">
+                <input placeholder="username" type="value" ref="username_input">
+                <input placeholder="password" type="value" ref="password_input">
 
-            <button @click="sign_up">Create Account</button>
+                <button @click="sign_up">Create Account</button>
 
+            </span>
+            <span class="tinyspan">
+                <h4>Already have an account?</h4><router-link class="router_color" to="/Login"><h2>Log-in</h2></router-link>
+            </span>
+        </article>
+    </section>
 
-            <h4>Already have an account? Log in</h4>
-        </span>
-    </article>
-</section>
-
-</main>
+    </main>
 
 
     </div>
@@ -92,7 +92,7 @@ export default {
 
             }).then((response) => {
 
-                console.log(response);
+                response;
 
                 Cookies.set(`client_login_token`, `${response[`data`][`token`]}`);
 
@@ -105,7 +105,7 @@ export default {
 
             }).catch((error) => {
 
-                console.log(error);
+                error;
 
             });
 
@@ -127,7 +127,11 @@ justify-items: center;
 
 min-height: 80vh;
 
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+
+background-color: #FFFFFF;
+
+color: #FFFFFF;
 
 }
 
@@ -138,7 +142,10 @@ display: grid;
 
 align-items: center;
 
+justify-items: center;
+
 width: 100%;
+
 }
 
 .page_main>.section_main>.input_article {
@@ -149,9 +156,11 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 1fr 1fr;
-
 width: 100%;
+
+height: 100%;
+
+grid-template-rows: 1fr 1fr;
 }
 
 .page_main>.section_main>.input_article>.input_span {
@@ -162,9 +171,19 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 25px 25px 25px 25px 25px 25px;
+grid-template-rows: 50px 25px 25px 25px 25px 25px 25px 50px;
 
-width: 85%;
+width: 80%;
+
+background-color: #003F91;
+}
+
+
+
+.page_main>.section_main>.input_article>.input_span>input{
+
+    width: 50vw;
+
 }
 
 .page_main>.section_main>.input_article>.tinyspan {
@@ -173,8 +192,31 @@ display: grid;
 
 align-items: center;
 
-grid-template-rows: 50px 50px;
+justify-items: center;
 
-width: 85%;
+grid-template-rows: 12vh 15vh;
+
+
+
+width: 80%;
+
+background-color: #003F91;
+
+text-decoration: none;
+
+
+
+}
+
+.router_color{
+
+    color: #003F91;
+
+    text-decoration: none;
+
+    padding: 15px;
+
+    background-color: #FFFFFF;
+
 }
 </style>

@@ -72,7 +72,8 @@ import Cookies from 'vue-cookies';
 
                 Cookies.set(`food_cart`, this.menu_items);
 
-                console.log(this.menu_items);
+            
+                
 
             }
 
@@ -114,7 +115,8 @@ import Cookies from 'vue-cookies';
 
                     error;
 
-                    console.log(`API failure`);
+                
+                
                 });
 
 

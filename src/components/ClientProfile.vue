@@ -67,41 +67,39 @@
                 <article class="orders">
 
 
-                    <h1>Current Orders</h1>
+                    <h1>Current Orders:</h1>
 
-                    <span v-if="IncompGroupValue != 1">
+                    <div v-for="(item, i) in incomplete_orders" :key="i">
+                    
+                    
+                        <span v-if="item.is_complete !== 1">
 
+                            <h1>{{ item.name }} - {{ item.order_id }}</h1>
 
-                        <div v-for="(item, i) in item_array" :key="i">
-                        
-                        
-                            <h1>{{ item.order_id }} - {{ item.name }}</h1>
-                        
-                        
-                        
-                        
-                        </div>
-                        <h1></h1>
-
-
-                      
-
-                   
-                       
-
-                    </span>
-
-                    <span>
-
-                        
-
-                    </span>
+                        </span>
+                    
+                    
+                    </div>
+                 
 
                 </article>
 
                 <article class="completed_orders">
 
-                    <h1>Order History</h1>
+                    <h1>Order History:</h1>
+
+                    <div v-for="(item, i) in completed_orders" :key="i">
+                    
+                        <span v-if="item.is_complete !== 0">
+                        
+                        
+                            <h1>{{ item.name }} - {{ item.order_id }}</h1>
+
+
+                        </span>
+                    
+                    </div>
+
 
                 </article>
             </section>
@@ -126,15 +124,7 @@ export default {
 
             completed_orders: [],
 
-            IncompGroupId: undefined,
-
-            IncompGroupValue: undefined,
-
-     
-
-
-
-            item_array: undefined
+            id_array: []
         }
     },
 
@@ -321,44 +311,9 @@ export default {
 
 
 
-        grouping(the_array, the_array_name){
+        grouping(){
 
-         
-            the_array = [];
- 
-            the_array_name = [];
-
-          
-
-            let get_order = Cookies.get(`orders`);
-
-
-            for(let i = 0; i < get_order.length; i++){
-
-            if(the_array.includes(get_order[i][`order_id`])){
-
-                console.log(`try`)
-            }else{
-
-
-                the_array.push(get_order[i][`order_id`]);
-            }
-
-            if(the_array_name !== get_order[i][`order_id`]){
-
-                the_array_name.push(get_order[i]);
-            }
-  
-            
-            }
-
-            
-
-            console.log(the_array, the_array_name);
-
-            this.item_array = the_array_name;
-
-
+        
 
             }
     
@@ -437,16 +392,16 @@ export default {
 
         }).then((response) => {
 
-            console.log(response);
+        response;
+
             
             for (let i = 0; i < response[`data`].length; i++) {
 
-                this.incomplete_orders.push(response[`data`][i])
-
+                this.incomplete_orders.push(response[`data`][i]);
+                
                 Cookies.set(`orders`, this.incomplete_orders);
 
-                
-
+    
 
             }
 
@@ -487,6 +442,7 @@ export default {
 
                 this.completed_orders.push(response[`data`][i]);
 
+         
 
 
             }
@@ -500,8 +456,8 @@ export default {
         });
 
 
-       
-   
+
+      
 
       
 

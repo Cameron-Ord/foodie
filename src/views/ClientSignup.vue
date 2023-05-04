@@ -2,6 +2,7 @@
     <div>
         <page-header></page-header>
         <client-signup-component></client-signup-component>
+        <page-footer></page-footer>
 
 
     </div>
@@ -10,12 +11,14 @@
 <script>
 import PageHeader from '@/components/PageHeader.vue';
 import ClientSignupComponent from '@/components/ClientSignupComponent.vue';
+import PageFooter from '@/components/PageFooter.vue';
     export default {
         
         components:{
 
             PageHeader,
-            ClientSignupComponent
+            ClientSignupComponent,
+            PageFooter
         }
     }
 </script>

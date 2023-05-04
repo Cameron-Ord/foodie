@@ -95,6 +95,9 @@ import Cookies from 'vue-cookies';
                  
                     console.log(response);
                 
+                    this.$router.push(`/AccountProfile`);
+
+                    Cookies.remove(`food_cart`);
                     
 
                         

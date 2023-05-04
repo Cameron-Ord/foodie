@@ -111,6 +111,8 @@
 
                 <article class="incoming_orders">
 
+                    <h1>Incoming Orders:</h1>
+
                     <div v-for="(order, i) in unconfirmed_orders" :key="i">
 
                         <div v-if="unconfirmed_orders[i][`is_confirmed`] != 1">
@@ -119,12 +121,17 @@
 
                         <p>{{ order.name }}</p>
 
-                        <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Order</button>
+                       
          
                     </div>
+
+                    <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Orders</button>
+                    
                 </div>
                 </article>
                 <article class="confirmed_orders">
+
+                    <h1>Confirmed Orders:</h1>
 
                     <span v-for="(confirmed, i) in confirmed_orders" :key="i">
 
@@ -142,6 +149,8 @@
             
             
                 <article class="completed_orders">
+
+                    <h1>Completed Orders:</h1>
 
                     <span v-for="(completed, i) in completed_orders" :key="i">
 
@@ -217,7 +226,6 @@ import Cookies from 'vue-cookies';
 
                 let confirmed_item = this.unconfirmed_orders[button_clicker][`order_id`];
 
-                console.log(this.confirmed_orders);
 
                 axios({
 
@@ -263,7 +271,7 @@ import Cookies from 'vue-cookies';
 
                 let completed_item = this.confirmed_orders[button_clicker][`order_id`];
 
-                console.log(completed_item, `confirmed`);
+
 
                 axios({
 
@@ -563,13 +571,8 @@ import Cookies from 'vue-cookies';
 
                     error;
 
-                    console.log(`MENU API FAILURE`);
-
                 });
 
-                }else{
-
-                    console.log(`restaurant id is undefined`);
                 }
 
 
@@ -620,14 +623,14 @@ import Cookies from 'vue-cookies';
 
                         response;
 
-                        console.log(`MENU UPDATED`);
+                     
 
 
                     }).catch((error)=>{
 
                         error;
 
-                        console.log(`MENU API NOT UPDATED`);
+                    
 
                     })
 
@@ -763,7 +766,7 @@ import Cookies from 'vue-cookies';
            
                 response;
            
-                console.log(`restaurant profile api success`);
+          
 
     
                 this.rest_data_holder = response[`data`][0];
@@ -804,7 +807,6 @@ import Cookies from 'vue-cookies';
                 
             }).then((response)=>{
 
-                console.log(response, `response`);
                 response;
 
                 for(let i = 0; i < response[`data`].length; i++){
@@ -850,7 +852,7 @@ import Cookies from 'vue-cookies';
 
                 response;
 
-                console.log(response, `response`);
+         
             for(let i = 0; i < response[`data`].length; i++){
 
                     this.confirmed_orders.push(response[`data`][i]);

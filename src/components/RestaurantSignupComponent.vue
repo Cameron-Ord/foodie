@@ -106,7 +106,8 @@ import Cookies from 'vue-cookies';
 
                 error;
 
-                console.log(`api failure`);
+          
+                
 
             });
         

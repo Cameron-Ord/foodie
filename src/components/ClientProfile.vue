@@ -69,17 +69,24 @@
 
                     <h1>Current Orders</h1>
 
-                    <span v-for="(perm, i) in PermittedValueofID" :key="i">
+                    <span v-if="IncompGroupValue != 1">
 
 
-                        <h1>{{ perm }}</h1>
+                        <h1 v-for="(id, i) in IncompGroupId" :key="i"></h1>
 
-                        <p v-for="(incomp, i) in IncompGroupId" :key="i">{{ incomp[i].name }}</p>
+
+                      
+
+                   
+                       
+
+                    </span>
+
+                    <span>
 
                         
 
                     </span>
-
 
                 </article>
 
@@ -112,7 +119,9 @@ export default {
 
             IncompGroupId: undefined,
 
-            PermittedValueofID: undefined
+            IncompGroupValue: undefined,
+
+            grouped_incomp: undefined,
         }
     },
 
@@ -299,6 +308,41 @@ export default {
 
 
 
+        grouping(GroupedID){
+
+           
+            GroupedID = [];
+
+            console.log(this.incomplete_orders,`incomplete`);
+
+            let orders = Cookies.get(`orders`)
+
+            for(let i = 0; i<orders.length; i++){
+
+                if(GroupedID.includes(orders[i][`order_id`])){
+
+      
+                    console.log(`oops`);
+
+
+                }else{
+
+
+                GroupedID.push(orders[i][`order_id`]);
+
+                    Cookies.set(`IDS`, GroupedID);
+
+                }
+
+            }
+
+            console.log(GroupedID,`grouped`);
+
+            }
+    
+         
+
+        
 
         
 
@@ -379,7 +423,12 @@ export default {
 
                 Cookies.set(`orders`, this.incomplete_orders);
 
+                
+
+
             }
+
+            this.grouping();
         }).catch((error) => {
 
             error;
@@ -430,30 +479,9 @@ export default {
 
 
        
-            console.log(this.incomplete_orders);
-
-            let orders = Cookies.get(`orders`);
-
-            console.log(orders, `order before group`)
-            
-            let groups = Object.values(orders.reduce((groups, item) => {
-
-                const group = (groups[item.order_id] || []);
-                group.push(item);
-                groups[item.order_id] = group;
-                return groups;
-
-
-
-            }, {}));
    
 
-            console.log(groups, `grouped`)
-
-            let permittedValues = groups.map(value => value[0].order_id);
-
-            console.log(permittedValues, `permitted`);
-
+      
 
     }
 }

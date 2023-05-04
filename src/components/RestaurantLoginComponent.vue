@@ -1,11 +1,29 @@
 <template>
-    <span class="Rest_Comp">
+    <div>
 
-        <input type="text" ref="email_input">
-        <input type="password" ref="password_input">
-        <button @click="rest_log_in" >log in</button>
 
-    </span>
+        <main class="page_main">
+
+            <section class="section_main">
+
+                <article class="article_main">
+
+                    <span class="Rest_Comp">
+
+                        <h1>Email:</h1>
+                        <input placeholder="..." type="text" ref="email_input">
+
+                        <h1>Password:</h1>
+                        <input placeholder="..." type="password" ref="password_input">
+                        <button @click="rest_log_in">log in</button>
+
+                    </span>
+
+
+                </article>
+            </section>
+        </main>
+    </div>
 </template>
 
 <script>
@@ -70,15 +88,80 @@ import Cookies from 'vue-cookies';
 
 <style scoped>
 
-.Rest_Comp{
+.page_main{
 
-    display: grid;
+display: grid;
 
-    justify-items: center;
+justify-items: center;
 
-    align-items: center;
+align-items: center;
 
-    grid-template-rows: 50px 50px;
+min-height: 80vh;
+
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+width: 100%;
+
+color: #FFFFFF;
+
+}
+
+.page_main>.section_main{
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+width: 100%;
+
+}
+
+.page_main>.section_main>.article_main{
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+width: 100%;
+
+
+}
+.page_main>.section_main>.article_main>.Rest_Comp{
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+grid-template-rows: 75px 50px 75px 50px 100px;
+
+background-color: #003F91;
+
+width: 80%;
+
+border-radius: 25px;
+}
+
+.page_main>.section_main>.article_main>.Rest_Comp>input{
+
+
+width: 50vw;
+
+}
+
+.page_main>.section_main>.article_main>.Rest_Comp>button{
+
+
+color: #FFFFFF;
+
+background-color: #003F91;
+
+padding: 10px;
 
 }
 

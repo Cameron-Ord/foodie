@@ -9,7 +9,7 @@
 
             <span class="input_span">
 
-                <h1>Enter your information</h1>
+                <h4>Enter your information</h4>
 
                 <input placeholder="your email" type="value" ref="email_input">
                 <input placeholder="your name" type="value" ref="name_input">
@@ -18,7 +18,7 @@
                 <input placeholder="username" type="value" ref="username_input">
                 <input placeholder="password" type="value" ref="password_input">
 
-                <button @click="sign_up">Create Account</button>
+                <button @click="sign_up"><h1>Create Account</h1></button>
 
             </span>
             <span class="tinyspan">
@@ -156,11 +156,12 @@ align-items: center;
 
 justify-items: center;
 
+grid-template-rows: 2fr 1fr;
+
 width: 100%;
 
 height: 100%;
 
-grid-template-rows: 1fr 1fr;
 }
 
 .page_main>.section_main>.input_article>.input_span {
@@ -171,11 +172,16 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 50px 25px 25px 25px 25px 25px 25px 50px;
+grid-template-rows: 75px 25px 25px 25px 25px 25px 25px 75px;
 
-width: 80%;
+width: 90%;
 
 background-color: #003F91;
+
+border-radius: 25px;
+
+text-align: center;
+
 }
 
 
@@ -186,26 +192,36 @@ background-color: #003F91;
 
 }
 
+.page_main>.section_main>.input_article>.input_span>button{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 5px;
+}
+
 .page_main>.section_main>.input_article>.tinyspan {
 
-display: grid;
+    display: grid;
 
 align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 12vh 15vh;
+grid-template-rows: 75px 100px;
 
+color: #FFFFFF;
 
+width: 90%;
 
-width: 80%;
+text-align: center;
 
 background-color: #003F91;
 
-text-decoration: none;
+margin-bottom: 25px;
 
-
-
+border-radius: 25px;
 }
 
 .router_color{
@@ -217,6 +233,8 @@ text-decoration: none;
     padding: 15px;
 
     background-color: #FFFFFF;
+
+    border-radius: 25px;
 
 }
 </style>

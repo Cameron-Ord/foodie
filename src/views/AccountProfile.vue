@@ -1,7 +1,9 @@
 <template>
     <div>
         <page-header></page-header>
+    
         <client-profile v-if="client_data != undefined"></client-profile>
+        
         <rest-profile v-if="rest_data != undefined"></rest-profile>
     </div>
 </template>

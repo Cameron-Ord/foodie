@@ -6,6 +6,7 @@
 
         <restaurant-signup-component></restaurant-signup-component>
 
+        <page-footer></page-footer>
     </div>
 </template>
 
@@ -14,6 +15,7 @@
 
 import PageHeader from '@/components/PageHeader.vue';
 import RestaurantSignupComponent from '@/components/RestaurantSignupComponent.vue';
+import PageFooter from '@/components/PageFooter.vue';
 import axios from 'axios';
 import Cookies from 'vue-cookies';
     export default {
@@ -22,7 +24,8 @@ import Cookies from 'vue-cookies';
 
     
             PageHeader,
-            RestaurantSignupComponent
+            RestaurantSignupComponent,
+            PageFooter
         },
 
         Cookies,

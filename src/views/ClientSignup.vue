@@ -3,8 +3,6 @@
         <page-header></page-header>
         <client-signup-component></client-signup-component>
         <page-footer></page-footer>
-
-
     </div>
 </template>
 

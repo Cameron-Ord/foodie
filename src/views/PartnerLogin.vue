@@ -3,15 +3,10 @@
 
         <page-header></page-header>
 
-        <main class="page_main">
-            <section class="section_main">
-                <article class="article_main"> 
 
                     <restaurant-login-component></restaurant-login-component>
 
-                </article>
-            </section>
-        </main>
+                    <page-footer></page-footer>
 
     </div>
 </template>
@@ -19,28 +14,19 @@
 <script>
 import PageHeader from '@/components/PageHeader.vue';
 import RestaurantLoginComponent from '@/components/RestaurantLoginComponent.vue';
+
+import PageFooter from '@/components/PageFooter.vue';
+
     export default {
         
         components:{
             PageHeader,
-            RestaurantLoginComponent
+            RestaurantLoginComponent,
+            PageFooter
         }
     }
 </script>
 
 <style scoped>
-.page_main{
 
-
-}
-
-.page_main>.section_main{
-
-
-}
-
-.page_main>.section_main>.article_main{
-
-    
-}
 </style>

@@ -8,6 +8,8 @@
 
                     <span class="input_span">
 
+                        <h4>Enter your information</h4>
+
                         <input placeholder="your email"  type="text" ref="email_input">
                         <input placeholder="your name" type="text" ref="name_input">
                         <input placeholder="address" type="text" ref="address_input">
@@ -19,14 +21,14 @@
                         
                         <input placeholder="password" type="password" ref="password_input">
 
+                        <button @click="sign_up">Create Account</button>
+
                     </span>
                     <span class="tinyspan">
-
-                        <button @click="sign_up">Create Account</button>
                         
+                        <h4>Already have an account?</h4>
 
-                        <h4>Already have an account? Log in</h4>
-
+                        <router-link class="router_color" to="/PartnerLogin"><h2>Log in</h2></router-link>
                     </span>
                 </article>
             </section>
@@ -138,6 +140,7 @@ display: grid;
 
 align-items: center;
 
+justify-items: center;
 
 width: 100%;
 
@@ -151,7 +154,9 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 1fr 1fr;
+grid-template-rows: 2fr 1fr;
+
+height: 100%;
 
 width: 100%;
 }
@@ -163,9 +168,27 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 25px 25px 25px 25px 25px 25px 25px 25px 25px;
+grid-template-rows: 75px 25px 25px 25px 25px 25px 25px 25px 25px 25px 75px;
 
-width: 85%;
+margin-top: 25px;
+
+width: 90%;
+
+background-color: #003F91;
+
+color: #FFFFFF;
+
+
+}
+
+.page_main>.section_main>.input_article>.input_span>input{
+
+    width: 60vw;
+}
+
+.page_main>.section_main>.input_article>.input_span>button{
+
+    
 }
 
 .page_main>.section_main>.input_article>.tinyspan{
@@ -174,10 +197,29 @@ width: 85%;
 
 align-items: center;
 
-grid-template-rows: 50px 50px;
+justify-items: center;
 
-width: 85%;
+grid-template-rows: 75px 75px;
 
+color: #FFFFFF;
+
+width: 90%;
+
+text-align: center;
+
+background-color: #003F91;
 
 }
+
+.router_color{
+
+    text-decoration: none;
+
+    color: #003F91;
+
+    padding: 10px;
+
+    background-color: #FFFFFF;
+}
+
 </style>

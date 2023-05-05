@@ -67,7 +67,7 @@ import Cookies from 'vue-cookies';
 
                     Cookies.set(`rest_login_token`, `${response[`data`][`token`]}`);
 
-                    Cookies.set(`restaurant_id`, `${response[`data`][`restaurantId`]}`);
+                    Cookies.set(`restaurant_id`, `${response[`data`][`restaurant_id`]}`);
 
                     Cookies.remove(`client_login_token`);
 

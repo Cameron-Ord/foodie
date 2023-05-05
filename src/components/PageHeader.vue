@@ -21,7 +21,7 @@
            
             <router-link v-if="(client_logged_in === false && partner_logged_in === false)"  to="/Login" class="nav_menu">Log-in</router-link>
            
-            <router-link v-if="(client_logged_in === false && partner_logged_in === false) || (client_logged_in === true && partner_logged_in === false)" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
+            <router-link v-if="(client_logged_in === false && partner_logged_in === false)" to="/RestaurantSignup" class="nav_menu">Add your restaurant</router-link>
            
             <router-link v-if="(client_logged_in === false && partner_logged_in === false)" to="/RestaurantLogin" class="nav_menu">Restaurant Log-in</router-link>
            

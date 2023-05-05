@@ -51,7 +51,6 @@ import Cookies from 'vue-cookies';
 
                     url: `https://foodie.bymoen.codes/api/client-login`,
 
-        
                     headers:{
 
 

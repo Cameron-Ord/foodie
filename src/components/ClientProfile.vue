@@ -67,11 +67,11 @@
                     <div class="incomp_order" v-for="(item, i) in incomplete_orders" :key="i">
                     
                     
-                        <span v-if="item.is_complete !== 1">
+                        
 
-                            <h1>{{ item.name }} - {{ item.order_id }}</h1>
+                            <h1 v-if="item.is_complete !== 1">{{ item.name }} - {{ item.order_id }}</h1>
 
-                        </span>
+                       
                     
                     
                     </div>
@@ -88,13 +88,13 @@
 
                     <div class="comp_order" v-for="(item, i) in completed_orders" :key="i">
                     
-                        <span v-if="item.is_complete !== 0">
                         
                         
-                            <h1>{{ item.name }} - {{ item.order_id }}</h1>
+                        
+                            <h1 v-if="item.is_complete !== 0">{{ item.name }} - {{ item.order_id }}</h1>
 
 
-                        </span>
+                    
                     
                     </div>
 
@@ -110,7 +110,7 @@
                         <input placeholder="enter your password to delete your account" type="password"
                             ref="delete_account">
 
-                        <button @click="delete_profile">Delete Account</button>
+                        <button @click="delete_profile" class="delete_button">Delete Account</button>
                     </span>
                 </article>
             </section>
@@ -609,6 +609,20 @@ export default {
     padding-bottom: 10px;
 }
 
+.page_main>.section_main>.account_setting{
+
+    width: 100%;
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    margin-bottom: 25px;
+
+    margin-top: 25px;
+}
 
 .page_main>.section_main>.account_setting>.del_span {
 
@@ -618,7 +632,13 @@ export default {
 
     justify-items: center;
 
-    grid-template-rows: 10vh 5vh 5vh;
+    grid-template-rows: 10vh 10vh 10vh;
+
+    background-color: #003F91;
+
+    width: 90%;
+
+    color: #FFFFFF;
 }
 
 .p_prof{
@@ -653,25 +673,61 @@ color: #FFFFFF;
 
     grid-auto-flow: row;
 
+    width: 100%;
+
 }
 
 .orders>.header_tag{
-
     display: grid;
-
+    
     margin-top: 10px;
 
     margin-bottom: 10px;
 
+    width: 60%;
+
+    justify-items: center;
+
+    align-items: center;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    color: #FFFFFF;
+
 
 }
 
-.orders>.header_tag>.incomp_order{
+.orders>.incomp_order{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    width: 90%;
+    
+    background-color: #003F91;
+
+
+
 
 
 }
 
+
+.orders>.incomp_order>h1{
+
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: #FFFFFF;
+}
 .completed_orders{
+
+    width: 100%;
+
     display: grid;
 
     justify-items: center;
@@ -690,11 +746,52 @@ color: #FFFFFF;
 
     margin-bottom: 10px;
 
+    width: 60%;
+
+    justify-items: center;
+
+    align-items: center;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    color: #FFFFFF;
+
 }
 
-.completed_orders>.header_tag>.comp_order{
+.completed_orders>.comp_order{
 
 
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    width: 90%;
+
+    background-color: #003F91;
+
+}
+
+
+.completed_orders>.comp_order>h1{
+
+
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: #FFFFFF;
+
+}
+
+.delete_button{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
 
 }
 </style>

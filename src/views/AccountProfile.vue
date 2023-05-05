@@ -5,6 +5,8 @@
         <client-profile v-if="client_data != undefined"></client-profile>
         
         <rest-profile v-if="rest_data != undefined"></rest-profile>
+        
+        <page-footer></page-footer>
     </div>
 </template>
 
@@ -12,6 +14,7 @@
 import PageHeader from '@/components/PageHeader.vue';
 import ClientProfile from '@/components/ClientProfile.vue';
 import RestProfile from '@/components/RestProfile.vue';
+import PageFooter from '@/components/PageFooter.vue';
 import Cookies from 'vue-cookies';
     export default {
       
@@ -19,7 +22,8 @@ import Cookies from 'vue-cookies';
 
             PageHeader,
             ClientProfile,
-            RestProfile
+            RestProfile,
+            PageFooter
         },
 
         data() {

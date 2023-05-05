@@ -152,7 +152,7 @@ import PageHeader from '@/components/PageHeader.vue';
 
     text-align: center;
 
-    grid-template-rows: 10vh 25vh 5vh 5vh 1fr 5vh;
+    grid-template-rows: 10vh 25vh 8vh 8vh 1fr 12vh;
 
     width: 80%;
 
@@ -160,12 +160,41 @@ import PageHeader from '@/components/PageHeader.vue';
 
     margin-bottom: 25px;
 
+    background-color: #003F91;
+
+    color: #FFFFFF;
+    
+    border-radius: 15px;
+
 }
+
+
 
 .page_main>.section_main>.page_article_1>.rest_span>img{
 
     width: 125px;
     height: 125px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border-style: solid;
+
+    border-width: 10px;
+
+    color: #FFFFFF;
+
+}
+
+
+.page_main>.section_main>.page_article_1>.rest_span>button{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
 
 
 
@@ -173,7 +202,18 @@ import PageHeader from '@/components/PageHeader.vue';
 
 .page_main>.section_main>.page_article_1>.rest_span>p{
 
-    width: 75%;
+    width: 60%;
+
+    background-color: #FFFFFF;
+
+    padding: 8px;
+
+    color: #003F91;
+
+    font-weight: 800;
+    
+    border-radius: 15px;
+
 }
 
 .page_main>.section_main>.page_article_1>.rest_span>h1{

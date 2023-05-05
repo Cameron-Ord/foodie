@@ -9,8 +9,6 @@
 
                     <article class="landing_article">
 
-                        <div> <h1>did somebody say eatfast</h1></div>
-
                         <span class="landing_span">
 
                             <input placeholder="Enter Your Address" type="text">
@@ -24,7 +22,7 @@
 
                         <nav>
 
-                            <router-link to="/DiscoverPage">Find restaurants nearby</router-link>
+                            <router-link class="router_css" to="/DiscoverPage">Find restaurants nearby</router-link>
 
                         </nav>
 
@@ -34,7 +32,7 @@
 
             </main>
 
-
+            <page-footer></page-footer>
 
 
         </div>
@@ -42,12 +40,14 @@
 
 <script>
 import PageHeader from '@/components/PageHeader.vue';
+import PageFooter from '@/components/PageFooter.vue';
 
 export default {
 
     components: {
 
-        PageHeader
+        PageHeader,
+        PageFooter
 
     }
 }
@@ -85,13 +85,13 @@ export default {
 
     justify-items: center;
 
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
     width: 100%;
 }
 .page_main>.section_main>.landing_article>.landing_span{
 
-        display: grid;
+    display: grid;
 
     align-items: center;
 
@@ -99,6 +99,29 @@ export default {
 
     grid-template-rows: 25px 25px 25px;
 
-    width: 85%;
+    padding-top: 20px;
+
+    padding-bottom: 20px;
+
+    width: 90%;
+
+    background-color: #003F91;
+}
+.page_main>.section_main>.landing_article>.landing_span>input{
+
+    width: 60vw;
+}
+.router_css{
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    color: #FFFFFF;
+
+    text-align: center;
+
+    text-decoration: none;
+
 }
 </style>

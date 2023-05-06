@@ -14,6 +14,7 @@
 
         <p> ${{ item[`price`] }}</p>
 
+
         </span>
         </article>
 
@@ -21,6 +22,7 @@
 
             <span class="button_span">
 
+                <button @click="delete_item">Clear cart</button>
                 <button @click="Order">Order</button>
 
             </span>
@@ -51,6 +53,13 @@ import Cookies from 'vue-cookies';
         },
         
         methods:{
+
+            delete_item(){
+
+
+                Cookies.remove(`food_cart`);
+
+            },
 
 
             Order(){

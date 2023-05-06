@@ -195,9 +195,9 @@ import PageFooter from '@/components/PageFooter.vue';
 
 .page_main>.section_main>.page_article_1>.rest_span>button{
 
-    color: #FFFFFF;
+    color: #003F91;
 
-    background-color: #003F91;
+    background-color: #FFFFFF;
 
     padding: 10px;
 

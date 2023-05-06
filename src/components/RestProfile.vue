@@ -14,46 +14,51 @@
 
                     <span class="span_1">
 
-                        <p>Email: {{ rest_data_holder[`email`] }}</p>
+                        <p class="p_text">Email:</p>
+                        <p> {{ rest_data_holder[`email`] }}</p>
 
-                        <p>Address: {{ rest_data_holder[`address`] }}</p>
+                        <p class="p_text">Address:</p>
+                        <p> {{ rest_data_holder[`address`] }}</p>
 
-                        <p>Phone Number: {{ rest_data_holder[`phone_number`] }}</p>
+                        <p class="p_text">Phone Number:</p>
+                        <p> {{ rest_data_holder[`phone_number`] }}</p>
 
-                        <p>Bio: {{ rest_data_holder[`bio`] }}</p>
+                        <p class="p_text">Bio:</p>
+                        <p class="bio_text"> {{ rest_data_holder[`bio`] }}</p>
 
-                        <p>Location: {{ rest_data_holder[`city`] }}</p>
+                        <p class="p_text">Location:</p>
+                        <p> {{ rest_data_holder[`city`] }}</p>
 
                     </span>
                     <span class="span_2">
 
                         <h1>Edit your profile:</h1>
 
-                        <p>Change business email:</p>
+                        <p class="p_tag_highlight">Change business email:</p>
 
                         <input placeholder="enter a new email" type="text" ref="change_email">
 
                         <button @click="change_email">Change email</button>
 
-                        <p>Change phone number:</p>
+                        <p class="p_tag_highlight">Change phone number:</p>
 
                         <input placeholder="enter a new phone number" type="text" ref="change_number">
 
-                        <button @click="change_phone">Change phone number</button>
+                        <button @click="change_phone">Change phone</button>
 
-                        <p>Change address:</p>
+                        <p class="p_tag_highlight">Change address:</p>
 
                         <input placeholder="enter your new address" type="text" ref="change_address">
 
                         <button @click="change_address">Change address</button>
 
-                        <p>Edit your bio:</p>
+                        <p class="p_tag_highlight">Edit your bio:</p>
 
                         <input placeholder="write your information here" type="text" ref="change_bio">
 
                         <button @click="change_bio">Change bio</button>
 
-                        <p>Change banner:</p>
+                        <p class="p_tag_highlight">Change banner:</p>
 
                         <input placeholder="upload your image here" type="text" ref="change_banner">
 
@@ -752,6 +757,7 @@ export default {
     grid-template-rows: 10vh 1fr;
 
     width: 100%;
+
 }
 
 .article_1>.article_1_div>img {
@@ -772,10 +778,43 @@ export default {
 
     text-align: center;
 
-    grid-template-rows: 7vh 7vh 7vh 1fr 7vh;
+    grid-template-rows: 10vh 5vh 10vh 5vh 10vh 5vh 10vh 1fr 10vh 5vh;
 
     width: 100%;
 
+    margin-top: 25px;
+
+    margin-bottom: 25px;
+
+    background-color: #003F91;
+
+    width: 90%;
+
+    padding-top: 15px;
+
+    padding-bottom: 15px;
+
+}
+
+.article_1>.span_1>p{
+
+    color: #FFFFFF;
+
+    width: 75%;
+
+}
+
+.article_1>.span_2>button{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+
+
+    width: 40%;
 }
 
 .article_1>.span_2 {
@@ -788,9 +827,41 @@ export default {
 
     text-align: center;
 
-    grid-template-rows: 15vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+    grid-template-rows: 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh;
+
+    background-color: #003F91;
+
+    width: 90%;
+
+    
+
 
 }
+
+.article_1>.span_2>.p_tag_highlight{
+
+    background-color: #FFFFFF;
+
+    color: #003F91;
+
+    padding: 10px;
+
+    border-radius: 10px;
+}
+
+.article_1>.span_2>p{
+
+
+    color: #FFFFFF;
+
+
+}
+
+.article_1>.span_2>h1{
+
+    color: #FFFFFF;
+}
+
 
 .article_2 {
 
@@ -802,20 +873,7 @@ export default {
     align-items: center;
 }
 
-.article_2>.span_1 {
 
-
-    display: grid;
-
-    justify-items: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    grid-template-rows: 15vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
-
-}
 .article_3 {
     display: grid;
 
@@ -824,29 +882,11 @@ export default {
     align-items: center;
 
     grid-auto-flow: row;
+
+    width: 100%;
 }
 
-.article_3>.span_1 {
 
-    display: grid;
-
-    justify-items: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    grid-template-rows: 10vh 35vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
-
-
-}
-
-.article_3>.span_1>img {
-
-    width: 125px;
-    height: 125px;
-
-}
 
 
 .article_4 {
@@ -856,6 +896,8 @@ export default {
     align-items: center;
 
     text-align: center;
+
+    width: 100%;
 }
 
 .article_4>.span_1 {
@@ -869,7 +911,22 @@ export default {
 
     text-align: center;
 
-    grid-template-rows: 15vh 5vh 5vh;
+    grid-template-rows: 15vh 5vh 15vh;
+
+    background-color: #003F91; 
+    
+    width: 70%;
+}
+
+.article_4>.span_1>h1{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    border-radius: 10px;
 }
 
 .incoming_orders{
@@ -916,6 +973,8 @@ export default {
 
     grid-auto-flow: row;
 
+    background-color: #003F91;
+
 }
 
 .incoming_orders>span>div{
@@ -938,6 +997,8 @@ align-items: center;
 justify-items: center;
 
 grid-auto-flow: row;
+
+background-color: #003F91;
 
 }
 
@@ -962,6 +1023,8 @@ justify-items: center;
 
 grid-auto-flow: row;
 
+background-color: #003F91;
+
 }
 
 .completed_orders>span>div{
@@ -978,5 +1041,25 @@ margin-bottom: 5px;
 
 }
 
+.article_1>.span_1>.p_text{
 
+background-color: #FFFFFF;
+
+color: #003F91;
+
+padding: 10px;
+
+border-radius: 10px;
+
+width: 50%;
+
+}
+
+.bio_text{
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+}
 </style>

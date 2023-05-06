@@ -1,35 +1,43 @@
 <template>
-        <span class="span_1" v-if="j !== undefined">
+        <div v-if="j !== undefined" class="parent_div"> 
+
+            <span class="span_1" >
 
                 <h2>{{ menu_get_holder[j][`name`] }}</h2>
-                
+
                 <img :src="menu_get_holder[j][`image_url`]">
+
+            </span>
+
+            <span class="span_2">
 
                 <button @click="prev">Previous</button>
 
                 <button @click="next">Next</button>
 
+            </span>
 
+            <span class="span_3">
 
-                <p>Change Name - {{ menu_get_holder[j][`name`] }}</p>
-
+                <p class="text_decor">Change Name:</p>
+       
                 <input type="value" class="name_type">
 
                 <button :clicked_item="j" ref="product_clicked" @click="edit_name">Edit</button>
 
-                <p>Change Description - {{ menu_get_holder[j].description }}</p>
+                <p class="text_decor">Change Description:</p>
 
                 <input type="value" class="desc_type">
 
                 <button :clicked_item="j" ref="product_clicked" @click="edit_desc">Edit</button>
 
-                <p>Change Image</p>
+                <p class="text_decor">Change Image</p>
 
                 <input type="value" class="image_type">
 
                 <button :clicked_item="j" ref="product_clicked" @click="edit_image">Edit</button>
 
-                <p>Change Price - {{ menu_get_holder[j].price }} </p>
+                <p class="text_decor">Change Price: </p>
 
                 <input type="value" class="price_type">
 
@@ -38,6 +46,7 @@
                 <button :clicked_item="j" ref="product_clicked" @click="delete_product">Delete</button>
 
             </span>
+        </div>
 </template>
 
 <script>
@@ -415,9 +424,138 @@ export default {
 </script>
 
 <style scoped>
+.parent_div{
+
+    display: grid;
+
+    grid-template-rows: 0.2fr 0.2fr 1fr;
+
+    justify-items: center;
+
+    align-items: center;
+
+    width: 100%;
+
+}
+
+.parent_div>.span_1{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    background-color: #003F91;
+
+    width: 80%;
+
+    grid-template-rows: 9vh 30vh;
+}
+.parent_div>.span_2{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    background-color: #003F91;
+
+    width: 60%;
+
+    grid-template-columns: 1fr 1fr;
+
+    height: 10vh;
+}
+.parent_div>.span_2>button{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    height: 40px;
+
+    width: 75px;
+
+
+}
+.parent_div>.span_3{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    background-color: #003F91;
+
+    width: 80%;
+    
+    grid-template-rows: 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh;
+
+}
+
+.parent_div>.span_3>p{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    
+}
+
+.parent_div>.span_3>button{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    height: 40px;
+
+    width: 75px;
+}
+.span_1>img {
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+    border-style: solid;
+    color: #FFFFFF;
+    border-width: 10px;
+
+}
 
 
 
+.span_1>p{
 
+color: #FFFFFF;
+}
+
+.span_1>h2{
+
+    color: #FFFFFF;
+}
+
+.span_1>.text_decor{
+
+    color: #003F91;
+
+    padding: 10px;
+
+    background-color: #FFFFFF;
+
+    border-radius: 10px;
+}
 
 </style>

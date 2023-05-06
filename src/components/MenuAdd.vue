@@ -3,13 +3,13 @@
 
                         <h1>Add, modify, or remove your menu items:</h1>
 
-                        <p>Name</p>
+                        <p>Name:</p>
                         <input type="text" ref="Name_Box_Add">
-                        <p>Description</p>
+                        <p>Description:</p>
                         <input type="text" ref="Desc_Box_Add">
-                        <p>Image</p>
+                        <p>Image:</p>
                         <input type="text" ref="Image_Box_Add">
-                        <p>Price</p>
+                        <p>Price:</p>
                         <input type="text" ref="Price_Box_Add">
 
                         <button @click="add_product">Add</button>
@@ -95,5 +95,57 @@ import Cookies from 'vue-cookies';
 </script>
 
 <style scoped>
+
+.span_1 {
+
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+text-align: center;
+
+grid-template-rows: 15vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh;
+
+background-color: #003F91;
+
+width: 90%;
+}
+
+.span_1>button{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    height: 40px;
+
+    width: 75px;
+}
+
+.span_1>p{
+
+color: #003F91;
+
+background-color: #FFFFFF;
+
+padding: 10px;
+
+border-radius: 10px;
+
+
+}
+
+.span_1>h1{
+
+color: #FFFFFF;
+
+width: 75%;
+
+}
 
 </style>

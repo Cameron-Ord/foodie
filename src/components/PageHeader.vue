@@ -71,6 +71,9 @@ export default {
             Cookies.remove(`client_id_token`);
             Cookies.remove(`rest_login_token`);
             Cookies.remove(`restaurant_id`);
+            Cookies.remove(`restaurant_selected`);
+            Cookies.remove(`menu_items`);
+            Cookies.remove(`food_cart`);
 
             this.client_logged_in = false;
             this.partner_logged_in = false;

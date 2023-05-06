@@ -112,6 +112,8 @@ grid-template-rows: 15vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh;
 background-color: #003F91;
 
 width: 90%;
+
+border-radius: 15px;
 }
 
 .span_1>button{

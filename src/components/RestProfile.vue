@@ -760,11 +760,29 @@ export default {
 
 }
 
+.article_1>.article_1_div>h1{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+}
+
 .article_1>.article_1_div>img {
 
     width: 100%;
 
     object-fit: cover;
+    
+    padding-top: 15px;
+
+    padding-bottom: 15px;
+
+    background-color: #003F91;
 
 }
 
@@ -794,6 +812,8 @@ export default {
 
     padding-bottom: 15px;
 
+    border-radius: 15px;
+
 }
 
 .article_1>.span_1>p{
@@ -801,6 +821,8 @@ export default {
     color: #FFFFFF;
 
     width: 75%;
+
+    font-weight: 900;
 
 }
 
@@ -832,6 +854,8 @@ export default {
     background-color: #003F91;
 
     width: 90%;
+
+    border-radius: 15px;
 
     
 
@@ -916,7 +940,25 @@ export default {
     background-color: #003F91; 
     
     width: 70%;
+
+    border-radius: 15px;
 }
+
+
+.article_4>.span_1>button{
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    height: 10vh;
+
+    width: 20vw;
+
+}
+
+
 
 .article_4>.span_1>h1{
 
@@ -975,6 +1017,8 @@ export default {
 
     background-color: #003F91;
 
+    border-radius: 15px;
+
 }
 
 .incoming_orders>span>div{
@@ -1000,6 +1044,8 @@ grid-auto-flow: row;
 
 background-color: #003F91;
 
+border-radius: 15px;
+
 }
 
 .confirmed_orders>span>div{
@@ -1024,6 +1070,8 @@ justify-items: center;
 grid-auto-flow: row;
 
 background-color: #003F91;
+
+border-radius: 15px;
 
 }
 

@@ -451,6 +451,8 @@ export default {
     width: 80%;
 
     grid-template-rows: 9vh 30vh;
+
+    border-radius: 15px;
 }
 .parent_div>.span_2{
 
@@ -467,6 +469,8 @@ export default {
     grid-template-columns: 1fr 1fr;
 
     height: 10vh;
+
+    border-radius: 15px;
 }
 .parent_div>.span_2>button{
 
@@ -507,6 +511,8 @@ export default {
     padding: 10px;
 
     border-radius: 10px;
+
+    border-radius: 15px;
 
     
 }

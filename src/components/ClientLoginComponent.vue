@@ -163,11 +163,15 @@ border-radius: 25px;
 .page_main>.section_main>.article_main>.Client_Comp>button{
 
 
-    color: #FFFFFF;
+    text-decoration: none;
 
-    background-color: #003F91;
+    color: #003F91;
 
-    padding: 10px;
+    padding: 5px;
+
+    border-radius: 5px;
+
+    background-color: #FFFFFF;
 
 }
 </style>

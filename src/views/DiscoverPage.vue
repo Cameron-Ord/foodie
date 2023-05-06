@@ -26,6 +26,9 @@
             </section>
         </main>
 
+
+        <page-footer></page-footer>
+
     </div>
 </template>
 
@@ -33,12 +36,14 @@
 import axios from 'axios';
 import Cookies from 'vue-cookies';
 import PageHeader from '@/components/PageHeader.vue';
+import PageFooter from '@/components/PageFooter.vue';
      export default {
 
 
         components:{
 
-            PageHeader
+            PageHeader,
+            PageFooter
 
         },
 

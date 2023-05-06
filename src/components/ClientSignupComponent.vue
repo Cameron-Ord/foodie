@@ -172,7 +172,7 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 75px 25px 25px 25px 25px 25px 25px 75px;
+grid-template-rows: 10vh 8vh 8vh 8vh 8vh 8vh 8vh 10vh;
 
 width: 90%;
 
@@ -181,6 +181,8 @@ background-color: #003F91;
 border-radius: 25px;
 
 text-align: center;
+
+margin-top: 25px;
 
 }
 
@@ -194,11 +196,15 @@ text-align: center;
 
 .page_main>.section_main>.input_article>.input_span>button{
 
-    color: #FFFFFF;
+    text-decoration: none;
 
-    background-color: #003F91;
+    color: #003F91;
 
     padding: 5px;
+
+    border-radius: 5px;
+
+    background-color: #FFFFFF;
 }
 
 .page_main>.section_main>.input_article>.tinyspan {

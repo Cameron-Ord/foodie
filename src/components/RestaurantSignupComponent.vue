@@ -28,7 +28,7 @@
                         
                         <h4>Already have an account?</h4>
 
-                        <router-link class="router_color" to="/PartnerLogin"><h2>Log in</h2></router-link>
+                        <router-link class="router_color" to="/RestaurantLogin"><h2>Log in</h2></router-link>
                     </span>
                 </article>
             </section>
@@ -168,7 +168,7 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 75px 25px 25px 25px 25px 25px 25px 25px 25px 25px 75px;
+grid-template-rows: 10vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 15vh;
 
 margin-top: 25px;
 
@@ -178,6 +178,7 @@ background-color: #003F91;
 
 color: #FFFFFF;
 
+border-radius: 15px;
 
 }
 
@@ -188,7 +189,11 @@ color: #FFFFFF;
 
 .page_main>.section_main>.input_article>.input_span>button{
 
-    
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 5px;
 }
 
 .page_main>.section_main>.input_article>.tinyspan{
@@ -209,6 +214,7 @@ text-align: center;
 
 background-color: #003F91;
 
+border-radius: 15px;
 }
 
 .router_color{
@@ -218,6 +224,8 @@ background-color: #003F91;
     color: #003F91;
 
     padding: 10px;
+
+    border-radius: 5px;
 
     background-color: #FFFFFF;
 }

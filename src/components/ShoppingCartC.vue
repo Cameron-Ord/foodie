@@ -93,24 +93,19 @@ import Cookies from 'vue-cookies';
 
                 }).then((response)=>{
                  
-                    console.log(response);
+                    response;
                 
-                    this.$router.push(`/AccountProfile`);
 
-                    Cookies.remove(`food_cart`);
-                    
-
-                        
-
-
-                
 
                 }).catch((error)=>{
                     
                     error;
                 
-                })
+                });
 
+                Cookies.remove(`food_cart`);
+
+                this.$router.push(`/AccountProfile`);
             }
 
         },
@@ -153,6 +148,8 @@ justify-items: center;
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
 text-align: center;
+
+min-height: 80vh;
 }
 
 .page_main>.section_main{
@@ -192,15 +189,31 @@ width: 100%;
 
     align-items: center;
 
-    grid-template-columns: 50vw 20vw 20vw;
+    grid-template-columns: 1fr 1fr 1fr;
 
     margin-top: 10px;
 
     margin-bottom: 10px;
-    
+
+    background-color: #003F91;
+
+    width: 70%;
+
+    border-radius: 10px;
 
 }
 
+
+.product_span>h4{
+
+    color: #FFFFFF;
+
+}
+
+.product_span>p{
+
+    color: #FFFFFF;
+}
 .order_container{
 
     display: grid;
@@ -222,6 +235,17 @@ width: 100%;
     align-items: center;
 
     justify-items: center;
+
+}
+
+
+.order_container>.button_span>button{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
 
 }
 

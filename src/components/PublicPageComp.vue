@@ -239,6 +239,8 @@ export default {
 
     padding-bottom: 15px;
 
+    border-radius: 15px;
+
 
     
 }

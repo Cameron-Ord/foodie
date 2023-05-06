@@ -5,6 +5,7 @@
 
                     <shopping-cart-c></shopping-cart-c>
              
+                    <page-footer></page-footer>
 
 
     </div>
@@ -13,6 +14,7 @@
 <script>
 import PageHeader from '@/components/PageHeader.vue';
 import ShoppingCartC from '@/components/ShoppingCartC.vue';
+import PageFooter from '@/components/PageFooter.vue';
 import Cookies from 'vue-cookies';
 
     export default {
@@ -22,7 +24,8 @@ import Cookies from 'vue-cookies';
 
         components:{
             PageHeader,
-            ShoppingCartC
+            ShoppingCartC,
+            PageFooter
         }
     }
 </script>

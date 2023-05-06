@@ -321,13 +321,6 @@ export default {
         },
 
 
-
-        grouping(){
-
-        
-
-            }
-    
          
 
         
@@ -410,13 +403,10 @@ export default {
 
                 this.incomplete_orders.push(response[`data`][i]);
                 
-                Cookies.set(`orders`, this.incomplete_orders);
-
-    
-
+        
             }
 
-            this.grouping();
+      
         }).catch((error) => {
 
             error;
@@ -453,9 +443,7 @@ export default {
 
                 this.completed_orders.push(response[`data`][i]);
 
-         
-
-
+    
             }
 
             
@@ -540,6 +528,8 @@ export default {
 
     grid-template-rows: 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh;
 
+    border-radius: 10px;
+
 }
 
 
@@ -564,6 +554,8 @@ export default {
     text-align: center;
 
     color: #FFFFFF;
+
+    border-radius: 10px;
 
 }
 
@@ -594,7 +586,7 @@ export default {
 
     justify-items: center;
 
-    grid-template-rows: 10vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+    grid-template-rows: 10vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh;
 
     background-color: #003F91;
 
@@ -607,6 +599,32 @@ export default {
     padding-top: 10px;
 
     padding-bottom: 10px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+}
+
+.page_main>.section_main>.article_1>.article_1_span_3>button{
+
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 5px;
+
+}
+
+.page_main>.section_main>.article_1>.article_1_span_3>p{
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
 }
 
 .page_main>.section_main>.account_setting{
@@ -639,6 +657,8 @@ export default {
     width: 90%;
 
     color: #FFFFFF;
+
+    border-radius: 10px;
 }
 
 .p_prof{
@@ -696,6 +716,7 @@ color: #FFFFFF;
 
     color: #FFFFFF;
 
+    border-radius: 10px;
 
 }
 
@@ -711,8 +732,13 @@ color: #FFFFFF;
     
     background-color: #003F91;
 
+    margin-top: 5px;
 
+    margin-bottom: 5px;
 
+    border-radius: 10px;
+
+    width: 70%;
 
 
 }
@@ -735,6 +761,7 @@ color: #FFFFFF;
     align-items: center;
 
     grid-auto-flow: row;
+    
 
 }
 
@@ -758,6 +785,8 @@ color: #FFFFFF;
 
     color: #FFFFFF;
 
+    border-radius: 10px;
+
 }
 
 .completed_orders>.comp_order{
@@ -773,6 +802,7 @@ color: #FFFFFF;
 
     background-color: #003F91;
 
+    border-radius: 10px;
 }
 
 
@@ -787,11 +817,12 @@ color: #FFFFFF;
 
 .delete_button{
 
-    color: #FFFFFF;
+    color: #003F91;
 
-    background-color: #003F91;
+    background-color: #FFFFFF;
 
-    padding: 10px;
+    padding: 5px;
+
 
 }
 </style>

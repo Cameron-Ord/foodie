@@ -980,6 +980,9 @@ export default {
     justify-items: center;
 
     grid-auto-flow: row;
+
+    width: 100%;
+
 }
 
 .confirmed_orders{
@@ -990,6 +993,8 @@ export default {
     justify-items: center;
 
     grid-auto-flow: row;
+
+    width: 100%;
 
 }
 
@@ -1002,10 +1007,11 @@ export default {
 
     grid-auto-flow: row;
 
+    width: 100%;
 
 }
 
-.incoming_orders>span{
+.incoming_orders>div{
 
     display: grid;
 
@@ -1019,6 +1025,21 @@ export default {
 
     border-radius: 15px;
 
+    width: 80%;
+
+    margin-top: 5px;
+
+    margin-bottom: 5px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+
+}
+.incoming_orders>div>div{
+
+    display: grid;
+
 }
 
 .incoming_orders>span>div{
@@ -1028,6 +1049,7 @@ display: grid;
 align-items: center;
 
 justify-items: center;
+
 
 
 }
@@ -1045,6 +1067,14 @@ grid-auto-flow: row;
 background-color: #003F91;
 
 border-radius: 15px;
+
+width: 80%;
+
+margin-top: 5px;
+
+margin-bottom: 5px;
+
+color: #FFFFFF;
 
 }
 
@@ -1073,6 +1103,14 @@ background-color: #003F91;
 
 border-radius: 15px;
 
+width: 80%;
+
+margin-top: 5px;
+
+margin-bottom: 5px;
+
+color: #FFFFFF;
+
 }
 
 .completed_orders>span>div{
@@ -1083,9 +1121,6 @@ align-items: center;
 
 justify-items: center;
 
-margin-top: 5px;
-
-margin-bottom: 5px;
 
 }
 

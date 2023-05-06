@@ -87,8 +87,8 @@ export default {
 
             mobile_menu.classList.toggle(`is-active`);
 
-            document.body.classList.toggle(`no-scroll`);
-           
+        
+   
         }
 
     },
@@ -261,11 +261,6 @@ export default {
     color: white;
 }
 
-.no-scroll{
-
-    position: fixed;
-    overflow-y: hidden;
-}
 
 
 

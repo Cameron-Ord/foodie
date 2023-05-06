@@ -156,12 +156,15 @@ width: 50vw;
 
 .page_main>.section_main>.article_main>.Rest_Comp>button{
 
+    text-decoration: none;
 
-color: #FFFFFF;
+    color: #003F91;
 
-background-color: #003F91;
+    padding: 5px;
 
-padding: 10px;
+    border-radius: 5px;
+
+    background-color: #FFFFFF;
 
 }
 

@@ -500,6 +500,8 @@ export default {
     
     grid-template-rows: 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh;
 
+    border-radius: 15px;
+
 }
 
 .parent_div>.span_3>p{
@@ -512,7 +514,7 @@ export default {
 
     border-radius: 10px;
 
-    border-radius: 15px;
+    border-radius: 10px;
 
     
 }

@@ -106,6 +106,8 @@ export default {
     width: 90%;
 
     background-color: #003F91;
+
+    border-radius: 15px;
 }
 .page_main>.section_main>.landing_article>.landing_span>input{
 
@@ -122,6 +124,8 @@ export default {
     text-align: center;
 
     text-decoration: none;
+
+    border-radius: 10px;
 
 }
 </style>

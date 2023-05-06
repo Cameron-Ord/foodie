@@ -376,8 +376,8 @@ export default {
 
 .article_2>.span_menu>img{
 
-    height: 125px;
-    width: 125px;
+    height: 175px;
+    width: 175px;
 
     border-radius: 50%;
 

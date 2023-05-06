@@ -105,7 +105,8 @@ import PageFooter from '@/components/PageFooter.vue';
 
             })
         
-       
+            let get_div = document.querySelector(`body`);
+            get_div.classList.remove(`no-scroll`);
         
         }
 

@@ -92,6 +92,9 @@ export default {
 
             mobile_menu.classList.toggle(`is-active`);
 
+            let get_div = document.querySelector(`body`);
+
+            get_div.classList.toggle(`no-scroll`);
         
    
         }

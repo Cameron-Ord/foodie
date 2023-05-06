@@ -33,7 +33,7 @@ input{
 
 .no-scroll{
 
-
+height: 100%;
 overflow-y: hidden;
 }
 

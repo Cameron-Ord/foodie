@@ -43,6 +43,10 @@ import Cookies from 'vue-cookies';
 
             this.rest_data = rest_cookie_data;
 
+            let get_div = document.querySelector(`body`);
+            get_div.classList.remove(`no-scroll`);
+
+
         }
     }
 </script>

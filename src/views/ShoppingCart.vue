@@ -26,6 +26,15 @@ import Cookies from 'vue-cookies';
             PageHeader,
             ShoppingCartC,
             PageFooter
+        },
+
+
+
+        mounted(){
+
+            let get_div = document.querySelector(`body`);
+
+            get_div.classList.remove(`no-scroll`);
         }
     }
 </script>

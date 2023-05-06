@@ -49,6 +49,13 @@ export default {
         PageHeader,
         PageFooter
 
+    },
+
+    mounted(){
+
+        let get_div = document.querySelector(`body`);
+
+        get_div.classList.remove(`no-scroll`);
     }
 }
 </script>

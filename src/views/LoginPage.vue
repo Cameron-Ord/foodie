@@ -22,6 +22,13 @@ import PageHeader from '@/components/PageHeader.vue';
             PageFooter
 
 
+        },
+
+        mounted(){
+
+            let get_div = document.querySelector(`body`);
+
+            get_div.classList.remove(`no-scroll`);
         }
     }
 </script>

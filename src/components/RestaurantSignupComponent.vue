@@ -154,7 +154,7 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 2fr 1fr;
+grid-template-rows: 3fr 1fr;
 
 height: 100%;
 

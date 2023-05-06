@@ -114,6 +114,8 @@ background-color: #003F91;
 width: 90%;
 
 border-radius: 15px;
+
+margin-bottom: 25px;
 }
 
 .span_1>button{

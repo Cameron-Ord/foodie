@@ -29,7 +29,7 @@
     
             <router-link v-if="(client_logged_in === true)" to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
 
-            <router-link v-if="(client_logged_in === true)" to="/ShoppingCart" class="nav_menu">Checkout</router-link>
+            <router-link v-if="(client_logged_in === true && food_cart !==null )" to="/ShoppingCart" class="nav_menu">Checkout</router-link>
 
             <button v-if="(client_logged_in === true) || (partner_logged_in === true)" class="nav_menu" @click="log_out">Logout</button>
         </nav>
@@ -56,7 +56,9 @@ export default {
 
         client_token: undefined,
 
-        partner_token: undefined
+        partner_token: undefined,
+
+        food_cart: undefined
     }
 },
 
@@ -132,6 +134,8 @@ export default {
             console.log(this.partner_logged_in,`partner not logged`);
         }
 
+
+        this.food_cart = Cookies.get(`food_cart`);
       
 
 

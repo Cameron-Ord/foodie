@@ -97,7 +97,7 @@ export default {
 
     justify-items: center;
 
-    grid-template-rows: 25px 25px 25px;
+    grid-template-rows: 8vh 8vh 8vh;
 
     padding-top: 20px;
 

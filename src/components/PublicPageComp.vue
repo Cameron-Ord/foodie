@@ -46,6 +46,13 @@
             </span>
 
         </article>
+
+        <article class="article_3" v-if="food_cart !== null">
+
+        <span class="checkout_box">
+            <router-link to="/ShoppingCart" class="router_css">View Cart</router-link>
+        </span>
+        </article>
     </div>
 </template>
 
@@ -61,7 +68,9 @@ export default {
 
                rest_menu: [],
 
-               menu_items: []
+               menu_items: [],
+
+               food_cart: undefined
             }
         },
 
@@ -168,12 +177,20 @@ export default {
             })
         }
 
+        this.food_cart = Cookies.get(`food_cart`);
 
         }
     }
 </script>
 
 <style scoped>
+
+.parent_div{
+
+    display: grid;
+
+    grid-auto-flow: row;
+}
 
 .menu_div{
 
@@ -382,4 +399,45 @@ export default {
     border-radius: 50%;
 
 }
+
+.article_3{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+}
+
+.article_3>.checkout_box{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+
+}
+
+.article_3>.checkout_box>.router_css{
+
+    text-decoration: none;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    color: #FFFFFF;
+
+    border-radius: 10px;
+
+
+}
+
 </style>

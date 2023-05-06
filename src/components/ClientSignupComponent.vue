@@ -240,7 +240,7 @@ border-radius: 25px;
 
     background-color: #FFFFFF;
 
-    border-radius: 25px;
+    border-radius: 10px;
 
 }
 </style>

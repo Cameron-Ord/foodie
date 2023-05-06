@@ -453,6 +453,8 @@ export default {
     grid-template-rows: 9vh 30vh;
 
     border-radius: 15px;
+
+    
 }
 .parent_div>.span_2{
 
@@ -471,6 +473,7 @@ export default {
     height: 10vh;
 
     border-radius: 15px;
+    
 }
 .parent_div>.span_2>button{
 
@@ -501,6 +504,8 @@ export default {
     grid-template-rows: 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh;
 
     border-radius: 15px;
+
+    margin-bottom: 25px;
 
 }
 

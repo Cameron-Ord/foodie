@@ -8,7 +8,7 @@
                 <article class="page_article_1">
                     <span class="rest_span" v-for="(restaurant, i) in restaurants" :key="i"> 
 
-                        <h1>{{ restaurant[`name`] }}</h1>
+                        <h1 class="rest_name">{{ restaurant[`name`] }}</h1>
 
                         <img :src="restaurant[`banner_url`]">
 
@@ -235,5 +235,17 @@ import PageFooter from '@/components/PageFooter.vue';
 
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.rest_name{
+
+    background-color: #FFFFFF;
+
+    color: #003F91;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
 }
 </style>

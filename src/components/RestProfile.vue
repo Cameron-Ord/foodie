@@ -78,7 +78,7 @@
                     <single-menu-item></single-menu-item>
 
                 </article>
-                <article class="incoming_orders">
+                <article class="incoming_orders" v-if="unconfirmed_orders !== undefined">
 
                     <h1>Incoming Orders:</h1>
 
@@ -98,7 +98,7 @@
 
                     </div>
                 </article>
-                <article class="confirmed_orders">
+                <article class="confirmed_orders" v-if="confirmed_orders !== undefined">
 
                     <h1>Confirmed Orders:</h1>
 
@@ -118,7 +118,7 @@
                 </article>
 
 
-                <article class="completed_orders">
+                <article class="completed_orders" v-if="completed_orders !== undefined">
 
                     <h1>Completed Orders:</h1>
 
@@ -596,9 +596,15 @@ export default {
 
                 this.unconfirmed_orders.push(response[`data`][i]);
 
+
+
             }
 
+            if(this.unconfirmed_orders.length <= 0){
 
+                this.unconfirmed_orders = undefined;
+
+            }
 
         }).catch((error) => {
 
@@ -639,6 +645,13 @@ export default {
             for (let i = 0; i < response[`data`].length; i++) {
 
                 this.confirmed_orders.push(response[`data`][i]);
+
+                
+            }
+
+            if(this.confirmed_orders.length <= 0){
+
+                this.confirmed_orders = undefined;
 
             }
 
@@ -686,6 +699,11 @@ export default {
 
             }
 
+            if(this.completed_orders.length <= 0){
+
+                this.completed_orders = undefined;
+
+            }
 
         }).catch((error) => {
 
@@ -731,7 +749,8 @@ export default {
 
     align-items: center;
 
-    grid-template-rows: 1fr 0.4fr 0.6fr 0.2fr 0.2fr 0.2fr 0.6fr;
+
+    grid-auto-flow: row;
 
 
 }
@@ -814,6 +833,8 @@ export default {
 
     border-radius: 15px;
 
+    margin-bottom: 25px;
+
 }
 
 .article_1>.span_1>p{
@@ -832,7 +853,7 @@ export default {
 
     background-color: #FFFFFF;
 
-    padding: 10px;
+    padding: 5px;
 
 
 
@@ -856,6 +877,8 @@ export default {
     width: 90%;
 
     border-radius: 15px;
+
+    margin-bottom: 25px;
 
     
 
@@ -942,6 +965,10 @@ export default {
     width: 70%;
 
     border-radius: 15px;
+
+    margin-bottom: 25px;
+
+    margin-top: 25px;
 }
 
 
@@ -950,11 +977,11 @@ export default {
 
     background-color: #FFFFFF;
 
-    padding: 10px;
+    padding: 5px;
 
-    height: 10vh;
 
-    width: 20vw;
+
+    width: 35vw;
 
 }
 
@@ -985,6 +1012,19 @@ export default {
 
 }
 
+.incoming_orders>h1{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+}
+
 .confirmed_orders{
     display: grid;
 
@@ -998,6 +1038,20 @@ export default {
 
 }
 
+.confirmed_orders>h1{
+
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+}
+
 .completed_orders{
     display: grid;
 
@@ -1009,6 +1063,19 @@ export default {
 
     width: 100%;
 
+}
+
+.completed_orders>h1{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    margin-bottom: 10px;
 }
 
 .incoming_orders>div{
@@ -1042,6 +1109,19 @@ export default {
 
 }
 
+.incoming_orders>div>div>button{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 5px;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+
+}
 .incoming_orders>span>div{
 
 display: grid;
@@ -1088,6 +1168,18 @@ justify-items: center;
 
 
 }
+.confirmed_orders>span>div>button{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 5px;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+}
 
 .completed_orders>span{
 
@@ -1121,6 +1213,22 @@ align-items: center;
 
 justify-items: center;
 
+
+}
+
+
+.completed_orders>span>div>button{
+
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 5px;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
 
 }
 

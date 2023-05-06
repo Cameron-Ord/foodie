@@ -10,7 +10,8 @@
                 
             </section>
         </main>
-        
+
+        <page-footer></page-footer>
 
     </div>
 </template>
@@ -18,13 +19,17 @@
 <script>
 import PageHeader from '@/components/PageHeader.vue';
 import PublicPageComp from '@/components/PublicPageComp.vue';
+import PageFooter from '@/components/PageFooter.vue';
     export default {
         
 
         components:{
 
             PageHeader,
-            PublicPageComp
+            PublicPageComp,
+
+            PageFooter
+
         }
     }
 </script>

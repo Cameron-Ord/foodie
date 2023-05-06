@@ -1,52 +1,59 @@
 <template>
-    <div>
-    <article class="article_1">
-    <span class="span_rest">
+    <div class="parent_div" >
+        <article class="article_1">
 
-        <div>
+                <div class="landing_div">
 
-        <h1>{{ restaurant_object[`name`] }}</h1>
+                    <h1>{{ restaurant_object[`name`] }}</h1>
 
-      <img :src="restaurant_object[`profile_url`]">
+                    <img :src="restaurant_object[`profile_url`]">
 
+                </div>
+
+            <span class="span_rest">
+
+                <p>{{ restaurant_object[`city`] }}</p>
+
+                <p>{{ restaurant_object[`address`] }}</p>
+
+                <p>{{ restaurant_object[`phone_number`] }}</p>
+
+                <p>{{ restaurant_object[`bio`] }}</p>
+
+
+            </span>
+        </article>
+
+
+        <div class="menu_div">
+
+            <h1>Menu Items:</h1>
+
+        </div>
+
+        <article class="article_2">
+
+            <span class="span_menu" v-for="(menu_item, i) in rest_menu" :key="i">
+
+                <h4>{{ menu_item[`name`] }}</h4>
+
+                <img :src="menu_item[`image_url`]">
+
+                <p class="price_tag">${{ menu_item[`price`] }}</p>
+
+                <button @click="add_to_cart" ref="button_clicked" :clicked_menu_item="i">Add to cart</button>
+
+            </span>
+
+        </article>
     </div>
-
-      <p>{{ restaurant_object[`city`] }}</p>
-
-      <p>{{ restaurant_object[`address`] }}</p>
-    
-      <p>{{ restaurant_object[`phone_number`] }}</p>
-
-      <p>{{ restaurant_object[`bio`] }}</p>
-
-
-    </span>
-</article>
-<article class="article_2">
-
-    <span class="span_menu" v-for="(menu_item, i) in rest_menu" :key="i">
-
-        <h1>Menu Items:</h1>
-
-        <h4>{{ menu_item[`name`] }}</h4>
-
-        <img :src="menu_item[`image_url`]">
-
-        <p>{{ menu_item[`price`] }}</p>
-
-        <button @click="add_to_cart" ref="button_clicked" :clicked_menu_item="i">Add to cart</button>
-
-    </span>
-
-</article>
-</div>
 </template>
 
 <script>
 import axios from 'axios';
 import Cookies from 'vue-cookies';
-    export default {
-        
+export default {
+
 
         data() {
             return {
@@ -168,6 +175,37 @@ import Cookies from 'vue-cookies';
 
 <style scoped>
 
+.menu_div{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    margin-bottom: 20px;
+
+}
+
+.menu_div>h1{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    width: 75%;
+    
+}
 .article_1{
 
     display: grid;
@@ -191,7 +229,16 @@ import Cookies from 'vue-cookies';
 
     align-items: center;
 
-    grid-template-rows: 1fr 5vh 5vh 5vh 10vh;
+    grid-template-rows:7vh 6vh 6vh 1fr;
+
+    background-color: #003F91;
+    
+    margin-top: 25px;
+
+    width: 90%;
+
+    padding-bottom: 15px;
+
 
     
 }
@@ -200,23 +247,46 @@ import Cookies from 'vue-cookies';
 .article_1>.span_rest>p{
 
     width: 75%;
+
+    color: #FFFFFF;
+
 }
 
-.article_1>.span_rest>div{
+.landing_div{
 
     display: grid;
 
-    grid-template-rows: 5vh 1fr;
+    grid-template-rows: 10vh 1fr;
 
     align-items: center;
 
     justify-items: center;
 }
 
-.article_1>.span_rest>div>img{
+
+.landing_div>h1{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+
+
+}
+
+.landing_div>img{
 
     width: 100%;
-    object-fit: cover;
+    
+    padding-top: 15px;
+
+    padding-bottom: 15px;
+
+    background-color: #003F91;
     
 }
 
@@ -224,13 +294,15 @@ import Cookies from 'vue-cookies';
 
     display: grid;
 
-    grid-auto-flow: row;
+    grid-auto-flow: column;
 
     justify-items: center;
 
     align-items: center;
 
     text-align: center;
+
+    margin-bottom: 25px;
 }
 
 
@@ -243,13 +315,69 @@ import Cookies from 'vue-cookies';
 
     align-items: center;
 
-    grid-template-rows: 10vh 10vh 20vh 5vh;
+    grid-template-rows: 10vh 20vh 10vh 10vh;
 
+    background-color: #003F91;
+
+    width: 90%;
+
+    border-radius: 15px;
+}
+
+.article_2>.span_menu>p{
+
+    color: #FFFFFF;
+
+}
+
+.article_2>.span_menu>h4{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+}
+
+.article_2>.span_menu>button{
+
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+
+    width: 30vw;
 }
 
 .article_2>.span_menu>img{
 
     height: 125px;
     width: 125px;
+
+    border-radius: 50%;
+
+    border-style: solid;
+
+    border-width: 15px;
+
+    color: #FFFFFF;
+}
+
+.article_2>.span_menu>.price_tag{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 10px;
+
+    border-radius: 50%;
+
 }
 </style>

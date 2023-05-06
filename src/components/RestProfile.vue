@@ -65,65 +65,14 @@
 
                 <article class="article_2">
 
-                    <span class="span_1">
-
-                        <h1>Add, modify, or remove your menu items:</h1>
-
-                        <p>Name</p>
-                        <input type="text" ref="Name_Box_Add">
-                        <p>Description</p>
-                        <input type="text" ref="Desc_Box_Add">
-                        <p>Image</p>
-                        <input type="text" ref="Image_Box_Add">
-                        <p>Price</p>
-                        <input type="text" ref="Price_Box_Add">
-
-                        <button @click="add_product">Add</button>
-
-
-                    </span>
+                    <menu-add></menu-add>
 
                 </article>
-
                 <article class="article_3">
 
-                    <span class="span_1" v-for="(image, i) in menu_get_holder" :key="i">
-
-                        <h2>{{ image[`name`] }}</h2>
-                        <img :src="image[`image_url`]">
-
-
-
-                        <p>Change Name - {{ image[`name`] }}</p>
-
-                        <input type="text" ref="Name_Box_Add">
-
-  
-                        <p>Change Description - {{ image.description }}</p>
-
-                        <input type="text" ref="desc_change">
-      
-                
-                        <p>Change Image</p>
-
-                        <input type="text" ref="image_change">
-            
-             
-                        <p>Change Price - {{ image.price }} </p>
-
-                        <input type="text" ref="price_change">
-
-
-                        <button :clicked_item="i" ref="product_clicked" @click="edit_details">Edit</button>
-
-
-
-                        <button :clicked_item="i" ref="product_clicked" @click="delete_product">Delete</button>
-
-                    </span>
+                    <single-menu-item></single-menu-item>
 
                 </article>
-
                 <article class="incoming_orders">
 
                     <h1>Incoming Orders:</h1>
@@ -172,9 +121,9 @@
 
                         <div v-if="(completed_orders[i][`is_completed`] != 0 && completed_orders[i][`is_confirmed`] != 0)">
 
-                            <h1>Order number: {{ completed.order_id }}</h1>
+                            <h1>Order number: {{ completed.order_id }} - {{ completed.name }}</h1>
 
-                            <p>{{ completed.name }}</p>
+                        
 
                         </div>
 
@@ -208,17 +157,25 @@
 
 import axios from 'axios';
 import Cookies from 'vue-cookies';
+import SingleMenuItem from './SingleMenuItem.vue';
+import MenuAdd from './MenuAdd.vue';
 export default {
+
+
+    components:{
+
+        SingleMenuItem,
+        MenuAdd
+
+
+    },
 
     data() {
         return {
 
             index: 0,
 
-
             rest_data_holder: {},
-
-            menu_get_holder: [],
 
             unconfirmed_orders: [],
 
@@ -545,166 +502,6 @@ export default {
         },
 
 
-        add_product() {
-
-            let restaurant_token = Cookies.get(`rest_login_token`);
-
-            let rest_id_value = Cookies.get(`restaurant_id`);
-
-            console.log(this.$refs[`Name_Box_Add`][`value`]);
-
-            if (rest_id_value !== undefined) {
-
-                axios({
-
-                    method: `POST`,
-
-                    url: `https://foodie.bymoen.codes/api/menu`,
-
-                    headers: {
-
-                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
-
-                        token: restaurant_token
-
-                    },
-
-                    data: {
-
-
-                        name: this.$refs[`Name_Box_Add`][`value`],
-                        description: this.$refs[`Desc_Box_Add`][`value`],
-                        image_url: this.$refs[`Image_Box_Add`][`value`],
-                        price: this.$refs[`Price_Box_Add`][`value`]
-
-                    },
-
-
-                }).then((response) => {
-
-
-                    response;
-
-                    Cookies.set(`menu`, response[`data`]);
-
-                }).catch((error) => {
-
-                    error;
-
-                });
-
-            }
-
-
-
-        },
-
-
-
-        delete_product(details) {
-
-
-            let restaurant_token = Cookies.get(`rest_login_token`);
-
-            this.$refs[`product_clicked`] = details.currentTarget;
-
-            let button_clicked = this.$refs[`product_clicked`].getAttribute(`clicked_item`);
-
-            let image = this.menu_get_holder[button_clicked][`id`];
-
-
-
-            axios({
-
-                method: `DELETE`,
-
-                url: `https://foodie.bymoen.codes/api/menu`,
-
-                headers: {
-
-                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
-
-                    token: restaurant_token
-
-                },
-
-                data: {
-
-                    menu_id: image,
-                }
-
-
-            }).then((response) => {
-
-                response;
-
-            }).catch((error) => {
-
-                error;
-
-            });
-        },
-
-
-        edit_details(details) {
-
-            let restaurant_token = Cookies.get(`rest_login_token`);
-
-            this.$refs[`product_clicked`] = details.currentTarget;
-
-            let button_clicked = this.$refs[`product_clicked`].getAttribute(`clicked_item`);
-
-            let image = this.menu_get_holder[button_clicked][`id`];
-
-            console.log(this.$refs[`Name_Box_Add`][`value`]);
-
-
-            axios({
-
-                method: `PATCH`,
-
-                url: `https://foodie.bymoen.codes/api/menu`,
-
-                headers: {
-
-                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
-
-                    token: restaurant_token
-
-                },
-
-                data: {
-
-                    menu_id: image,
-
-                    name: this.$refs[`Name_Box_Add`][`value`],
-                    image_url: this.$refs[`image_change`][`value`],
-                    price: this.$refs[`price_change`][`value`],
-                    description: this.$refs[`desc_change`][`value`],
-
-
-                }
-
-
-            }).then((response) => {
-
-                response;
-
-                console.log(response);
-
-
-            }).catch((error) => {
-
-                error;
-
-
-            })
-
-        },
-
-
-
-
     },
 
 
@@ -712,45 +509,8 @@ export default {
 
     mounted() {
 
+
         let rest_id_value = Cookies.get(`restaurant_id`);
-
-        axios({
-
-            method: `GET`,
-
-            url: `https://foodie.bymoen.codes/api/menu`,
-
-            headers: {
-
-                'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
-
-            },
-
-            params: {
-
-                restaurant_id: rest_id_value,
-
-            },
-        }).then((response) => {
-
-            response;
-
-            for (let i = 0; i < response[`data`].length; i = i + 1) {
-
-                this.menu_get_holder.push(response[`data`][i]);
-
-
-            }
-
-        
-        }).catch((error) => {
-
-            error;
-
-        });
-
-
-
 
 
         axios({
@@ -941,6 +701,36 @@ export default {
 </script>
 
 <style scoped>
+
+.page_main{
+
+    display: grid;
+
+    min-height: 80vh;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    justify-items: center;
+
+    align-items: center;
+
+
+}
+
+
+.section_main{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    grid-template-rows: 1fr 0.4fr 0.6fr 0.2fr 0.2fr 0.2fr 0.6fr;
+
+
+}
+
 .article_1 {
     display: grid;
 
@@ -1026,7 +816,6 @@ export default {
     grid-template-rows: 15vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
 
 }
-
 .article_3 {
     display: grid;
 
@@ -1047,7 +836,7 @@ export default {
 
     text-align: center;
 
-    grid-template-rows: 10vh 25vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+    grid-template-rows: 10vh 35vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
 
 
 }
@@ -1058,6 +847,7 @@ export default {
     height: 125px;
 
 }
+
 
 .article_4 {
     display: grid;
@@ -1080,4 +870,113 @@ export default {
     text-align: center;
 
     grid-template-rows: 15vh 5vh 5vh;
-}</style>
+}
+
+.incoming_orders{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-auto-flow: row;
+}
+
+.confirmed_orders{
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-auto-flow: row;
+
+}
+
+.completed_orders{
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-auto-flow: row;
+
+
+}
+
+.incoming_orders>span{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-auto-flow: row;
+
+}
+
+.incoming_orders>span>div{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+
+}
+
+.confirmed_orders>span{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+grid-auto-flow: row;
+
+}
+
+.confirmed_orders>span>div{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+
+}
+
+.completed_orders>span{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+grid-auto-flow: row;
+
+}
+
+.completed_orders>span>div{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+margin-top: 5px;
+
+margin-bottom: 5px;
+
+}
+
+
+</style>

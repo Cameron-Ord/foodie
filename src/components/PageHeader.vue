@@ -271,6 +271,90 @@ export default {
     color: white;
 }
 
+@media only screen and (min-width: 1025px){
+
+
+
+.page_header {
+
+display: grid;
+
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+place-items: center;
+
+align-items: center;
+
+min-height: 10vh;
+
+background-color: #003F91;
+
+color: white;
+}
+
+
+.page_header>.header_span {
+
+display: grid;
+
+align-items: center;
+
+grid-template-columns: 70vw 1fr;
+
+}
+
+.hamburger {
+
+}
+
+.hamburger>.bar,
+.hamburger::after,
+.hamburger::before {
+
+}
+
+.hamburger.is-active::before {
+
+
+}
+
+.hamburger.is-active::after {
+
+
+}
+
+.hamburger.is-active .bar {
+
+}
+
+.mobile_nav {
+
+
+}
+
+.mobile_nav.is-active {
+
+}
+
+.mobile_nav>.nav_menu {
+
+
+
+
+
+}
+
+.home_nav {
+
+
+}
+
+
+
+
+
+
+}
 
 
 

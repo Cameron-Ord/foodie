@@ -1,6 +1,8 @@
 <template>
     <div>
         <main class="page_main">
+
+            <div class="divider_div">
             <section class="section_main">
                 <article class="article_1">
                     <span class="article_1_span_2">
@@ -10,8 +12,8 @@
                         <h1>Account info:</h1>
 
                         <img v-bind:src="client_data_holder[`image_url`]">
-                        </span>
-                        <span class="article_1_span_1"> 
+                    </span>
+                    <span class="article_1_span_1">
 
                         <p class="p_prof">Email:</p>
                         <p class="p_data">{{ client_data_holder[`email`] }}</p>
@@ -55,65 +57,36 @@
 
                         <button @click="change_password">Update Password</button>
                     </span>
-
                 </article>
-
                 <article class="orders">
-
-
-                <span class="header_tag">
-                    <h1>Current Orders:</h1>
-                </span>
-                    <div class="incomp_order" v-for="(item, i) in incomplete_orders" :key="i">
-                    
-                    
-                        
-
-                            <h1 v-if="item.is_complete !== 1">{{ item.name }} - {{ item.order_id }}</h1>
-
-                       
-                    
-                    
-                    </div>
-                 
-
-                </article>
-
-                <article class="completed_orders">
-
-                <span class="header_tag">
-                    <h1>Order History:</h1>
-
-                </span>
-
-                    <div class="comp_order" v-for="(item, i) in completed_orders" :key="i">
-                    
-                        
-                        
-                        
-                            <h1 v-if="item.is_complete !== 0">{{ item.name }} - {{ item.order_id }}</h1>
-
-
-                    
-                    
-                    </div>
-
-
-
-                </article>
-
-                <article class="account_setting">
-                    <span class="del_span">
-
-                        <h1>Account settings:</h1>
-
-                        <input placeholder="enter your password to delete your account" type="password"
-                            ref="delete_account">
-
-                        <button @click="delete_profile" class="delete_button">Delete Account</button>
+                    <span class="header_tag">
+                        <h1>Current Orders:</h1>
                     </span>
+                    <div class="incomp_order" v-for="(item, i) in incomplete_orders" :key="i">
+                        <h1 v-if="item.is_complete !== 1">{{ item.name }} - {{ item.order_id }}</h1>
+                    </div>
+                    <span class="header_tag_2">
+                        <h1>Order History:</h1>
+                    </span>
+                    <div class="comp_order" v-for="(item, i) in completed_orders" :key="i">
+                        <h1 v-if="item.is_complete !== 0">{{ item.name }} - {{ item.order_id }}</h1>
+                    </div>
                 </article>
             </section>
+            <section class="section_sub">
+
+                <article class="article_sub">
+
+                <span class="del_span">
+                        <h1>Account settings:</h1>
+                        <input placeholder="enter your password to delete your account" type="password"
+                            ref="delete_account">
+                        <button @click="delete_profile" class="delete_button">Delete Account</button>
+                    </span>
+
+                </article>
+            </section>
+        </div>
         </main>
 
     </div>
@@ -465,6 +438,10 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
 .page_main {
 
     display: grid;
@@ -478,7 +455,14 @@ export default {
     justify-items: center;
 }
 
-.page_main>.section_main {
+.divider_div{
+
+width: 100%;
+
+display: grid;
+}
+
+.page_main>.divider_div>.section_main {
 
     display: grid;
 
@@ -492,7 +476,7 @@ export default {
 
 }
 
-.page_main>.section_main>.article_1 {
+.page_main>.divider_div>.section_main>.article_1 {
 
     display: grid;
 
@@ -509,7 +493,7 @@ export default {
 }
 
 
-.page_main>.section_main>.article_1>.article_1_span_1{
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_1{
 
 
     display: grid;
@@ -533,7 +517,7 @@ export default {
 }
 
 
-.page_main>.section_main>.article_1>.article_1_span_2 {
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_2 {
 
     display: grid;
 
@@ -560,7 +544,7 @@ export default {
 }
 
 
-.page_main>.section_main>.article_1>.article_1_span_2>img {
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_2>img {
 
     height: 125px;
 
@@ -576,7 +560,7 @@ export default {
 
 }
 
-.page_main>.section_main>.article_1>.article_1_span_3 {
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_3 {
 
     display: grid;
 
@@ -605,7 +589,7 @@ export default {
     margin-bottom: 25px;
 }
 
-.page_main>.section_main>.article_1>.article_1_span_3>button{
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_3>button{
 
 
     color: #003F91;
@@ -616,7 +600,7 @@ export default {
 
 }
 
-.page_main>.section_main>.article_1>.article_1_span_3>p{
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_3>p{
 
     padding: 10px;
 
@@ -627,7 +611,7 @@ export default {
     background-color: #FFFFFF;
 }
 
-.page_main>.section_main>.account_setting{
+.page_main>.divider_div>.section_main>.account_setting{
 
     width: 100%;
 
@@ -640,25 +624,6 @@ export default {
     margin-bottom: 25px;
 
     margin-top: 25px;
-}
-
-.page_main>.section_main>.account_setting>.del_span {
-
-    display: grid;
-
-    align-items: center;
-
-    justify-items: center;
-
-    grid-template-rows: 10vh 10vh 10vh;
-
-    background-color: #003F91;
-
-    width: 90%;
-
-    color: #FFFFFF;
-
-    border-radius: 10px;
 }
 
 .p_prof{
@@ -750,22 +715,7 @@ color: #FFFFFF;
     margin-top: 5px;
     color: #FFFFFF;
 }
-.completed_orders{
-
-    width: 100%;
-
-    display: grid;
-
-    justify-items: center;
-
-    align-items: center;
-
-    grid-auto-flow: row;
-    
-
-}
-
-.completed_orders>.header_tag{
+.orders>.header_tag_2{
    
     display: grid;
     
@@ -789,7 +739,7 @@ color: #FFFFFF;
 
 }
 
-.completed_orders>.comp_order{
+.orders>.comp_order{
 
 
     display: grid;
@@ -806,7 +756,7 @@ color: #FFFFFF;
 }
 
 
-.completed_orders>.comp_order>h1{
+.orders>.comp_order>h1{
 
 
     margin-bottom: 5px;
@@ -822,6 +772,63 @@ color: #FFFFFF;
     background-color: #FFFFFF;
 
     padding: 5px;
+
+
+}
+
+.section_sub{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    width: 100%;
+
+
+}
+
+.article_sub{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    width: 100%;
+
+
+}
+
+.section_sub>.article_sub>.del_span{
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-template-rows: 10vh 10vh 10vh;
+
+    background-color: #003F91;
+
+    width: 90%;
+
+    color: #FFFFFF;
+
+    border-radius: 10px;
+
+    margin-top: 25px;
+
+    margin-bottom: 25px;
+
+    width: 50%;
+
+}
+
+@media only screen and (min-width: 1025px){
 
 
 }

@@ -248,5 +248,132 @@ import PageFooter from '@/components/PageFooter.vue';
 
     border-radius: 10px;
 
+
+
 }
+
+@media only screen and (min-width: 1025px){
+
+
+
+.page_main{
+
+display: grid;
+
+min-height: 80vh;
+
+justify-items: center;
+
+align-items: center;
+
+grid-template-columns: repeat(auto-fit, minmax(1025px, 1fr));
+
+}
+
+.page_main>.section_main{
+
+    display: grid;
+
+    justify-items: center;
+    
+    align-items: center;
+
+    width: 100%;
+
+    grid-auto-flow: row;
+}
+
+.page_main>.section_main>.page_article_1{
+
+    display: grid;
+
+    justify-items: center;
+    
+    align-items: center;
+
+    grid-auto-flow: column;
+
+    width: 100%;
+}
+
+.page_main>.section_main>.page_article_1>.rest_span{
+
+    display: grid;
+
+    justify-items: center;
+    
+    align-items: center;
+
+    text-align: center;
+
+    grid-template-rows: 10vh 1fr 8vh 8vh 1fr 12vh;
+
+    min-height: 60vh;
+
+    max-height: 60vh;
+
+    max-width: 80%;
+
+    margin-top: 25px;
+
+    margin-bottom: 25px;
+
+    background-color: #003F91;
+
+    color: #FFFFFF;
+    
+    border-radius: 15px;
+}
+
+
+
+.page_main>.section_main>.page_article_1>.rest_span>img{
+
+
+
+}
+
+
+.page_main>.section_main>.page_article_1>.rest_span>button{
+
+
+
+
+
+}
+
+.page_main>.section_main>.page_article_1>.rest_span>p{
+
+
+
+}
+
+.page_main>.section_main>.page_article_1>.rest_span>h1{
+
+}
+
+
+.page_main>.section_main>.page_article_1>.rest_span>button{
+
+
+}
+
+.bio_p{
+
+}
+
+.rest_name{
+
+
+
+
+
+}
+
+
+
+
+
+}
+
 </style>

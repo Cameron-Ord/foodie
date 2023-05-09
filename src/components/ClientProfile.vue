@@ -12,9 +12,7 @@
                         <h1>Account info:</h1>
 
                         <img v-bind:src="client_data_holder[`image_url`]">
-                    </span>
-                    <span class="article_1_span_1">
-
+                
                         <p class="p_prof">Email:</p>
                         <p class="p_data">{{ client_data_holder[`email`] }}</p>
 
@@ -27,8 +25,8 @@
                         <p class="p_prof">username: </p>
                         <p class="p_data">{{ client_data_holder[`username`] }}</p>
 
-                    </span>
-
+                    
+                </span>
                     <span class="article_1_span_3">
 
                         <h1>Edit your profile:</h1>
@@ -493,28 +491,7 @@ display: grid;
 }
 
 
-.page_main>.divider_div>.section_main>.article_1>.article_1_span_1{
 
-
-    display: grid;
-
-    grid-auto-flow: row;
-
-    justify-items: center;
-    
-    align-items: center;
-
-    background-color: #003F91;
-    
-    width: 90%;
-
-    margin-top: 25px;
-
-    grid-template-rows: 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh;
-
-    border-radius: 10px;
-
-}
 
 
 .page_main>.divider_div>.section_main>.article_1>.article_1_span_2 {
@@ -527,7 +504,7 @@ display: grid;
 
     justify-items: center;
 
-    grid-template-rows: 15vh 5vh 30vh;
+    grid-template-rows: 15vh 5vh 30vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh;
 
     background-color: #003F91;
 
@@ -541,6 +518,7 @@ display: grid;
 
     border-radius: 10px;
 
+    margin-bottom: 25px;
 }
 
 
@@ -579,10 +557,6 @@ display: grid;
     width: 90%;
 
     color: #FFFFFF;
-
-    padding-top: 10px;
-
-    padding-bottom: 10px;
 
     border-radius: 10px;
 
@@ -824,11 +798,253 @@ color: #FFFFFF;
 
     margin-bottom: 25px;
 
-    width: 50%;
+    width: 90%;
 
 }
 
 @media only screen and (min-width: 1025px){
+    .page_main {
+
+display: grid;
+
+min-height: 80vh;
+
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+align-items: center;
+
+justify-items: center;
+}
+
+.divider_div{
+
+width: 100%;
+
+display: grid;
+}
+
+.page_main>.divider_div>.section_main {
+
+display: grid;
+
+grid-auto-flow: row;
+
+align-items: center;
+
+justify-items: center;
+
+width: 100%;
+
+}
+
+.page_main>.divider_div>.section_main>.article_1 {
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+align-items: center;
+
+justify-items: center;
+
+width: 100%;
+
+text-align: center;
+
+}
+
+
+
+
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_2 {
+
+display: grid;
+
+grid-template-rows: auto;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 15vh 5vh 30vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh;
+
+background-color: #003F91;
+
+margin-top: 25px;
+
+width: 90%;
+
+text-align: center;
+
+color: #FFFFFF;
+
+border-radius: 10px;
+
+
+height: 115vh;
+
+
+}
+
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_2>img {
+
+height: 125px;
+
+width: 125px;
+
+border-radius: 50%;
+
+border-style: solid;
+
+color: #5DA9E9;
+
+border-width: 10px;
+
+}
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_3 {
+
+display: grid;
+
+grid-template-rows: auto;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 15vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh;
+
+background-color: #003F91;
+
+margin-top: 25px;
+
+width: 90%;
+
+color: #FFFFFF;
+
+border-radius: 10px;
+
+margin-bottom: 25px;
+
+height: 115vh;
+}
+
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_2>img {
+
+}
+
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_3>button{
+
+
+
+}
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_3>p{
+
+
+}
+
+.page_main>.divider_div>.section_main>.account_setting{
+
+}
+
+.p_prof{
+
+}
+
+.p_data{
+
+
+
+}
+
+
+.orders{
+
+
+
+}
+
+.orders>.header_tag{
+
+    width: 30%;
+
+}
+
+.orders>.incomp_order{
+
+    width: 25%;
+
+
+}
+
+
+.orders>.incomp_order>h1{
+
+}
+.orders>.header_tag_2{
+    width: 30%;
+}
+
+.orders>.comp_order{
+
+    width: 25%;
+
+}
+
+
+.orders>.comp_order>h1{
+
+
+}
+
+.delete_button{
+
+
+
+}
+
+.section_sub{
+
+
+
+}
+
+.article_sub{
+
+
+}
+
+
+.section_sub>.article_sub>.del_span{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 10vh 10vh 10vh;
+
+background-color: #003F91;
+
+width: 90%;
+
+color: #FFFFFF;
+
+border-radius: 10px;
+
+margin-top: 25px;
+
+margin-bottom: 25px;
+
+width: 50%;
+
+}
 
 
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
 
-            <main class="page_main">
+    <main class="page_main">
 
     <section class="section_main">
 
@@ -17,6 +17,8 @@
                 <input placeholder="your avatar" type="value" ref="avatar_input">
                 <input placeholder="username" type="value" ref="username_input">
                 <input placeholder="password" type="value" ref="password_input">
+
+                <!--logs the user in-->
 
                 <button @click="sign_up"><h1>Create Account</h1></button>
 
@@ -72,6 +74,7 @@ export default {
 
                 data: {
 
+                    //grabbing values from input tags//
 
                     email: this.$refs[`email_input`].value,
 
@@ -94,6 +97,8 @@ export default {
 
                 response;
 
+                //assigns respective tokens to a cookie and removes possible existing ones on success//
+
                 Cookies.set(`client_login_token`, `${response[`data`][`token`]}`);
 
                 Cookies.set(`client_id_token`, `${response[`data`][`client_id`]}`);
@@ -101,7 +106,11 @@ export default {
 
                 Cookies.remove(`rest_login_token`);
 
-                    Cookies.remove(`restaurant_id`);
+                Cookies.remove(`restaurant_id`);
+
+                Cookies.remove(`food_cart`);
+
+                this.$router.push(`/`);
 
             }).catch((error) => {
 

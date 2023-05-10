@@ -4,6 +4,8 @@
 
             <span>
 
+                <!--generic text for footer-->
+
             <nav>
 
                 <p>text</p>

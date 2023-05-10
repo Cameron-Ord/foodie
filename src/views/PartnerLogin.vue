@@ -1,12 +1,12 @@
 <template>
     <div>
+          <!--importing components..-->
 
         <page-header></page-header>
 
+        <restaurant-login-component></restaurant-login-component>
 
-                    <restaurant-login-component></restaurant-login-component>
-
-                    <page-footer></page-footer>
+        <page-footer></page-footer>
 
     </div>
 </template>

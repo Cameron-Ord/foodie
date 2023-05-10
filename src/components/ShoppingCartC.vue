@@ -2,9 +2,12 @@
     <div>
 
         <main class="page_main">
-            <section class="section_main">
+
+        <section class="section_main">
 
         <article class="cart_container">
+
+            <!--displays what items are current stored in the shopping cart-->
 
         <span class="product_span" v-for="(item, i) in shopping_cart_items" :key="i">
 
@@ -21,6 +24,8 @@
         <article class="order_container">
 
             <span class="button_span">
+
+                <!--buttons for placing the order or clearing the cart-->
 
                 <button @click="delete_item">Clear cart</button>
                 <button @click="Order">Order</button>
@@ -70,9 +75,7 @@ import Cookies from 'vue-cookies';
 
                 let menu_item_no = this.product_id;
                
-
                 console.log(this.product_id);
-
 
                 console.log(token_var , `token`);
 
@@ -103,8 +106,11 @@ import Cookies from 'vue-cookies';
                 }).then((response)=>{
                  
                     response;
-                
+                Cookies.remove(`food_cart`);
 
+                this.$router.push(`/AccountProfile`);
+
+                //on post success, removes cart cookie and pushes to your account page//
 
                 }).catch((error)=>{
                     
@@ -112,9 +118,7 @@ import Cookies from 'vue-cookies';
                 
                 });
 
-                Cookies.remove(`food_cart`);
 
-                this.$router.push(`/AccountProfile`);
             }
 
         },
@@ -122,6 +126,8 @@ import Cookies from 'vue-cookies';
 
 
         mounted(){
+
+            //defining variables on mount//
 
             this.shopping_cart_items = Cookies.get(`food_cart`);
             console.log(this.shopping_cart_items, `cart`);

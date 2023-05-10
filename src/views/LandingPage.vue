@@ -1,6 +1,8 @@
 <template>
         <div class="landing_parent">
 
+              <!--importing components..-->
+              
             <page-header></page-header>
 
             <main class="page_main">

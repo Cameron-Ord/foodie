@@ -1,5 +1,8 @@
 <template>
     <div>
+
+          <!--importing components..-->
+
         <page-header></page-header>
 
         <main class="page_main">

@@ -7,7 +7,6 @@
 
                 <article class="article_main">
 
-    
                     <span class="Client_Comp">
 
                         <h1>Email:</h1>
@@ -18,6 +17,8 @@
 
                         <input placeholder="..." type="password" ref="password_input">
     
+                        <!--calls the login api, if information is correctly typed, returns a cookie and redirects to home page-->
+
                         <button @click="user_log_in" ><h1>Log In</h1></button>
     
                     </span>
@@ -67,6 +68,8 @@ import Cookies from 'vue-cookies';
 
                 }).then((response)=>{
 
+                    //if axios post is successful, assigns respective tokens to a cookie, and removes possible existing tokens..//
+
                     response;
 
                     Cookies.set(`client_login_token`, `${response[`data`][`token`]}`);
@@ -76,6 +79,10 @@ import Cookies from 'vue-cookies';
                     Cookies.remove(`rest_login_token`);
 
                     Cookies.remove(`restaurant_id`);
+
+                    Cookies.remove(`food_cart`);
+
+                    //pushes to home page//
 
                     this.$router.push(`/`);
 

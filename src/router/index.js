@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import LandingPage from '@/views/LandingPage.vue'
 import ClientSignup from '@/views/ClientSignup'
 import DiscoverPage from '@/views/DiscoverPage.vue'
-import OrderPage from '@/views/OrderPage.vue'
 import RestaurantSignup from '@/views/RestaurantSignup.vue'
 import AccountProfile from '@/views/AccountProfile.vue'
 import ShoppingCart from '@/views/ShoppingCart.vue'
@@ -11,6 +10,8 @@ import LoginPage from '@/views/LoginPage.vue'
 import PartnerLogin from '@/views/PartnerLogin.vue'
 import PublicPage from '@/views/PublicPage.vue'
 Vue.use(VueRouter)
+
+//importing all my views and assigning meta tags//
 
 const routes = [
 {
@@ -106,39 +107,6 @@ const routes = [
       content: `Cameron Ord`
     }
   ]
-
-},
-
-{
-
-  path: `/OrderPage`,
-
-  component: OrderPage,
-
-  name: `order`,
-
-  meta: [
-
-    {
-      title: `order page`,
-    },
-    {
-      name: `description`,
-
-      content: `placeholder`,
-
-    
-    },
-    {
-
-      name: `author`,
-
-      content: `Cameron Ord`
-    }
-  ]
-
-  
-
 
 },
 

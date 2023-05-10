@@ -10,6 +10,8 @@
 
                     <span class="Rest_Comp">
 
+                        <!--login for restaurant-->
+
                         <h1>Email:</h1>
                         <input placeholder="..." type="text" ref="email_input">
 
@@ -41,6 +43,7 @@ import Cookies from 'vue-cookies';
 
             rest_log_in(){
 
+                //restaurant login api//
 
                 axios({
 
@@ -64,6 +67,7 @@ import Cookies from 'vue-cookies';
                 }).then((response)=>{
 
 
+                    //assigns respective cookies on success//
 
                     Cookies.set(`rest_login_token`, `${response[`data`][`token`]}`);
 

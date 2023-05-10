@@ -1,11 +1,16 @@
 <template>
     <div>
 
+        <!--importing my header and footer-->
+
         <page-header></page-header>
 
         <main class="page_main">
             <section class="section_main">
                 <article class="page_article_1">
+
+                    <!--a loop for all the restaurants stored in the restaurants variable-->
+
                     <span class="rest_span" v-for="(restaurant, i) in restaurants" :key="i"> 
 
                         <h1 class="rest_name">{{ restaurant[`name`] }}</h1>
@@ -18,6 +23,7 @@
 
                         <p class="bio_p">{{ restaurant[`bio`] }}</p>
 
+                        <!--using attributes to get the clicked target(restaurant) and taking you to the public page depending on which one you clicked-->
 
                         <button :clicked_rest="i" @click="rest_chose" ref="button_clicked">view menu</button>
 
@@ -58,6 +64,7 @@ import PageFooter from '@/components/PageFooter.vue';
 
             rest_chose(details){
 
+                //function for chosen restaurant, uses get attributes and currentTarget to index which restaurant you chose//
 
                 this.$refs[`button_clicked`] = details.currentTarget;
               
@@ -73,6 +80,8 @@ import PageFooter from '@/components/PageFooter.vue';
         },
 
         mounted(){
+
+            //axios call on mount, pushes content from response to the empty restaurants array//
 
             axios({
 

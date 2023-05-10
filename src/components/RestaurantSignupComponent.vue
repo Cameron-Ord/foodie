@@ -10,6 +10,8 @@
 
                         <h4>Enter your information</h4>
 
+                        <!--input boxes for the restaurant signup values-->
+
                         <input placeholder="your email"  type="text" ref="email_input">
                         <input placeholder="your name" type="text" ref="name_input">
                         <input placeholder="address" type="text" ref="address_input">
@@ -75,6 +77,7 @@ import Cookies from 'vue-cookies';
 
                 data: {
 
+                    //grabs the values typed in the boxes, each box must have appropriate values.//
 
                     email: this.$refs[`email_input`].value,
                     name: this.$refs[`name_input`].value,
@@ -95,6 +98,8 @@ import Cookies from 'vue-cookies';
 
                 response;
 
+                //assigns cookies and pushes to main page//
+
                     Cookies.set(`rest_login_token`, `${response[`data`][`token`]}`);
 
                     Cookies.set(`restaurant_id`, `${response[`data`][`restaurant_id`]}`);
@@ -103,6 +108,7 @@ import Cookies from 'vue-cookies';
 
                     Cookies.remove(`client_id_token`);
 
+                    this.$router.push(`/`)
 
             }).catch((error) => {
 

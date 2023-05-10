@@ -3,6 +3,8 @@
         <main class="page_main">
             <section class="section_main">
 
+                <!--injecting data stored in variables, gotten by the api-->
+
                     <div class="article_1_div">
 
                         <h1>Welcome, {{ rest_data_holder[`name`] }}</h1>
@@ -74,6 +76,8 @@
 
                 <article class="article_2">
 
+                    <!--importing some components-->
+
                     <menu-add></menu-add>
 
                 </article>
@@ -82,6 +86,9 @@
                     <single-menu-item></single-menu-item>
 
                 </article>
+
+                <!--displaying orders based off values and conditions-->
+
                 <article class="incoming_orders" v-if="unconfirmed_orders !== undefined">
 
                     <h1>Incoming Orders:</h1>

@@ -7,6 +7,8 @@
                 <article class="article_1">
                     <span class="article_1_span_2">
 
+                        <!--using data stored in variable to display onto the page-->
+
                         <h1>Welcome, {{ client_data_holder[`username`] }}</h1>
 
                         <h1>Account info:</h1>
@@ -57,6 +59,9 @@
                     </span>
                 </article>
                 <article class="orders">
+
+                    <!--displaying orders based on a condition and whether they have been completed or not-->
+
                     <span class="header_tag">
                         <h1>Current Orders:</h1>
                     </span>
@@ -83,6 +88,9 @@
                         <h1>Account settings:</h1>
                         <input placeholder="enter your password to delete your account" type="password"
                             ref="delete_account">
+
+                            <!--calling the delete api on click, requires password typed in field-->
+                            
                         <button @click="delete_profile" class="delete_button">Delete Account</button>
                     </span>
 
@@ -120,6 +128,8 @@ export default {
 
         delete_profile() {
 
+            //defining the token for the api header//
+
             let client_token = Cookies.get(`client_login_token`);
 
             axios({
@@ -138,6 +148,8 @@ export default {
 
                 data: {
 
+                    //getting the typed value//
+
                     password: this.$refs[`delete_account`].value,
                 }
 
@@ -145,11 +157,14 @@ export default {
 
                 response;
 
+                //deletes your profile, removes cookies, and pushes user to home page.//
+
                 this.$router.push(`/`);
 
                 Cookies.remove(`client_id`);
 
                 Cookies.remove(`client_login_token`);
+
             }).catch((error) => {
 
                 error;

@@ -3,6 +3,8 @@
 
                         <h1>Add, modify, or remove your menu items:</h1>
 
+                        <!--inputs for adding products-->
+
                         <p>Name:</p>
                         <input type="text" ref="Name_Box_Add">
                         <p>Description:</p>
@@ -37,6 +39,8 @@ import Cookies from 'vue-cookies';
 
 
               add_product() {
+
+                //defining variables for axios//
 
             let restaurant_token = Cookies.get(`rest_login_token`);
 
@@ -73,6 +77,7 @@ import Cookies from 'vue-cookies';
 
                 }).then((response) => {
 
+                    //if post is successful, adds the information inside all the text boxes, they all need to be filled//
 
                     response;
 

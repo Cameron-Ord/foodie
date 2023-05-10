@@ -5,10 +5,13 @@
 
             <nav class="header_span">
 
+                <!--bar button for hamburger menu-->
 
                 <button @click="make_active" class="hamburger">
                     <div class="bar"></div>
                 </button>
+
+                <!--routes to home on click-->
 
                 <router-link to="/" class="home_nav">
                     <h1>DEV.</h1>
@@ -17,6 +20,9 @@
             </nav>
         
         <nav class="mobile_nav">
+
+            <!--shows buttons depending on a boolean that the user has, which is dependent on on their login cookie-->
+
             <router-link v-if="(client_logged_in === false && partner_logged_in === false)" to="/ClientSignup" class="nav_menu">Sign-up</router-link>
            
             <router-link v-if="(client_logged_in === false && partner_logged_in === false)"  to="/Login" class="nav_menu">Log-in</router-link>
@@ -67,6 +73,8 @@ export default {
 
         log_out(){
 
+            //removes all possible cookies, resets the variables to false, and pushes to home//
+
             Cookies.remove(`client_login_token`);
             Cookies.remove(`client_id_token`);
             Cookies.remove(`rest_login_token`);
@@ -103,6 +111,7 @@ export default {
 
     mounted() {
 
+        //if statements for  variables//
         
      
         this.client_token = Cookies.get(`client_login_token`);

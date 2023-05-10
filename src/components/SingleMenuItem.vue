@@ -1,7 +1,11 @@
 <template>
+    <!--an if statement that protects the html-->
+
         <div v-if="j !== undefined" class="parent_div"> 
 
             <span class="span_1" >
+
+                <!--displays the menu items based off its indexed position-->
 
                 <h2>{{ menu_get_holder[j][`name`] }}</h2>
 
@@ -10,6 +14,8 @@
             </span>
 
             <span class="span_2">
+
+                <!--buttons for going forwards or backwards in the index-->
 
                 <button @click="prev">Previous</button>
 
@@ -21,6 +27,8 @@
 
                 <p class="text_decor">Change Name:</p>
        
+                <!--inputs that alter info of a product based off the current index in the array-->
+
                 <input type="value" class="name_type">
 
                 <button :clicked_item="j" ref="product_clicked" @click="edit_name">Edit</button>
@@ -56,6 +64,7 @@ export default {
     data() {
         return {
 
+            //setting the index as undefined//
 
             j: undefined,
 
@@ -68,6 +77,8 @@ export default {
 
 
     methods: {
+
+        //next and prev buttons//
 
         next() {
 
@@ -97,6 +108,8 @@ export default {
 
         delete_product(details) {
 
+
+            //deleting the product based off the index of the product clicked//
 
             let restaurant_token = Cookies.get(`rest_login_token`);
 
@@ -130,6 +143,8 @@ export default {
 
             }).then((response) => {
 
+                //if successful, deletes product//
+
                 response;
 
             }).catch((error) => {
@@ -141,6 +156,8 @@ export default {
 
 
         edit_name(details) {
+
+              //edits info based on index//
 
             let restaurant_token = Cookies.get(`rest_login_token`);
 
@@ -200,6 +217,8 @@ export default {
 
         edit_desc(details) {
 
+              //edits info based on index//
+
             let restaurant_token = Cookies.get(`rest_login_token`);
 
             this.$refs[`product_clicked`] = details.currentTarget;
@@ -256,6 +275,9 @@ export default {
         },
 
         edit_image(details) {
+
+            //edits info based on index//
+
             let restaurant_token = Cookies.get(`rest_login_token`);
 
             this.$refs[`product_clicked`] = details.currentTarget;
@@ -313,6 +335,8 @@ export default {
         },
 
         edit_price(details) {
+
+              //edits info based on index//
 
             let restaurant_token = Cookies.get(`rest_login_token`);
 
@@ -374,6 +398,7 @@ export default {
 
         mounted(){
 
+            //axios call for menu on mount//
 
             console.log(this.j);
             let rest_id_value = Cookies.get(`restaurant_id`);

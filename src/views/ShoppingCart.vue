@@ -1,11 +1,12 @@
 <template>
     <div>
+          <!--importing components..-->
 
         <page-header></page-header>
 
-                    <shopping-cart-c></shopping-cart-c>
+        <shopping-cart-c></shopping-cart-c>
              
-                    <page-footer></page-footer>
+        <page-footer></page-footer>
 
 
     </div>

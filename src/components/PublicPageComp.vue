@@ -2,6 +2,8 @@
     <div class="parent_div" >
         <article class="article_1">
 
+            <!--displays restaurant information based off the restaurant called in the API which is selected by the ID-->
+
                 <div class="landing_div">
 
                     <h1>{{ restaurant_object[`name`] }}</h1>
@@ -33,6 +35,8 @@
 
         <article class="article_2">
 
+            <!--same operation as getting the restaurant info from axios, but with the menu-->
+
             <span class="span_menu" v-for="(menu_item, i) in rest_menu" :key="i">
 
                 <h4>{{ menu_item[`name`] }}</h4>
@@ -46,6 +50,8 @@
             </span>
 
         </article>
+
+        <!--if the food cart variable is not null, display-->
 
         <article class="article_3" v-if="food_cart !== null">
 
@@ -78,6 +84,8 @@ export default {
 
             add_to_cart(details, menu_item){
 
+                //using attributes and the currentTarget to index which menu item was clicked//
+
                 this.$refs[`button_clicked`] = details.currentTarget;
 
                 let button_clicker = this.$refs[`button_clicked`].getAttribute(`clicked_menu_item`);
@@ -100,7 +108,9 @@ export default {
 
             let chosen_restaurant_id = Cookies.get(`restaurant_selected`);
 
-            if(chosen_restaurant_id !== undefined){
+            //if chosen_restaurant_id is null, will not execute//
+
+            if(chosen_restaurant_id !== null){
 
                 axios({
 
@@ -138,7 +148,9 @@ export default {
 
             }
 
-            if(chosen_restaurant_id !== undefined){
+            //axios call on mount for rest menu, if the chosen restaurant ID is null, it will not execute//
+
+            if(chosen_restaurant_id !== null){
 
             axios({
 

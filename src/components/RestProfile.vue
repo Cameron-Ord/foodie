@@ -95,10 +95,11 @@
                             <p>{{ order.name }}</p>
 
 
+                            <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Orders</button>
 
                         </div>
 
-                        <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Orders</button>
+                        
 
                     </div>
                 </article>
@@ -272,6 +273,7 @@ export default {
                     order_id: completed_item,
 
                     is_complete: "true",
+                    is_confirmed: "false"
 
 
                 },
@@ -297,7 +299,10 @@ export default {
         delete_account() {
 
             let restaurant_token = Cookies.get(`rest_login_token`);
+    
+            console.log(this.refs[`delete_acc`][`value`]);
 
+            console.log(restaurant_token);
             axios({
 
                 method: `DELETE`,
@@ -924,6 +929,8 @@ export default {
     justify-items: center;
 
     align-items: center;
+
+    width: 100%;
 }
 
 
@@ -1028,6 +1035,8 @@ export default {
 
     margin-bottom: 10px;
 
+    margin-top: 10px;
+
     border-radius: 10px;
 }
 
@@ -1054,6 +1063,8 @@ export default {
     padding: 10px;
 
     border-radius: 10px;
+    
+    margin-top: 10px;
 
     margin-bottom: 10px;
 }
@@ -1080,6 +1091,8 @@ export default {
     padding: 10px;
 
     border-radius: 10px;
+
+    margin-top: 10px;
 
     margin-bottom: 10px;
 }
@@ -1185,6 +1198,8 @@ justify-items: center;
     margin-top: 10px;
 
     margin-bottom: 10px;
+
+    width: 50vw;
 }
 
 .completed_orders>span{
@@ -1200,6 +1215,10 @@ grid-auto-flow: row;
 background-color: #003F91;
 
 border-radius: 15px;
+
+padding-top: 10px;
+
+padding-bottom: 10px;
 
 width: 80%;
 
@@ -1222,21 +1241,6 @@ justify-items: center;
 
 }
 
-
-.completed_orders>span>div>button{
-
-
-    color: #003F91;
-
-    background-color: #FFFFFF;
-
-    padding: 5px;
-
-    margin-top: 10px;
-
-    margin-bottom: 10px;
-
-}
 
 .article_1>.span_1>.p_text{
 
@@ -1299,7 +1303,7 @@ width: 50%;
 
 .article_1>.span_1 {
 
-
+width: 50%;
 
 }
 
@@ -1316,6 +1320,7 @@ width: 50%;
 .article_1>.span_2 {
 
 
+    width: 50%;
 
 
 
@@ -1341,6 +1346,7 @@ width: 50%;
 
 .article_2 {
 
+    width: 100%;
 
 }
 
@@ -1357,6 +1363,7 @@ width: 50%;
 }
 
 .article_4>.span_1 {
+    width: 50%;
 
 
 }
@@ -1428,6 +1435,8 @@ width: 50%;
 
 .confirmed_orders>span{
 
+    width: 30%;
+
 
 }
 
@@ -1445,6 +1454,7 @@ width: 50%;
 .completed_orders>span{
 
 
+    width: 30%;
 
 }
 

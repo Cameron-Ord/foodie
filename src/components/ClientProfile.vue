@@ -60,15 +60,19 @@
                     <span class="header_tag">
                         <h1>Current Orders:</h1>
                     </span>
+                    <span v-if="incomplete_orders !== undefined" class="incomp">
                     <div class="incomp_order" v-for="(item, i) in incomplete_orders" :key="i">
                         <h1 v-if="item.is_complete !== 1">{{ item.name }} - {{ item.order_id }}</h1>
                     </div>
+                    </span>
                     <span class="header_tag_2">
                         <h1>Order History:</h1>
                     </span>
+                    <span class="completed" v-if="completed_orders !== undefined">
                     <div class="comp_order" v-for="(item, i) in completed_orders" :key="i">
                         <h1 v-if="item.is_complete !== 0">{{ item.name }} - {{ item.order_id }}</h1>
                     </div>
+                </span>
                 </article>
             </section>
             <section class="section_sub">
@@ -142,6 +146,10 @@ export default {
                 response;
 
                 this.$router.push(`/`);
+
+                Cookies.remove(`client_id`);
+
+                Cookies.remove(`client_login_token`);
             }).catch((error) => {
 
                 error;
@@ -373,9 +381,18 @@ export default {
             for (let i = 0; i < response[`data`].length; i++) {
 
                 this.incomplete_orders.push(response[`data`][i]);
+
+            
+                
                 
         
             }
+
+            if(this.incomplete_orders.length <= 0){
+
+                this.incomplete_orders = undefined;
+            }
+
 
       
         }).catch((error) => {
@@ -415,6 +432,11 @@ export default {
                 this.completed_orders.push(response[`data`][i]);
 
     
+            }
+
+            if(this.completed_orders.length <= 0){
+
+                this.completed_orders = undefined;
             }
 
             
@@ -659,7 +681,7 @@ color: #FFFFFF;
 
 }
 
-.orders>.incomp_order{
+.orders>.incomp>.incomp_order{
 
     display: grid;
 
@@ -681,9 +703,20 @@ color: #FFFFFF;
 
 
 }
+.incomp{
 
+    width: 100%;
 
-.orders>.incomp_order>h1{
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    text-align: center;
+}
+
+.orders>.incomp>.incomp_order>h1{
 
     margin-bottom: 5px;
     margin-top: 5px;
@@ -713,7 +746,7 @@ color: #FFFFFF;
 
 }
 
-.orders>.comp_order{
+.orders>.completed>.comp_order{
 
 
     display: grid;
@@ -722,15 +755,20 @@ color: #FFFFFF;
 
     align-items: center;
 
-    width: 90%;
+    width: 70%;
 
     background-color: #003F91;
 
     border-radius: 10px;
+
+    margin-top: 5px;
+
+    margin-bottom: 5px;
+
 }
 
 
-.orders>.comp_order>h1{
+.orders>.completed>.comp_order>h1{
 
 
     margin-bottom: 5px;

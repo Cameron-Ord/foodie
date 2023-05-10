@@ -146,6 +146,8 @@ import PageFooter from '@/components/PageFooter.vue';
     align-items: center;
 
     grid-auto-flow: row;
+
+        width: 100%;
 }
 
 .page_main>.section_main>.page_article_1>.rest_span{

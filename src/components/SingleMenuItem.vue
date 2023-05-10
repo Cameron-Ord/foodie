@@ -570,5 +570,65 @@ color: #FFFFFF;
 
     border-radius: 10px;
 }
+@media only screen and (min-width: 1025px){
+.parent_div>.span_1{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+background-color: #003F91;
+
+width: 50%;
+
+grid-template-rows: 9vh 30vh;
+
+border-radius: 15px;
+
+
+}
+.parent_div>.span_2{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+background-color: #003F91;
+
+width: 25%;
+
+grid-template-columns: 1fr 1fr;
+
+height: 10vh;
+
+border-radius: 15px;
+
+}    
+
+
+.parent_div>.span_3{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+background-color: #003F91;
+
+width: 50%;
+
+grid-template-rows: 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh;
+
+border-radius: 15px;
+
+margin-bottom: 25px;
+
+}
+}
 
 </style>

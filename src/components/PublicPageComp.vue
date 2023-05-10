@@ -466,7 +466,7 @@ export default {
 
 .article_1>.span_rest{
 
-width: 25%;
+width: 75%;
 
 
 

@@ -2,7 +2,6 @@
     <div>
         <main class="page_main">
             <section class="section_main">
-                <article class="article_1">
 
                     <div class="article_1_div">
 
@@ -11,6 +10,11 @@
                         <img v-bind:src="rest_data_holder[`profile_url`]">
 
                     </div>
+
+
+                <article class="article_1">
+
+
 
                     <span class="span_1">
 
@@ -763,9 +767,11 @@ export default {
     align-items: center;
 
     width: 100%;
+
+
 }
 
-.article_1>.article_1_div {
+.section_main>.article_1_div {
 
     display: grid;
 
@@ -779,7 +785,7 @@ export default {
 
 }
 
-.article_1>.article_1_div>h1{
+.section_main>.article_1_div>h1{
 
     color: #FFFFFF;
 
@@ -791,7 +797,7 @@ export default {
 
 }
 
-.article_1>.article_1_div>img {
+.section_main>.article_1_div>img {
 
     width: 100%;
 
@@ -1257,8 +1263,7 @@ width: 50%;
 @media only screen and (min-width: 1025px){
 
 
-
-    .page_main{
+.page_main{
 
 
 

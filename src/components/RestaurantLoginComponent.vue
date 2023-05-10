@@ -168,4 +168,35 @@ width: 50vw;
 
 }
 
+
+@media only screen and (min-width: 1025px){
+
+.page_main>.section_main>.article_main>.Rest_Comp{
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+grid-template-rows: 75px 50px 75px 50px 100px;
+
+background-color: #003F91;
+
+width: 40%;
+
+border-radius: 25px;
+}
+
+.page_main>.section_main>.article_main>.Rest_Comp>input{
+
+
+width: 25vw;
+
+}
+
+    
+
+}
+
 </style>

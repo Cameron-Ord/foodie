@@ -873,7 +873,7 @@ background-color: #003F91;
 
 margin-top: 25px;
 
-width: 90%;
+width: 70%;
 
 text-align: center;
 
@@ -920,7 +920,7 @@ background-color: #003F91;
 
 margin-top: 25px;
 
-width: 90%;
+width: 70%;
 
 color: #FFFFFF;
 

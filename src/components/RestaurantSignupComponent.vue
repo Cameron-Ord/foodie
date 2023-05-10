@@ -230,4 +230,62 @@ border-radius: 15px;
     background-color: #FFFFFF;
 }
 
+@media only screen and (min-width: 1025px){
+
+.page_main>.section_main>.input_article>.tinyspan{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 75px 75px;
+
+color: #FFFFFF;
+
+width: 40%;
+
+text-align: center;
+
+background-color: #003F91;
+
+border-radius: 15px;
+}
+
+
+
+.page_main>.section_main>.input_article>.input_span{
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+grid-template-rows: 10vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 15vh;
+
+margin-top: 50px;
+
+width: 40%;
+
+background-color: #003F91;
+
+color: #FFFFFF;
+
+border-radius: 15px;
+
+}
+
+.page_main>.section_main>.input_article>.input_span>input{
+
+    width: 25vw;
+}
+
+
+
+
+
+
+}
+
 </style>

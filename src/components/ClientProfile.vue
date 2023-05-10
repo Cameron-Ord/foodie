@@ -62,18 +62,14 @@
 
                     <!--displaying orders based on a condition and whether they have been completed or not-->
 
-                    <span class="header_tag">
-                        <h1>Current Orders:</h1>
-                    </span>
                     <span v-if="incomplete_orders !== undefined" class="incomp">
+                        <h1>Current Orders:</h1>
                     <div class="incomp_order" v-for="(item, i) in incomplete_orders" :key="i">
                         <h1 v-if="item.is_complete !== 1">{{ item.name }} - {{ item.order_id }}</h1>
                     </div>
                     </span>
-                    <span class="header_tag_2">
-                        <h1>Order History:</h1>
-                    </span>
                     <span class="completed" v-if="completed_orders !== undefined">
+                        <h1>Order History:</h1>
                     <div class="comp_order" v-for="(item, i) in completed_orders" :key="i">
                         <h1 v-if="item.is_complete !== 0">{{ item.name }} - {{ item.order_id }}</h1>
                     </div>
@@ -90,7 +86,7 @@
                             ref="delete_account">
 
                             <!--calling the delete api on click, requires password typed in field-->
-                            
+
                         <button @click="delete_profile" class="delete_button">Delete Account</button>
                     </span>
 
@@ -673,28 +669,7 @@ color: #FFFFFF;
 
 }
 
-.orders>.header_tag{
-    display: grid;
-    
-    margin-top: 10px;
 
-    margin-bottom: 10px;
-
-    width: 60%;
-
-    justify-items: center;
-
-    align-items: center;
-
-    background-color: #003F91;
-
-    padding: 10px;
-
-    color: #FFFFFF;
-
-    border-radius: 10px;
-
-}
 
 .orders>.incomp>.incomp_order{
 
@@ -731,21 +706,14 @@ color: #FFFFFF;
     text-align: center;
 }
 
-.orders>.incomp>.incomp_order>h1{
-
-    margin-bottom: 5px;
-    margin-top: 5px;
-    color: #FFFFFF;
-}
-.orders>.header_tag_2{
-   
+.orders>.incomp>h1{
     display: grid;
     
     margin-top: 10px;
 
     margin-bottom: 10px;
 
-    width: 60%;
+    width: 50%;
 
     justify-items: center;
 
@@ -758,7 +726,47 @@ color: #FFFFFF;
     color: #FFFFFF;
 
     border-radius: 10px;
+}
 
+
+.orders>.incomp>.incomp_order>h1{
+
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: #FFFFFF;
+}
+
+.orders>.completed{
+
+    display: grid;
+
+    width: 100%;
+
+    justify-items: center;
+
+    align-items: center;
+}
+
+.orders>.completed>h1{
+    display: grid;
+    
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+
+    width: 50%;
+
+    justify-items: center;
+
+    align-items: center;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    color: #FFFFFF;
+
+    border-radius: 10px;
 }
 
 .orders>.completed>.comp_order{
@@ -1022,11 +1030,7 @@ height: 115vh;
 
 }
 
-.orders>.header_tag{
 
-    width: 30%;
-
-}
 
 .orders>.incomp_order{
 
@@ -1039,9 +1043,7 @@ height: 115vh;
 .orders>.incomp_order>h1{
 
 }
-.orders>.header_tag_2{
-    width: 30%;
-}
+
 
 .orders>.comp_order{
 

@@ -150,7 +150,7 @@ const routes = [
 
   meta: [
     {
-      title: `restaurant profile page`,
+      title: `profile page`,
     },
     {
       name: `description`,

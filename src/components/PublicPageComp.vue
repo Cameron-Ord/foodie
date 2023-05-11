@@ -96,6 +96,7 @@ export default {
 
                 Cookies.set(`food_cart`, this.menu_items);
 
+                this.$router.go();
             
                 
 

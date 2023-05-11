@@ -19,8 +19,18 @@
     
                         <!--calls the login api, if information is correctly typed, returns a cookie and redirects to home page-->
 
+                    
+
                         <button @click="user_log_in" ><h1>Log In</h1></button>
-    
+
+                        
+
+                    </span>
+
+                    <span class="failed" v-if="failed_login === true">
+
+                        <p>Invalid Login</p>
+
                     </span>
 
                 </article>
@@ -38,7 +48,7 @@ import Cookies from 'vue-cookies';
 
         data() {
             return {
-               
+               failed_login: false,
             }
         },
 
@@ -92,6 +102,7 @@ import Cookies from 'vue-cookies';
 
                     error;
 
+                    this.failed_login = true;
                 });
             }
         },
@@ -141,6 +152,8 @@ import Cookies from 'vue-cookies';
 
     width: 100%;
 
+    grid-auto-flow: row;
+
 
 }
 .page_main>.section_main>.article_main>.Client_Comp{
@@ -182,6 +195,28 @@ border-radius: 25px;
 
 }
 
+.failed{
+
+    color: #FFFFFF;
+
+    background-color: #003F91;
+
+    width: 50%;
+
+    align-items: center;
+
+    justify-items: center;
+
+    text-align: center;
+
+    margin-top: 25px;
+
+    padding: 10px;
+
+    border-radius: 25px;
+
+}
+
 @media only screen and (min-width: 1025px){
 
 .page_main>.section_main>.article_main>.Client_Comp{
@@ -207,6 +242,13 @@ border-radius: 25px;
 width: 25vw;
 
 }
+.failed{
 
+
+
+width: 10%;
+
+
+}
 }
 </style>

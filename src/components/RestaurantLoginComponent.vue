@@ -20,7 +20,11 @@
                         <button @click="rest_log_in">log in</button>
 
                     </span>
+                    <span class="failed" v-if="failed_login === true">
 
+                        <p>Invalid Login</p>
+
+                    </span>
 
                 </article>
             </section>
@@ -35,7 +39,7 @@ import Cookies from 'vue-cookies';
         
         data() {
             return {
-                
+                failed_login: false,
             }
         },
 
@@ -83,6 +87,7 @@ import Cookies from 'vue-cookies';
 
                     error;
 
+                    this.failed_login = true;
                 });
 
             }
@@ -172,6 +177,27 @@ width: 50vw;
 
 }
 
+.failed{
+
+color: #FFFFFF;
+
+background-color: #003F91;
+
+width: 50%;
+
+align-items: center;
+
+justify-items: center;
+
+text-align: center;
+
+margin-top: 25px;
+
+padding: 10px;
+
+border-radius: 25px;
+
+}
 
 @media only screen and (min-width: 1025px){
 
@@ -199,7 +225,15 @@ width: 25vw;
 
 }
 
-    
+.failed{
+
+
+
+width: 10%;
+
+
+}
+
 
 }
 

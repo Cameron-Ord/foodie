@@ -33,7 +33,7 @@
            
             <router-link v-if="(client_logged_in === true) || (partner_logged_in === true)" to="/AccountProfile" class="nav_menu">Your Profile</router-link>
     
-            <router-link v-if="(client_logged_in === true)" to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
+            <router-link v-if="(client_logged_in === true && partner_logged_in === false) || (client_logged_in === false && partner_logged_in === false)" to="/DiscoverPage" class="nav_menu">Discover Restaurants</router-link>
 
             <router-link v-if="(client_logged_in === true && food_cart !==null )" to="/ShoppingCart" class="nav_menu">Checkout</router-link>
 

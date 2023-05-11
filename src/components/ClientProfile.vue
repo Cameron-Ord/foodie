@@ -801,7 +801,7 @@ color: #FFFFFF;
 
     align-items: center;
 
-    width: 90%;
+    width: 75%;
     
     background-color: #003F91;
 
@@ -940,7 +940,7 @@ color: #FFFFFF;
 
     align-items: center;
 
-    width: 50%;
+    width: 75%;
 
     background-color: #003F91;
 

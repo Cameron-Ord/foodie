@@ -171,7 +171,7 @@ import PageFooter from '@/components/PageFooter.vue';
 
     text-align: center;
 
-    grid-template-rows: 10vh 25vh 8vh 8vh 1fr 12vh;
+    grid-template-rows: 10vh 25vh 6vh 8vh 1fr 12vh;
 
     width: 80%;
 
@@ -185,6 +185,7 @@ import PageFooter from '@/components/PageFooter.vue';
     
     border-radius: 15px;
 
+    min-height: 80vh;
 }
 
 
@@ -267,15 +268,17 @@ grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
 
 width: 75%;
 
+min-height: 80vh;
+
 }
 
 
 
 .page_main>.section_main>.page_article_1>.rest_span>img{
 
-width: 175px;
+width: 150px;
 
-height: 175px;
+height: 150px;
 
 border-radius: 50%;
 
@@ -351,11 +354,11 @@ grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
 
     text-align: center;
 
-    grid-template-rows: 10vh 1fr 8vh 8vh 1fr 12vh;
+    grid-template-rows: 10vh 20vh 6vh 8vh 1fr 12vh;
 
-    min-height: 60vh;
+    min-height: 70vh;
 
-    max-height: 60vh;
+    max-height: 70vh;
 
     max-width: 80%;
 
@@ -375,6 +378,8 @@ grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
 .page_main>.section_main>.page_article_1>.rest_span>img{
 
 
+    height: 150px;
+    width: 150px;
 
 }
 
@@ -389,7 +394,7 @@ grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
 
 .page_main>.section_main>.page_article_1>.rest_span>p{
 
-
+width: 17vw;
 
 }
 

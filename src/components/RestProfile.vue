@@ -89,13 +89,13 @@
 
                 <!--displaying orders based off values and conditions-->
 
-                <article class="incoming_orders" v-if="unconfirmed_orders !== undefined">
+                <article class="incoming_orders" v-if="unsort_unconfirmed_orders !== undefined">
 
                     <h1>Incoming Orders:</h1>
 
-                    <div v-for="(order, i) in unconfirmed_orders" :key="i">
+                    <div v-for="(order, i) in unsort_unconfirmed_orders" :key="i">
 
-                        <div v-if="unconfirmed_orders[i][`is_confirmed`] != 1">
+                        <div v-if="unsort_unconfirmed_orders[i][`is_confirmed`] != 1">
 
                             <h1>Order number: {{ order.order_id }} </h1>
 
@@ -110,13 +110,13 @@
 
                     </div>
                 </article>
-                <article class="confirmed_orders" v-if="confirmed_orders !== undefined">
+                <article class="confirmed_orders" v-if="unsort_confirmed_orders !== undefined">
 
                     <h1>Confirmed Orders:</h1>
 
-                    <span v-for="(confirmed, i) in confirmed_orders" :key="i">
+                    <span v-for="(confirmed, i) in unsort_confirmed_orders" :key="i">
 
-                        <div v-if="(confirmed_orders[i][`is_confirmed`] != 0 && confirmed_orders[i][`is_completed`] != 1)">
+                        <div v-if="(unsort_confirmed_orders[i][`is_confirmed`] != 0 && unsort_confirmed_orders[i][`is_completed`] != 1)">
                             <h1>Order number: {{ confirmed.order_id }}</h1>
 
                             <p>{{ confirmed.name }}</p>
@@ -130,13 +130,13 @@
                 </article>
 
 
-                <article class="completed_orders" v-if="completed_orders !== undefined">
+                <article class="completed_orders" v-if="unsort_completed_orders !== undefined">
 
                     <h1>Completed Orders:</h1>
 
-                    <span v-for="(completed, i) in completed_orders" :key="i">
+                    <span v-for="(completed, i) in unsort_completed_orders" :key="i">
 
-                        <div v-if="(completed_orders[i][`is_completed`] != 0 && completed_orders[i][`is_confirmed`] != 0)">
+                        <div v-if="(unsort_completed_orders[i][`is_completed`] != 0)">
 
                             <h1>Order number: {{ completed.order_id }} - {{ completed.name }}</h1>
 
@@ -194,17 +194,52 @@ export default {
 
             rest_data_holder: {},
 
-            unconfirmed_orders: [],
+            unsort_unconfirmed_orders: [],
 
-            confirmed_orders: [],
+            unsort_confirmed_orders: [],
 
-            completed_orders: [],
+            unsort_completed_orders: [],
 
+            sort_unconfirmed_orders: [],
+
+            sort_confirmed_orders: [],
+
+            sort_completed_orders: []
 
         }
     },
 
     methods: {
+
+
+        sort_unconfirmed(){
+
+            let sorted_orders = [];
+
+            let order_ids = [];
+
+            console.log(order_ids, sorted_orders);
+
+            for(let i = 0; i<this.unsort_unconfirmed_orders.length; i++){
+
+                let indexed = order_ids.findIndex((order_id) => order_id === this.unsort_unconfirmed_orders[i][`order_id`]);
+
+                if(indexed !== -1) {
+
+                    sorted_orders[indexed].push(this.unsort_unconfirmed_orders[i]);
+
+                }else{
+
+                    sorted_orders.push([this.unsort_unconfirmed_orders[i]]);
+                    order_ids.push(this.unsort_unconfirmed_orders[i][`order_id`]);
+                }
+
+                this.sort_unconfirmed_orders = sorted_orders;
+
+                console.log(this.sort_unconfirmed_orders);
+            }
+
+        },
 
         confirm_order(details) {
 
@@ -259,7 +294,7 @@ export default {
 
             let button_clicker = this.$refs[`completed_order`].getAttribute(`clicked_complete`);
 
-            let completed_item = this.confirmed_orders[button_clicker][`order_id`];
+            let completed_item = this.unsort_confirmed_orders[button_clicker][`order_id`];
 
 
 
@@ -610,17 +645,14 @@ export default {
 
             for (let i = 0; i < response[`data`].length; i++) {
 
-                this.unconfirmed_orders.push(response[`data`][i]);
+                this.unsort_unconfirmed_orders.push(response[`data`][i]);
 
 
 
             }
 
-            if(this.unconfirmed_orders.length <= 0){
+            this.sort_unconfirmed();
 
-                this.unconfirmed_orders = undefined;
-
-            }
 
         }).catch((error) => {
 
@@ -660,15 +692,9 @@ export default {
 
             for (let i = 0; i < response[`data`].length; i++) {
 
-                this.confirmed_orders.push(response[`data`][i]);
+                this.unsort_confirmed_orders.push(response[`data`][i]);
 
                 
-            }
-
-            if(this.confirmed_orders.length <= 0){
-
-                this.confirmed_orders = undefined;
-
             }
 
 
@@ -708,16 +734,10 @@ export default {
 
             for (let i = 0; i < response[`data`].length; i++) {
 
-                this.completed_orders.push(response[`data`][i]);
+                this.unsort_completed_orders.push(response[`data`][i]);
 
 
 
-
-            }
-
-            if(this.completed_orders.length <= 0){
-
-                this.completed_orders = undefined;
 
             }
 
@@ -728,7 +748,23 @@ export default {
         });
 
 
+             if(this.unsort_confirmed_orders.length <= 0){
 
+                this.unsort_confirmed_orders = undefined;
+
+            }
+
+            if(this.unsort_unconfirmed_orders.length <= 0){
+
+                this.unsort_unconfirmed_orders = undefined;
+
+            }
+
+            if(this.unsort_completed_orders.length <= 0){
+
+                this.unsort_completed_orders = undefined;
+
+            }
 
     }
 
@@ -1276,6 +1312,7 @@ width: 50%;
 
 .page_main{
 
+    width: 100%;
 
 
 }
@@ -1283,12 +1320,12 @@ width: 50%;
 
 .section_main{
 
-
+    width: 100%;
 
 }
 
 .article_1 {
-
+    width: 100%;
 }
 
 .article_1>.article_1_div {
@@ -1359,14 +1396,14 @@ width: 50%;
 
 
 .article_3 {
-
+    width: 100%;
 }
 
 
 
 
 .article_4 {
-
+    width: 100%;
 }
 
 .article_4>.span_1 {

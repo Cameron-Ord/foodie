@@ -325,7 +325,7 @@ export default {
 
     display: grid;
 
-    grid-auto-flow: column;
+    grid-auto-flow: row;
 
     justify-items: center;
 
@@ -346,13 +346,17 @@ export default {
 
     align-items: center;
 
-    grid-template-rows: 10vh 20vh 10vh 10vh;
+    grid-template-rows: 10vh 1fr 10vh 10vh;
 
     background-color: #003F91;
 
     width: 90%;
 
     border-radius: 15px;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
 }
 
 .article_2>.span_menu>p{
@@ -456,10 +460,13 @@ export default {
 @media only screen and (min-width: 1025px){
 .parent_div{
 
+    width: 100%;
+
 }
 
 .menu_div{
 
+    width: 100%;
 
 
 }
@@ -473,6 +480,7 @@ export default {
 .article_1{
 
 
+    width: 100%;
 
 }
 
@@ -491,7 +499,7 @@ width: 75%;
 }
 
 .landing_div{
-
+    width: 100%;
 
 }
 
@@ -519,7 +527,7 @@ width: 100%;
 
 .article_2>.span_menu{
 
-width: 25%;
+width: 90%;
 
 }
 
@@ -534,7 +542,7 @@ width: 25%;
 
 .article_2>.span_menu>button{
 
-    width: 20vw;
+    width: 5vw;
 
 }
 
@@ -549,7 +557,7 @@ width: 25%;
 
 .article_3{
 
-
+    width: 100%;
 }
 
 .article_3>.checkout_box{

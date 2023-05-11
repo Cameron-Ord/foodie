@@ -1,7 +1,7 @@
 <template>
     <!--an if statement that protects the html-->
 
-        <div v-if="j !== undefined" class="parent_div"> 
+        <div v-if="j !== undefined && menu_get_holder !== undefined" class="parent_div"> 
 
             <span class="span_1" >
 
@@ -435,6 +435,10 @@ export default {
 
                 this.j = 0;
 
+                if(this.menu_get_holder.length <= 0){
+
+                    this.menu_get_holder = undefined;
+                }
 
             }).catch((error) => {
 

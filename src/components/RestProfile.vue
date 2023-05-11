@@ -1522,7 +1522,25 @@ width: 50%;
 }
 
 
+.section_main>.article_1_div>img {
 
+width: 55%;
+
+object-fit: cover;
+
+padding-top: 15px;
+
+padding-bottom: 15px;
+
+padding-left: 15px;
+
+padding-right: 15px;
+
+border-radius: 50px;
+
+background-color: #003F91;
+
+}
 
 
 

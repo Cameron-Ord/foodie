@@ -280,6 +280,38 @@ export default {
     color: white;
 }
 
+
+
+@media only screen and (min-width: 770px){
+
+.page_header {
+
+
+
+grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+
+
+}
+.page_header>.header_span {
+
+
+grid-template-columns: 60vw 1fr;
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1025px){
 
 
@@ -288,7 +320,7 @@ export default {
 
 display: grid;
 
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
 
 place-items: center;
 

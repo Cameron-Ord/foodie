@@ -266,6 +266,20 @@ width: 100%;
 
 }
 
+
+@media only screen and (min-width: 770px){
+
+
+}
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1025px){
 
 .product_span{

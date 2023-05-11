@@ -158,28 +158,38 @@ width: 75%;
 }
 
 
+
+
+
+
+
+
+@media only screen and (min-width: 770px){
+
+.span_1 {
+
+width: 75%;
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1025px){
 
 .span_1 {
 
-
-display: grid;
-
-justify-items: center;
-
-align-items: center;
-
-text-align: center;
-
-grid-template-rows: 15vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh;
-
-background-color: #003F91;
-
 width: 50%;
 
-border-radius: 15px;
-
-margin-bottom: 25px;
 }
 
     

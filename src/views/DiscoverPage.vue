@@ -132,6 +132,8 @@ import PageFooter from '@/components/PageFooter.vue';
     justify-items: center;
     
     align-items: center;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .page_main>.section_main{
@@ -233,15 +235,7 @@ import PageFooter from '@/components/PageFooter.vue';
 
 }
 
-.page_main>.section_main>.page_article_1>.rest_span>h1{
 
-}
-
-
-.page_main>.section_main>.page_article_1>.rest_span>button{
-
-
-}
 
 .bio_p{
 
@@ -262,7 +256,47 @@ import PageFooter from '@/components/PageFooter.vue';
 
 
 }
+@media only screen and (min-width: 770px){
 
+.page_main{
+
+grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+
+}
+.page_main>.section_main>.page_article_1>.rest_span{
+
+width: 75%;
+
+}
+
+
+
+.page_main>.section_main>.page_article_1>.rest_span>img{
+
+width: 175px;
+
+height: 175px;
+
+border-radius: 50%;
+
+}
+
+
+.page_main>.section_main>.page_article_1>.rest_span>button{
+
+
+padding: 10px;
+
+
+
+}
+
+.page_main>.section_main>.page_article_1>.rest_span>p{
+
+width: 40%;
+
+}
+}
 @media only screen and (min-width: 1025px){
 
 
@@ -277,7 +311,7 @@ justify-items: center;
 
 align-items: center;
 
-grid-template-columns: repeat(auto-fit, minmax(1025px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
 
 }
 

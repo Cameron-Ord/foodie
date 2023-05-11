@@ -137,57 +137,45 @@ export default {
     border-radius: 10px;
 
 }
+@media only screen and (min-width: 770px){
 
 
-
-@media only screen and (min-width: 1025px){
 .page_main{
-
-
-    display: grid;
-
-    align-items: center;
-
-    justify-items: center;
-
-    min-height: 80vh;
-
-    grid-template-columns: repeat(auto-fit, minmax(1025px, 1fr));
-
-}
-
-.page_main>.section_main{
-
-
-}
-
-.page_main>.section_main>.landing_article{
-
+grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
 }
 .page_main>.section_main>.landing_article>.landing_span{
-    display: grid;
 
-    align-items: center;
-
-    justify-items: center;
-
-    grid-template-rows: 8vh 8vh 8vh;
-
-    padding-top: 20px;
-
-    padding-bottom: 20px;
-
-    width: 40%;
-
-    background-color: #003F91;
-
-    border-radius: 15px;
+width: 50%;
 
 }
 .page_main>.section_main>.landing_article>.landing_span>input{
 
 width: 30vw;
 }
+
+
+}
+
+
+@media only screen and (min-width: 1025px){
+.page_main{
+
+
+    grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
+
+}
+.page_main>.section_main>.landing_article>.landing_span{
+
+
+width: 30%;
+
+
+}
+.page_main>.section_main>.landing_article>.landing_span>input{
+
+width: 15vw;
+}
+
 .router_css{
 
 

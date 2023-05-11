@@ -457,7 +457,7 @@ export default {
 
     display: grid;
 
-    grid-template-rows: 0.2fr 0.2fr 1fr;
+    grid-auto-flow: row;
 
     justify-items: center;
 
@@ -482,6 +482,8 @@ export default {
     grid-template-rows: 9vh 30vh;
 
     border-radius: 15px;
+
+    margin-bottom: 15px;
 
     
 }
@@ -534,7 +536,9 @@ export default {
 
     border-radius: 15px;
 
-    margin-bottom: 25px;
+    margin-bottom: 5px;
+
+    margin-top: 15px;
 
 }
 
@@ -599,6 +603,54 @@ color: #FFFFFF;
 
     border-radius: 10px;
 }
+
+
+@media only screen and (min-width: 770px){
+.parent_div>.span_1{
+
+
+width: 75%;
+
+
+
+}
+.parent_div>.span_2{
+
+
+width: 60%;
+
+
+}
+.parent_div>.span_2>button{
+
+
+
+
+}
+.parent_div>.span_3{
+
+
+width: 75%;
+
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1025px){
 .parent_div>.span_1{
 
@@ -612,7 +664,7 @@ background-color: #003F91;
 
 width: 50%;
 
-grid-template-rows: 9vh 30vh;
+grid-template-rows: 5vh 25vh;
 
 border-radius: 15px;
 

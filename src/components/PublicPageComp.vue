@@ -96,7 +96,7 @@ export default {
 
                 Cookies.set(`food_cart`, this.menu_items);
 
-                this.$router.go();
+              
             
                 
 
@@ -458,6 +458,48 @@ export default {
     border-radius: 10px;
 
 
+}
+
+
+@media only screen and (min-width: 770px){
+
+.landing_div>img{
+
+width: 90%;
+
+padding-top: 15px;
+
+padding-bottom: 15px;
+
+padding-left: 15px;
+
+padding-right: 15px;
+
+background-color: #003F91;
+
+border-radius: 50px;
+}
+
+.article_2>.span_menu{
+
+width: 75%;
+
+}
+
+.article_1>.span_rest{
+
+width: 75%;
+
+
+
+}
+.menu_div>h1{
+
+
+width: 50%;
+
+}
+    
 }
 
 

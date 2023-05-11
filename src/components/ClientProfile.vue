@@ -58,6 +58,8 @@
                         <button @click="change_password">Update Password</button>
                     </span>
                 </article>
+            </section>
+            <section class="orders_section">
                 <article class="orders">
 
                     <!--displaying orders based on a condition and whether they have been completed or not-->
@@ -67,6 +69,8 @@
                         <h1>Current Orders:</h1>
 
                     <div class="incomp_order" v-for="(order, i) in sort_incomplete_orders" :key="i">
+
+                        <h1>ORDER: {{ order[0][`order_id`] }}</h1>
 
                         <div v-for="(item, j) in order" :key="j">
                         
@@ -78,6 +82,8 @@
                     </div>
 
                     </span>
+                </article>
+                <article class="old_orders">
 
                     <span class="completed" v-if="sort_completed_orders !== undefined">
 
@@ -90,21 +96,13 @@
                         <div v-for="(item, j) in order" :key="j">
                         
                             <h4>{{ item.name }} - ${{ item.price }}</h4>
-                        
-                        
                         </div>
-
-
                     </div>
-
                 </span>
-
-                </article>
+            </article>
             </section>
             <section class="section_sub">
-
                 <article class="article_sub">
-
                 <span class="del_span">
                         <h1>Account settings:</h1>
                         <input placeholder="enter your password to delete your account" type="password"
@@ -749,6 +747,19 @@ color: #FFFFFF;
 
 }
 
+.orders_section{
+
+
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    grid-auto-flow: row;
+
+    width: 100%;
+}
 
 .orders{
 
@@ -762,6 +773,21 @@ color: #FFFFFF;
     grid-auto-flow: row;
 
     width: 100%;
+
+}
+
+.old_orders{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    grid-auto-flow: row;
+
+    width: 100%;
+
 
 }
 
@@ -784,9 +810,6 @@ color: #FFFFFF;
     margin-bottom: 5px;
 
     border-radius: 10px;
-
-    width: 50%;
-
 
 
 }
@@ -812,7 +835,7 @@ color: #FFFFFF;
 }
 
 
-.orders>.completed>.comp_order>div{
+.old_orders>.completed>.comp_order>div{
 
         display: grid;
 
@@ -824,7 +847,7 @@ color: #FFFFFF;
 
 }
 
-.orders>.completed>.comp_order>div>h4{
+.old_orders>.completed>.comp_order>div>h4{
 
     color: #FFFFFF;
 
@@ -875,7 +898,7 @@ color: #FFFFFF;
     color: #FFFFFF;
 }
 
-.orders>.completed{
+.old_orders>.completed{
 
     display: grid;
 
@@ -886,7 +909,7 @@ color: #FFFFFF;
     align-items: center;
 }
 
-.orders>.completed>h1{
+.old_orders>.completed>h1{
     display: grid;
     
     margin-top: 10px;
@@ -908,7 +931,7 @@ color: #FFFFFF;
     border-radius: 10px;
 }
 
-.orders>.completed>.comp_order{
+.old_orders>.completed>.comp_order{
 
 
     display: grid;
@@ -930,7 +953,7 @@ color: #FFFFFF;
 }
 
 
-.orders>.completed>.comp_order>h1{
+.old_orders>.completed>.comp_order>h1{
 
 
     margin-bottom: 5px;
@@ -1002,36 +1025,51 @@ color: #FFFFFF;
 
 }
 
-@media only screen and (min-width: 1025px){
-    .page_main {
 
-display: grid;
+@media only screen and (min-width: 770px){
 
-min-height: 80vh;
+.page_main {
 
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
 
-justify-items: center;
+
 }
+.orders_section{
+
+
+
+width: 100%;
+}
+
+.orders{
+
+
+
+width: 100%;
+
+}
+
+.old_orders{
+
+
+
+width: 100%;
+
+
+}
+
 
 .divider_div{
 
 width: 100%;
 
-display: grid;
+
 }
 
 .page_main>.divider_div>.section_main {
 
-display: grid;
 
-grid-auto-flow: row;
-
-align-items: center;
-
-justify-items: center;
 
 width: 100%;
 
@@ -1039,17 +1077,12 @@ width: 100%;
 
 .page_main>.divider_div>.section_main>.article_1 {
 
-display: grid;
-
 grid-template-columns: 1fr 1fr;
 
-align-items: center;
-
-justify-items: center;
 
 width: 100%;
 
-text-align: center;
+
 
 }
 
@@ -1059,27 +1092,167 @@ text-align: center;
 
 .page_main>.divider_div>.section_main>.article_1>.article_1_span_2 {
 
-display: grid;
+width: 90%;
 
-grid-template-rows: auto;
+height: 113vh;
+
+grid-template-rows: 15vh 5vh 30vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh;
+}
+
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_2>img {
+
+height: 125px;
+
+width: 125px;
+
+border-radius: 50%;
+
+
+}
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_3 {
+
+
+    width: 90%;
+
+    height: 113vh;
+
+    grid-template-rows: 15vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh;
+}
+
+
+.old_orders>.completed>h1{
+
+    width: 40%;
+
+}
+.orders>.incomp>h1{
+
+    width: 40%;
+
+}
+
+
+.orders>.incomp>.incomp_order{
+
+
+width: 30%;
+
+
+
+}
+
+.old_orders>.completed>.comp_order{
+
+
+width: 30%;
+
+
+
+}
+
+
+
+.section_sub>.article_sub>.del_span{
+
+width: 50%;
+
+}
+
+}
+
+
+
+
+
+@media only screen and (min-width: 1025px){
+
+
+.page_main {
+
+grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
+
+place-items: center;
+
+}
+.orders_section{
+
+grid-auto-flow: column;
+
+width: 85%;
+
+align-items: center;
+
+justify-items: center;
+}
+
+.orders{
 
 align-items: center;
 
 justify-items: center;
 
+width: 100%;
+
+}
+
+.old_orders{
+
+align-items: center;
+
+justify-items: center;
+
+width: 100%;
+
+
+}
+
+
+.divider_div{
+
+width: 100%;
+
+align-items: center;
+
+justify-items: center;
+
+
+}
+
+.page_main>.divider_div>.section_main {
+
+
+
+width: 100%;
+
+}
+
+.page_main>.divider_div>.section_main>.article_1 {
+
+grid-template-columns: 1fr 1fr;
+
+
+width: 85%;
+
+
+
+}
+
+
+
+
+
+.page_main>.divider_div>.section_main>.article_1>.article_1_span_2 {
+
+
+
 grid-template-rows: 15vh 5vh 30vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh;
 
-background-color: #003F91;
 
-margin-top: 25px;
 
-width: 70%;
+width: 95%;
 
-text-align: center;
-
-color: #FFFFFF;
-
-border-radius: 10px;
 
 
 height: 115vh;
@@ -1096,130 +1269,47 @@ width: 125px;
 
 border-radius: 50%;
 
-border-style: solid;
-
-color: #5DA9E9;
-
-border-width: 10px;
 
 }
 
 .page_main>.divider_div>.section_main>.article_1>.article_1_span_3 {
 
-display: grid;
 
-grid-template-rows: auto;
-
-align-items: center;
-
-justify-items: center;
+width: 95%;
 
 grid-template-rows: 15vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh;
-
-background-color: #003F91;
-
-margin-top: 25px;
-
-width: 70%;
-
-color: #FFFFFF;
-
-border-radius: 10px;
-
-margin-bottom: 25px;
-
 height: 115vh;
 }
 
 
-.orders>.completed>h1{
-    display: grid;
-    
-    margin-top: 10px;
+.old_orders>.completed>h1{
 
-    margin-bottom: 10px;
+    width: 50%;
 
-    width: 25%;
-
-    justify-items: center;
-
-    align-items: center;
-
-    background-color: #003F91;
-
-    padding: 10px;
-
-    color: #FFFFFF;
-
-    border-radius: 10px;
 }
 .orders>.incomp>h1{
-    display: grid;
-    
-    margin-top: 10px;
 
-    margin-bottom: 10px;
 
-    width: 25%;
+    width: 50%;
 
-    justify-items: center;
-
-    align-items: center;
-
-    background-color: #003F91;
-
-    padding: 10px;
-
-    color: #FFFFFF;
-
-    border-radius: 10px;
 }
 
 
 .orders>.incomp>.incomp_order{
 
-display: grid;
 
-justify-items: center;
+width: 75%;
 
-align-items: center;
-
-width: 90%;
-
-background-color: #003F91;
-
-margin-top: 5px;
-
-margin-bottom: 5px;
-
-border-radius: 10px;
-
-width: 30%;
-
+height: 16vh;
 
 
 }
 
-.orders>.completed>.comp_order{
+.old_orders>.completed>.comp_order{
 
-display: grid;
 
-justify-items: center;
-
-align-items: center;
-
-width: 90%;
-
-background-color: #003F91;
-
-margin-top: 5px;
-
-margin-bottom: 5px;
-
-border-radius: 10px;
-
-width: 30%;
-
+width: 75%;
+height: 16vh;
 
 
 }
@@ -1227,26 +1317,6 @@ width: 30%;
 
 
 .section_sub>.article_sub>.del_span{
-
-display: grid;
-
-align-items: center;
-
-justify-items: center;
-
-grid-template-rows: 10vh 10vh 10vh;
-
-background-color: #003F91;
-
-width: 90%;
-
-color: #FFFFFF;
-
-border-radius: 10px;
-
-margin-top: 25px;
-
-margin-bottom: 25px;
 
 width: 50%;
 

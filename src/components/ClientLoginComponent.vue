@@ -217,7 +217,41 @@ border-radius: 25px;
 
 }
 
+
+
+
+
+
+@media only screen and (min-width: 770px){
+.page_main{
+
+grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+
+}
+.page_main>.section_main>.article_main>.Client_Comp{
+
+width: 50%;
+
+}
+
+.page_main>.section_main>.article_main>.Client_Comp>input{
+
+
+    width: 30vw;
+
+}
+}
+
+
+
+
 @media only screen and (min-width: 1025px){
+
+.page_main{
+
+grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
+
+}
 
 .page_main>.section_main>.article_main>.Client_Comp{
 
@@ -239,7 +273,7 @@ border-radius: 25px;
 .page_main>.section_main>.article_main>.Client_Comp>input{
 
 
-width: 25vw;
+width: 15vw;
 
 }
 .failed{

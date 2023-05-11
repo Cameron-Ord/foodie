@@ -69,4 +69,20 @@ import PageFooter from '@/components/PageFooter.vue';
 
     align-items: center;
 }
+
+@media only screen and (min-width: 770px){
+.page_main{
+grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+}
+
+}
+
+
+@media only screen and (min-width: 1025px){
+.page_main{
+grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
+}
+
+}
+
 </style>

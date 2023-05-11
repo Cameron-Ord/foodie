@@ -160,7 +160,7 @@ align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 3fr 1fr;
+grid-auto-flow: row;
 
 height: 100%;
 
@@ -200,17 +200,19 @@ border-radius: 15px;
     background-color: #FFFFFF;
 
     padding: 5px;
+
+
 }
 
 .page_main>.section_main>.input_article>.tinyspan{
 
-    display: grid;
+display: grid;
 
 align-items: center;
 
 justify-items: center;
 
-grid-template-rows: 75px 75px;
+grid-template-rows: 5vh 10vh;
 
 color: #FFFFFF;
 
@@ -221,6 +223,10 @@ text-align: center;
 background-color: #003F91;
 
 border-radius: 15px;
+
+margin-top: 25px;
+
+margin-bottom: 25px;
 }
 
 .router_color{
@@ -236,49 +242,62 @@ border-radius: 15px;
     background-color: #FFFFFF;
 }
 
-@media only screen and (min-width: 1025px){
+
+
+@media only screen and (min-width: 770px){
+.page_main{
+
+grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+
+}
+.page_main>.section_main>.input_article>.input_span{
+
+
+width: 75%;
+
+
+
+}
+.page_main>.section_main>.input_article>.input_span>input{
+
+width: 35vw;
+}
 
 .page_main>.section_main>.input_article>.tinyspan{
 
-display: grid;
 
-align-items: center;
+width: 60%;
 
-justify-items: center;
 
-grid-template-rows: 75px 75px;
+}
+}
 
-color: #FFFFFF;
 
-width: 40%;
 
-text-align: center;
 
-background-color: #003F91;
 
-border-radius: 15px;
+@media only screen and (min-width: 1025px){
+.page_main{
+
+grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
+
+}
+
+.page_main>.section_main>.input_article>.tinyspan{
+
+
+width: 25%;
+
 }
 
 
 
 .page_main>.section_main>.input_article>.input_span{
-display: grid;
 
-align-items: center;
-
-justify-items: center;
-
-grid-template-rows: 10vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 8vh 15vh;
-
-margin-top: 50px;
 
 width: 40%;
 
-background-color: #003F91;
 
-color: #FFFFFF;
-
-border-radius: 15px;
 
 }
 

@@ -86,9 +86,10 @@
                     <single-menu-item></single-menu-item>
 
                 </article>
+            </section>
 
-                <!--displaying orders based off values and conditions-->
-
+            <section class="orders_sect">
+                
                 <article class="incoming_orders" v-if="sort_unconfirmed_orders !== undefined">
 
                     <h1>Incoming Orders:</h1>
@@ -120,9 +121,6 @@
 
                             <h1>{{ item.name }} - ${{ item.price }}</h1>
 
-                        
-
-                          
                         </div>
                         <button :clicked_complete="i" @click="complete_order" ref="completed_order">Complete Order</button>
                     </span>
@@ -142,7 +140,9 @@
 
 
                 </article>
-
+            </section>
+                <!--displaying orders based off values and conditions-->
+        <section class="delete_sect">
                 <article class="article_4">
 
                     <span class="span_1">
@@ -845,7 +845,7 @@ export default {
 
     min-height: 80vh;
 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px));
 
     justify-items: center;
 
@@ -863,11 +863,25 @@ export default {
 
     align-items: center;
 
-
     grid-auto-flow: row;
 
 
 }
+
+.orders_sect{
+
+    display: grid;
+
+    width: 100%;
+}
+
+.delete_sect{
+
+display: grid;
+
+width: 100%;
+}
+
 
 .article_1 {
     display: grid;
@@ -1397,14 +1411,232 @@ width: 50%;
 
 }
 
-@media only screen and (min-width: 1025px){
+
+
+
+@media only screen and (min-width: 770px){
+
+
+
+
+.page_main{
+
+
+grid-template-columns: repeat(auto-fit, minmax(480px));
+
+
+
+}
+
+.article_4>.span_1>button{
+
+    width: 20vw;
+
+}
+
+.orders_sect{
+
+display: grid;
+
+width: 100%;
+
+}
+
+.delete_sect{
+
+display: grid;
+
+width: 100%;
+}
+
 
 .incoming_orders>div{
 
-    width: 30%;
+width: 50%;
 }
 
- 
+
+
+.incoming_orders>div>button{
+
+color: #003F91;
+
+background-color: #FFFFFF;
+
+padding: 5px;
+
+margin-top: 10px;
+
+margin-bottom: 10px;
+
+width: 10vw;
+
+}
+
+.confirmed_orders>span>button{
+
+color: #003F91;
+
+background-color: #FFFFFF;
+
+padding: 5px;
+
+margin-top: 10px;
+
+margin-bottom: 10px;
+
+width: 10vw;
+
+}
+
+
+.page_main{
+
+width: 100%;
+
+
+}
+
+
+.section_main{
+
+width: 100%;
+
+}
+
+.article_1 {
+width: 100%;
+}
+
+
+
+.article_1>.span_1 {
+
+width: 75%;
+
+}
+
+
+.article_1>.span_2 {
+
+
+width: 75%;
+
+
+
+
+}
+
+
+
+.article_2 {
+
+width: 100%;
+
+}
+
+
+.article_3 {
+width: 100%;
+}
+
+
+
+
+.article_4 {
+width: 100%;
+}
+
+.article_4>.span_1 {
+width: 75%;
+
+
+}
+
+
+
+
+.confirmed_orders>span{
+
+width: 50%;
+
+
+}
+
+
+
+.completed_orders>span{
+
+
+width: 50%;
+
+}
+
+
+.section_main>.article_1_div>img {
+
+width: 90%;
+
+object-fit: cover;
+
+padding-top: 15px;
+
+padding-bottom: 15px;
+
+padding-left: 15px;
+
+padding-right: 15px;
+
+border-radius: 50px;
+
+background-color: #003F91;
+
+}
+
+
+}
+
+
+
+@media only screen and (min-width: 1025px){
+.page_main{
+
+
+grid-template-columns: repeat(auto-fit, minmax(770px));
+
+
+
+}
+
+.orders_sect{
+
+display: grid;
+
+width: 50%;
+
+grid-auto-flow: column;
+
+}
+
+.delete_sect{
+
+display: grid;
+
+width: 100%;
+}
+
+.incoming_orders>div{
+
+    width: 80%;
+
+    height: 25vh;
+}
+
+.article_4>.span_1>button{
+
+width: 10vw;
+
+}
 
 .incoming_orders>div>button{
 
@@ -1507,9 +1739,9 @@ width: 50%;
 
 .confirmed_orders>span{
 
-    width: 30%;
+    width: 80%;
 
-
+    height: 25vh;
 }
 
 
@@ -1517,8 +1749,9 @@ width: 50%;
 .completed_orders>span{
 
 
-    width: 30%;
+    width: 80%;
 
+    height: 25vh;
 }
 
 

@@ -62,18 +62,43 @@
 
                     <!--displaying orders based on a condition and whether they have been completed or not-->
 
-                    <span v-if="incomplete_orders !== undefined" class="incomp">
+                    <span v-if="sort_incomplete_orders !== undefined" class="incomp">
+
                         <h1>Current Orders:</h1>
-                    <div class="incomp_order" v-for="(item, i) in incomplete_orders" :key="i">
-                        <h1 v-if="item.is_complete !== 1">{{ item.name }} - {{ item.order_id }}</h1>
+
+                    <div class="incomp_order" v-for="(order, i) in sort_incomplete_orders" :key="i">
+
+                        <div v-for="(item, j) in order" :key="j">
+                        
+                        <h4>{{ item.name }} - ${{ item.price }}</h4>
+                        
+                        </div>
+              
+
                     </div>
+
                     </span>
-                    <span class="completed" v-if="completed_orders !== undefined">
+
+                    <span class="completed" v-if="sort_completed_orders !== undefined">
+
                         <h1>Order History:</h1>
-                    <div class="comp_order" v-for="(item, i) in completed_orders" :key="i">
-                        <h1 v-if="item.is_complete !== 0">{{ item.name }} - {{ item.order_id }}</h1>
+
+                    <div class="comp_order" v-for="(order, i) in sort_completed_orders" :key="i">
+
+                        <h1>ORDER: {{ order[0][`order_id`] }}</h1>
+                  
+                        <div v-for="(item, j) in order" :key="j">
+                        
+                            <h4>{{ item.name }} - ${{ item.price }}</h4>
+                        
+                        
+                        </div>
+
+
                     </div>
+
                 </span>
+
                 </article>
             </section>
             <section class="section_sub">
@@ -110,9 +135,13 @@ export default {
 
             client_data_holder: {},
 
-            incomplete_orders: [],
+            unsort_incomplete_orders: [],
 
-            completed_orders: [],
+            unsort_completed_orders: [],
+
+            sort_incomplete_orders: undefined,
+
+            sort_completed_orders: undefined,
 
             id_array: []
         }
@@ -121,6 +150,69 @@ export default {
 
 
     methods: {
+
+
+
+        sort_completed(){
+ 
+            let sorted_orders = [];
+
+            let order_ids = [];
+
+            console.log(order_ids, sorted_orders);
+
+            for(let i = 0; i<this.unsort_completed_orders.length; i++){
+
+                let indexed = order_ids.findIndex((order_id) => order_id === this.unsort_completed_orders[i][`order_id`]);
+
+                if(indexed !== -1) {
+
+                    sorted_orders[indexed].push(this.unsort_completed_orders[i]);
+
+                }else{
+
+                    sorted_orders.push([this.unsort_completed_orders[i]]);
+                    order_ids.push(this.unsort_completed_orders[i][`order_id`]);
+                }
+
+                this.sort_completed_orders = sorted_orders;
+
+             
+            }
+
+        },
+
+
+        sort_incomplete(){
+
+            let sorted_orders = [];
+
+            let order_ids = [];
+
+            console.log(order_ids, sorted_orders);
+
+            for(let i = 0; i<this.unsort_incomplete_orders.length; i++){
+
+                let indexed = order_ids.findIndex((order_id) => order_id === this.unsort_incomplete_orders[i][`order_id`]);
+
+                if(indexed !== -1) {
+
+                    sorted_orders[indexed].push(this.unsort_incomplete_orders[i]);
+
+                }else{
+
+                    sorted_orders.push([this.unsort_incomplete_orders[i]]);
+                    order_ids.push(this.unsort_incomplete_orders[i][`order_id`]);
+                }
+
+                this.sort_incomplete_orders = sorted_orders;
+
+             
+            }
+
+
+        },
+
 
         delete_profile() {
 
@@ -391,7 +483,7 @@ export default {
             
             for (let i = 0; i < response[`data`].length; i++) {
 
-                this.incomplete_orders.push(response[`data`][i]);
+                this.unsort_incomplete_orders.push(response[`data`][i]);
 
             
                 
@@ -399,9 +491,11 @@ export default {
         
             }
 
-            if(this.incomplete_orders.length <= 0){
+            this.sort_incomplete();
 
-                this.incomplete_orders = undefined;
+            if(this.unsort_incomplete_orders.length <= 0){
+
+                this.unsort_incomplete_orders = undefined;
             }
 
 
@@ -440,14 +534,16 @@ export default {
 
             for (let i = 0; i < response[`data`].length; i++) {
 
-                this.completed_orders.push(response[`data`][i]);
+                this.unsort_completed_orders.push(response[`data`][i]);
 
     
             }
 
-            if(this.completed_orders.length <= 0){
+            this.sort_completed();
 
-                this.completed_orders = undefined;
+            if(this.unsort_completed_orders.length <= 0){
+
+                this.unsort_completed_orders = undefined;
             }
 
             
@@ -689,9 +785,52 @@ color: #FFFFFF;
 
     border-radius: 10px;
 
-    width: 70%;
+    width: 50%;
 
 
+
+}
+.orders>.incomp>.incomp_order>div{
+
+    display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    width: 100%;
+    
+}
+
+.orders>.incomp>.incomp_order>div>h4{
+
+    color: #FFFFFF;
+
+    margin-top: 5px;
+
+    margin-bottom: 5px;
+}
+
+
+.orders>.completed>.comp_order>div{
+
+        display: grid;
+
+    justify-items: center;
+
+    align-items: center;
+
+    width: 100%;
+
+}
+
+.orders>.completed>.comp_order>div>h4{
+
+    color: #FFFFFF;
+
+    margin-top: 5px;
+
+    margin-bottom: 5px;
 }
 .incomp{
 
@@ -778,7 +917,7 @@ color: #FFFFFF;
 
     align-items: center;
 
-    width: 70%;
+    width: 50%;
 
     background-color: #003F91;
 
@@ -993,86 +1132,98 @@ height: 115vh;
 }
 
 
-.page_main>.divider_div>.section_main>.article_1>.article_1_span_2>img {
+.orders>.completed>h1{
+    display: grid;
+    
+    margin-top: 10px;
 
-}
-
-
-.page_main>.divider_div>.section_main>.article_1>.article_1_span_3>button{
-
-
-
-}
-
-.page_main>.divider_div>.section_main>.article_1>.article_1_span_3>p{
-
-
-}
-
-.page_main>.divider_div>.section_main>.account_setting{
-
-}
-
-.p_prof{
-
-}
-
-.p_data{
-
-
-
-}
-
-
-.orders{
-
-
-
-}
-
-
-
-.orders>.incomp_order{
+    margin-bottom: 10px;
 
     width: 25%;
 
+    justify-items: center;
 
+    align-items: center;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    color: #FFFFFF;
+
+    border-radius: 10px;
 }
+.orders>.incomp>h1{
+    display: grid;
+    
+    margin-top: 10px;
 
-
-.orders>.incomp_order>h1{
-
-}
-
-
-.orders>.comp_order{
+    margin-bottom: 10px;
 
     width: 25%;
 
+    justify-items: center;
+
+    align-items: center;
+
+    background-color: #003F91;
+
+    padding: 10px;
+
+    color: #FFFFFF;
+
+    border-radius: 10px;
 }
 
 
-.orders>.comp_order>h1{
+.orders>.incomp>.incomp_order{
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+width: 90%;
+
+background-color: #003F91;
+
+margin-top: 5px;
+
+margin-bottom: 5px;
+
+border-radius: 10px;
+
+width: 30%;
+
 
 
 }
 
-.delete_button{
+.orders>.completed>.comp_order{
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+width: 90%;
+
+background-color: #003F91;
+
+margin-top: 5px;
+
+margin-bottom: 5px;
+
+border-radius: 10px;
+
+width: 30%;
 
 
 
 }
 
-.section_sub{
-
-
-
-}
-
-.article_sub{
-
-
-}
 
 
 .section_sub>.article_sub>.del_span{

@@ -1228,13 +1228,29 @@ export default {
     color: #FFFFFF;
 
 }
+
+.incoming_orders>div>h1{
+
+    color: #003F91;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+}
+
 .incoming_orders>div>div{
 
     display: grid;
 
+    align-items: center;
+
+    justify-items: center;
+
 }
 
-.incoming_orders>div>div>button{
+.incoming_orders>div>button{
 
     color: #003F91;
 
@@ -1245,6 +1261,8 @@ export default {
     margin-top: 10px;
 
     margin-bottom: 10px;
+
+    width: 50vw;
 
 }
 .incoming_orders>span>div{
@@ -1279,8 +1297,24 @@ margin-top: 5px;
 
 margin-bottom: 5px;
 
+padding-top: 15px;
+
+padding-bottom: 15px;
+
 color: #FFFFFF;
 
+
+
+}
+
+.confirmed_orders>span>h1{
+
+    color: #003F91;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .confirmed_orders>span>div{
@@ -1293,7 +1327,7 @@ justify-items: center;
 
 
 }
-.confirmed_orders>span>div>button{
+.confirmed_orders>span>button{
 
     color: #003F91;
 
@@ -1326,7 +1360,7 @@ padding-top: 10px;
 
 padding-bottom: 10px;
 
-width: 80%;
+width: 50%;
 
 margin-top: 5px;
 
@@ -1336,16 +1370,6 @@ color: #FFFFFF;
 
 }
 
-.completed_orders>span>div{
-
-display: grid;
-
-align-items: center;
-
-justify-items: center;
-
-
-}
 
 
 .article_1>.span_1>.p_text{
@@ -1373,6 +1397,39 @@ width: 50%;
 @media only screen and (min-width: 1025px){
 
 
+.incoming_orders>div>button{
+
+    color: #003F91;
+
+    background-color: #FFFFFF;
+
+    padding: 5px;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+
+    width: 10vw;
+
+}
+
+.confirmed_orders>span>button{
+
+color: #003F91;
+
+background-color: #FFFFFF;
+
+padding: 5px;
+
+margin-top: 10px;
+
+margin-bottom: 10px;
+
+width: 10vw;
+
+}
+
+
 .page_main{
 
     width: 100%;
@@ -1391,22 +1448,7 @@ width: 50%;
     width: 100%;
 }
 
-.article_1>.article_1_div {
 
-
-
-}
-
-.article_1>.article_1_div>h1{
-
-
-
-}
-
-.article_1>.article_1_div>img {
-
-
-}
 
 .article_1>.span_1 {
 
@@ -1414,15 +1456,6 @@ width: 50%;
 
 }
 
-.article_1>.span_1>p{
-
-
-}
-
-.article_1>.span_2>button{
-
-
-}
 
 .article_1>.span_2 {
 
@@ -1434,21 +1467,6 @@ width: 50%;
 
 }
 
-.article_1>.span_2>.p_tag_highlight{
-
-
-}
-
-.article_1>.span_2>p{
-
-
-
-
-}
-
-.article_1>.span_2>h1{
-
-}
 
 
 .article_2 {
@@ -1476,69 +1494,7 @@ width: 50%;
 }
 
 
-.article_4>.span_1>button{
 
-}
-
-
-
-.article_4>.span_1>h1{
-
-
-}
-
-.incoming_orders{
-
-
-}
-
-.incoming_orders>h1{
-
-
-}
-
-.confirmed_orders{
-
-
-}
-
-.confirmed_orders>h1{
-
-
-
-}
-
-.completed_orders{
-
-
-}
-
-.completed_orders>h1{
-
-}
-
-.incoming_orders>div{
-
-
-
-}
-.incoming_orders>div>div{
-
-
-
-}
-
-.incoming_orders>div>div>button{
-
-
-
-}
-.incoming_orders>span>div{
-
-
-
-
-}
 
 .confirmed_orders>span{
 
@@ -1547,16 +1503,7 @@ width: 50%;
 
 }
 
-.confirmed_orders>span>div{
 
-
-
-
-}
-.confirmed_orders>span>div>button{
-
-
-}
 
 .completed_orders>span{
 
@@ -1564,37 +1511,6 @@ width: 50%;
     width: 30%;
 
 }
-
-.completed_orders>span>div{
-
-
-
-}
-
-
-.completed_orders>span>div>button{
-
-
-
-
-}
-
-.article_1>.span_1>.p_text{
-
-
-}
-
-.bio_text{
-
-
-
-
-}
-
-
-
-
-
 
 
 

@@ -513,7 +513,19 @@ width: 75%;
 
 .landing_div>img{
 
+    width: 90%;
+    
+    padding-top: 15px;
 
+    padding-bottom: 15px;
+
+    padding-left: 15px;
+
+    padding-right: 15px;
+
+    background-color: #003F91;
+
+    border-radius: 50px;
 }
 
 .article_2{

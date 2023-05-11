@@ -27,7 +27,7 @@
         </article>
 
 
-        <div class="menu_div">
+        <div class="menu_div" v-if="(rest_menu !== undefined)">
 
             <h1>Menu Items:</h1>
 
@@ -72,7 +72,7 @@ export default {
             return {
                restaurant_object: {},
 
-               rest_menu: [],
+               rest_menu: undefined,
 
                menu_items: [],
 
@@ -175,11 +175,14 @@ export default {
 
                 response;
 
-                for (let i = 0; i < response[`data`].length; i++){
+ 
+                    this.rest_menu = response[`data`];
+              
 
-                    this.rest_menu.push(response[`data`][i]);
-                }
+                    if(this.rest_menu.length <= 0){
 
+                        this.rest_menu = undefined
+                    }
            
 
             }).catch((error)=>{
@@ -232,7 +235,7 @@ export default {
 
     border-radius: 10px;
 
-    width: 75%;
+    width: 80%;
     
 }
 .article_1{
@@ -474,7 +477,7 @@ export default {
 .menu_div>h1{
 
 
-    width: 25%;
+    width: 50%;
 
 }
 .article_1{

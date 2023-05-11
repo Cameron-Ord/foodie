@@ -262,6 +262,46 @@ width: 100%;
 
     padding: 10px;
 
+    width: 30vw;
+
+}
+
+@media only screen and (min-width: 1025px){
+
+.product_span{
+
+display: grid;
+
+justify-items: center;
+
+align-items: center;
+
+grid-template-columns: 1fr 1fr 1fr;
+
+margin-top: 10px;
+
+margin-bottom: 10px;
+
+background-color: #003F91;
+
+width: 30%;
+
+border-radius: 10px;
+
+}
+
+.order_container>.button_span>button{
+
+color: #FFFFFF;
+
+background-color: #003F91;
+
+padding: 10px;
+
+width: 5vw;
+
+}
+
 }
 
 </style>

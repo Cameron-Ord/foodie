@@ -99,10 +99,9 @@
 
                         <div v-for="(item, j) in order" :key="j">
 
-                            <h1>{{ item.name }} </h1>
+                            <h1>{{ item.name }} - ${{ item.price }}</h1>
 
-                            <p>{{ item.price }}</p>
-
+                          
                         </div>
 
                         <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Order</button>
@@ -119,9 +118,9 @@
 
                         <div v-for="(item, j) in confirmed" :key="j">
 
-                            <h1>{{ item.name }}</h1>
+                            <h1>{{ item.name }} - ${{ item.price }}</h1>
 
-                            <p>${{ item.price }}</p>
+                        
 
                           
                         </div>
@@ -1223,6 +1222,10 @@ export default {
 
     margin-bottom: 5px;
 
+    padding-top: 10px;
+
+    padding-bottom: 10px;
+
     text-align: center;
 
     color: #FFFFFF;
@@ -1396,6 +1399,12 @@ width: 50%;
 
 @media only screen and (min-width: 1025px){
 
+.incoming_orders>div{
+
+    width: 30%;
+}
+
+ 
 
 .incoming_orders>div>button{
 

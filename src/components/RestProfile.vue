@@ -89,61 +89,55 @@
 
                 <!--displaying orders based off values and conditions-->
 
-                <article class="incoming_orders" v-if="unsort_unconfirmed_orders !== undefined">
+                <article class="incoming_orders" v-if="sort_unconfirmed_orders !== undefined">
 
                     <h1>Incoming Orders:</h1>
 
-                    <div v-for="(order, i) in unsort_unconfirmed_orders" :key="i">
+                    <div v-for="(order, i) in sort_unconfirmed_orders" :key="i">
 
-                        <div v-if="unsort_unconfirmed_orders[i][`is_confirmed`] != 1">
+                        <h1>ORDER: {{ order[0][`order_id`] }}</h1>
 
-                            <h1>Order number: {{ order.order_id }} </h1>
+                        <div v-for="(item, j) in order" :key="j">
 
-                            <p>{{ order.name }}</p>
+                            <h1>{{ item.name }} </h1>
 
-
-                            <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Orders</button>
+                            <p>{{ item.price }}</p>
 
                         </div>
 
-                        
+                        <button :clicked_confirm="i" @click="confirm_order" ref="confirmed_order">Confirm Order</button>
 
                     </div>
                 </article>
-                <article class="confirmed_orders" v-if="unsort_confirmed_orders !== undefined">
+                <article class="confirmed_orders" v-if="sort_confirmed_orders !== undefined">
 
                     <h1>Confirmed Orders:</h1>
 
-                    <span v-for="(confirmed, i) in unsort_confirmed_orders" :key="i">
+                    <span v-for="(confirmed, i) in sort_confirmed_orders" :key="i">
 
-                        <div v-if="(unsort_confirmed_orders[i][`is_confirmed`] != 0 && unsort_confirmed_orders[i][`is_completed`] != 1)">
-                            <h1>Order number: {{ confirmed.order_id }}</h1>
+                        <h1>ORDER: {{ confirmed[0][`order_id`] }}</h1>
 
-                            <p>{{ confirmed.name }}</p>
+                        <div v-for="(item, j) in confirmed" :key="j">
 
-                            <button :clicked_complete="i" @click="complete_order" ref="completed_order">Complete
-                                Order</button>
+                            <h1>{{ item.name }}</h1>
+
+                            <p>${{ item.price }}</p>
+
+                          
                         </div>
-
+                        <button :clicked_complete="i" @click="complete_order" ref="completed_order">Complete Order</button>
                     </span>
 
                 </article>
 
 
-                <article class="completed_orders" v-if="unsort_completed_orders !== undefined">
+                <article class="completed_orders" v-if="sort_completed_orders !== undefined">
 
                     <h1>Completed Orders:</h1>
 
-                    <span v-for="(completed, i) in unsort_completed_orders" :key="i">
+                    <span v-for="(completed, i) in sort_completed_orders" :key="i">
 
-                        <div v-if="(unsort_completed_orders[i][`is_completed`] != 0)">
-
-                            <h1>Order number: {{ completed.order_id }} - {{ completed.name }}</h1>
-
-                        
-
-                        </div>
-
+                        <h1>ORDER: {{ completed[0][`order_id`] }}</h1>
 
                     </span>
 
@@ -200,11 +194,11 @@ export default {
 
             unsort_completed_orders: [],
 
-            sort_unconfirmed_orders: [],
+            sort_unconfirmed_orders: undefined,
 
-            sort_confirmed_orders: [],
+            sort_confirmed_orders: undefined,
 
-            sort_completed_orders: []
+            sort_completed_orders: undefined,
 
         }
     },
@@ -236,10 +230,71 @@ export default {
 
                 this.sort_unconfirmed_orders = sorted_orders;
 
-                console.log(this.sort_unconfirmed_orders);
+             
             }
 
         },
+
+
+        sort_confirmed(){
+
+            let sorted_orders = [];
+
+            let order_ids = [];
+
+            console.log(this.unsort_confirmed_orders, `unsort`);
+
+            for(let i = 0; i<this.unsort_confirmed_orders.length; i++){
+
+                let indexed = order_ids.findIndex((order_id) => order_id === this.unsort_confirmed_orders[i][`order_id`]);
+
+                if(indexed !== -1) {
+
+                    sorted_orders[indexed].push(this.unsort_confirmed_orders[i]);
+
+                }else{
+
+                    sorted_orders.push([this.unsort_confirmed_orders[i]]);
+                    order_ids.push(this.unsort_confirmed_orders[i][`order_id`]);
+                }
+
+                this.sort_confirmed_orders = sorted_orders;
+
+                console.log(this.sort_confirmed_orders, `confirmed`);
+             
+            }
+
+        },
+
+    sort_completed(){
+
+            let sorted_orders = [];
+
+            let order_ids = [];
+
+            console.log(order_ids, sorted_orders);
+
+            for(let i = 0; i<this.unsort_completed_orders.length; i++){
+
+                let indexed = order_ids.findIndex((order_id) => order_id === this.unsort_completed_orders[i][`order_id`]);
+
+                if(indexed !== -1) {
+
+                    sorted_orders[indexed].push(this.unsort_completed_orders[i]);
+
+                }else{
+
+                    sorted_orders.push([this.unsort_completed_orders[i]]);
+                    order_ids.push(this.unsort_completed_orders[i][`order_id`]);
+                }
+
+                this.sort_completed_orders = sorted_orders;
+
+             
+            }
+
+        },
+
 
         confirm_order(details) {
 
@@ -249,7 +304,7 @@ export default {
 
             let button_clicker = this.$refs[`confirmed_order`].getAttribute(`clicked_confirm`);
 
-            let confirmed_item = this.unconfirmed_orders[button_clicker][`order_id`];
+            let confirmed_item = this.unsort_unconfirmed_orders[button_clicker][`order_id`];
 
 
             axios({
@@ -651,6 +706,14 @@ export default {
 
             }
 
+
+            if(this.unsort_unconfirmed_orders.length <= 0){
+
+                this.unsort_unconfirmed_orders = undefined;
+
+            }
+
+
             this.sort_unconfirmed();
 
 
@@ -697,7 +760,13 @@ export default {
                 
             }
 
+            this.sort_confirmed();
 
+             if(this.unsort_confirmed_orders.length <= 0){
+
+                this.unsort_confirmed_orders = undefined;
+
+            }
 
         }).catch((error) => {
 
@@ -741,6 +810,15 @@ export default {
 
             }
 
+            this.sort_completed();
+
+            if(this.unsort_completed_orders.length <= 0){
+
+                this.unsort_completed_orders = undefined;
+
+            }
+
+
         }).catch((error) => {
 
             error;
@@ -748,23 +826,8 @@ export default {
         });
 
 
-             if(this.unsort_confirmed_orders.length <= 0){
 
-                this.unsort_confirmed_orders = undefined;
 
-            }
-
-            if(this.unsort_unconfirmed_orders.length <= 0){
-
-                this.unsort_unconfirmed_orders = undefined;
-
-            }
-
-            if(this.unsort_completed_orders.length <= 0){
-
-                this.unsort_completed_orders = undefined;
-
-            }
 
     }
 

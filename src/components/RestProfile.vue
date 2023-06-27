@@ -395,10 +395,7 @@ export default {
         delete_account() {
 
             let restaurant_token = Cookies.get(`rest_login_token`);
-    
-            console.log(this.refs[`delete_acc`][`value`]);
-
-            console.log(restaurant_token);
+            
             axios({
 
                 method: `DELETE`,
@@ -421,7 +418,10 @@ export default {
 
             }).then((response) => {
 
-                response;
+                console.log(response);
+                Cookies.remove('restaurant_id');
+                Cookies.remove('rest_login_token');
+                this.$router.push('/');
 
             }).catch((error) => {
 

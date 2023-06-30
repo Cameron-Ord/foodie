@@ -67,7 +67,7 @@ import Cookies from 'vue-cookies';
 
                     method: `POST`,
 
-                    url: `${process.env.VUE_APP_BASE_DOMAIN}/api/menu`,
+                    url: `https://foodie.bymoen.codes/api/menu`,
 
                     headers: {
 

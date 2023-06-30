@@ -40,6 +40,7 @@ export default {
 
     methods: {
 
+        //deletes the associated profile
 
         delete_account() {
 

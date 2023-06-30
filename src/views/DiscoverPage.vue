@@ -87,8 +87,11 @@ import PageFooter from '@/components/PageFooter.vue';
 
                 method: `GET`,
 
-                url:`${process.env.VUE_APP_BASE_DOMAIN}/api/restaurants`,
+                url:`https://foodie.bymoen.codes/api/restaurants`,
 
+                headers:{
+                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+                }
 
 
             }).then((response)=>{

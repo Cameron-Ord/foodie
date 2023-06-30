@@ -49,7 +49,7 @@ import Cookies from 'vue-cookies';
         },
 
         methods:{
-
+        //patch api calls for profile information
 
         change_email() {
 
@@ -126,7 +126,7 @@ import Cookies from 'vue-cookies';
 
                 method: `PATCH`,
 
-                url: `${process.env.VUE_APP_BASE_DOMAIN}/api/restaurant`,
+                url: `https://foodie.bymoen.codes/api/restaurant`,
 
                 headers: {
 
@@ -161,7 +161,7 @@ import Cookies from 'vue-cookies';
 
                 method: `PATCH`,
 
-                url: `${process.env.VUE_APP_BASE_DOMAIN}/api/restaurant`,
+                url: `https://foodie.bymoen.codes/api/restaurant`,
 
                 headers: {
 

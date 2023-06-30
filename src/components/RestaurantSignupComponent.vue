@@ -66,14 +66,12 @@ import Cookies from 'vue-cookies';
             axios({
 
                 url: `https://foodie.bymoen.codes/api/restaurant`,
-
-                headers: {
-
-                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
-
-                },
                 
                 method: `POST`,
+
+                headers:{
+                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+                },
 
                 data: {
 
@@ -96,6 +94,7 @@ import Cookies from 'vue-cookies';
 
             }).then((response) => {
 
+               
                 response;
 
                 //assigns cookies and pushes to main page//

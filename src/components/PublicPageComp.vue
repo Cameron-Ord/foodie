@@ -8,7 +8,7 @@
 
                     <h1>{{ restaurant_object[`name`] }}</h1>
 
-                    <img :src="restaurant_object[`profile_url`]">
+                    <img :src="restaurant_object[`banner_url`]" class="image_div">
 
                 </div>
 
@@ -33,8 +33,7 @@
 
         </div>
 
-        <div class="div_loop">
-
+        <div class="loop_div">
         <article class="article_2" v-for="(menu_item, i) in rest_menu" :key="i">
 
             <!--same operation as getting the restaurant info from axios, but with the menu-->
@@ -53,10 +52,9 @@
 
         </article>
         </div>
-
         <!--if the food cart variable is not null, display-->
 
-        <article class="article_3" v-if="food_cart !== null">
+        <article class="article_3" v-if="food_cart !== null && client !==null">
 
         <span class="checkout_box">
             <router-link to="/ShoppingCart" class="router_css">View Cart</router-link>
@@ -79,7 +77,9 @@ export default {
 
                menu_items: [],
 
-               food_cart: undefined
+               food_cart: undefined,
+
+               client: undefined
             }
         },
 
@@ -99,16 +99,14 @@ export default {
 
                 Cookies.set(`food_cart`, this.menu_items);
 
-              
-            
                 
-
             }
 
         },
 
         mounted(){
 
+            this.client = Cookies.get('client_login_token');
 
             let chosen_restaurant_id = Cookies.get(`restaurant_selected`);
 
@@ -123,7 +121,6 @@ export default {
                     url: `https://foodie.bymoen.codes/api/restaurant`,
 
                     headers:{
-
                         'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
                     },
 
@@ -135,6 +132,9 @@ export default {
 
 
                 }).then((response)=>{
+
+          
+                    response;
 
  
                     this.restaurant_object = response[`data`][0];
@@ -162,12 +162,10 @@ export default {
 
                 url: `https://foodie.bymoen.codes/api/menu`,
 
+                headers:{
+                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
+                },
                 
-                    headers:{
-
-                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
-                    },
-
                     params:{
 
                         restaurant_id: chosen_restaurant_id
@@ -207,6 +205,8 @@ export default {
 .parent_div{
 
     display: grid;
+
+    width: 100%;
 
     grid-auto-flow: row;
 }
@@ -328,10 +328,14 @@ export default {
     
 }
 
-.div_loop{
+.loop_div{
+
     display: grid;
+
     align-items: center;
+
     justify-items: center;
+    
     width: 100%;
 }
 
@@ -348,9 +352,9 @@ export default {
     text-align: center;
 
     margin-bottom: 25px;
+
     width: 100%;
 }
-
 
 
 .article_2>.span_menu{
@@ -492,9 +496,26 @@ background-color: #003F91;
 border-radius: 50px;
 }
 
+
+.loop_div{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+width: 100%;
+
+grid-template-columns: 1fr 1fr;
+
+}
+
+
+
 .article_2>.span_menu{
 
-width: 85%;
+width: 75%;
 
 }
 
@@ -511,14 +532,6 @@ width: 75%;
 width: 50%;
 
 }
-
-.div_loop{
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-}
     
 }
 
@@ -534,6 +547,20 @@ width: 50%;
 
     width: 100%;
 
+
+}
+
+.loop_div{
+
+display: grid;
+
+align-items: center;
+
+justify-items: center;
+
+width: 100%;
+
+grid-template-columns: 1fr 1fr 1fr;
 
 }
 
@@ -565,7 +592,7 @@ width: 40%;
 }
 
 .landing_div{
-    width: 100%;
+    width: 50%;
 
 }
 
@@ -577,18 +604,9 @@ width: 40%;
 
 }
 
-.div_loop{
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    width: 100%;
-
-    grid-auto-flow: column;
-}
-
 .landing_div>img{
 
-    width: 50%;
+    width: 90%;
     
     padding-top: 15px;
 
@@ -614,7 +632,7 @@ width: 100%;
 
 .article_2>.span_menu{
 
-width: 70%;
+width: 90%;
 
 }
 

@@ -1,5 +1,10 @@
 <template>
     <!--an if statement that protects the html-->
+    <div class="parent">
+
+        <div class="header_div">
+            <h2>View and modify your menu items</h2>
+        </div>
 
         <div v-if="j !== undefined && menu_get_holder !== undefined" class="parent_div"> 
 
@@ -23,38 +28,41 @@
 
             </span>
 
-            <span class="span_3">
-
-                <p class="text_decor">Change Name:</p>
-       
+            <article class="span_3">       
                 <!--inputs that alter info of a product based off the current index in the array-->
 
+                <div>
+                <p class="text_decor">Change Name:</p>
                 <input type="value" class="name_type">
-
                 <button :clicked_item="j" ref="product_clicked" @click="edit_name">Edit</button>
+                </div>
 
+                <div>
                 <p class="text_decor">Change Description:</p>
-
                 <input type="value" class="desc_type">
-
                 <button :clicked_item="j" ref="product_clicked" @click="edit_desc">Edit</button>
+                </div>
 
+                <div>
                 <p class="text_decor">Change Image</p>
-
                 <input type="value" class="image_type">
-
                 <button :clicked_item="j" ref="product_clicked" @click="edit_image">Edit</button>
+                </div>
 
+                <div>
                 <p class="text_decor">Change Price: </p>
-
                 <input type="value" class="price_type">
-
                 <button :clicked_item="j" ref="product_clicked" @click="edit_price">Edit</button>
+                </div>
 
-                <button :clicked_item="j" ref="product_clicked" @click="delete_product">Delete</button>
-
-            </span>
+                <span class="delete_div">
+                    <button :clicked_item="j" ref="product_clicked" @click="delete_product">Delete</button>     
+                </span>
+       
+            
+            </article>
         </div>
+    </div>
 </template>
 
 <script>
@@ -173,7 +181,7 @@ export default {
 
 
 
-            console.log(name_input_value);
+            
             axios({
 
                 method: `PATCH`,
@@ -203,7 +211,7 @@ export default {
 
                 response;
 
-                console.log(response);
+              
 
 
             }).catch((error) => {
@@ -234,7 +242,7 @@ export default {
 
 
 
-            console.log(desc_input_value);
+         
             axios({
 
                 method: `PATCH`,
@@ -262,9 +270,7 @@ export default {
 
                 response;
 
-                console.log(response);
-
-
+                
             }).catch((error) => {
 
                 error;
@@ -290,9 +296,6 @@ export default {
 
             let image_input_value = image_input[`value`];
 
-
-
-            console.log(image_input_value);
             axios({
 
                 method: `PATCH`,
@@ -321,7 +324,7 @@ export default {
 
                 response;
 
-                console.log(response);
+              
 
 
             }).catch((error) => {
@@ -351,7 +354,7 @@ export default {
             let price_input_value = price_input[`value`];
 
 
-            console.log(price_input_value);
+          
             axios({
 
                 method: `PATCH`,
@@ -380,7 +383,7 @@ export default {
 
                 response;
 
-                console.log(response);
+               
 
 
             }).catch((error) => {
@@ -400,7 +403,7 @@ export default {
 
             //axios call for menu on mount//
 
-            console.log(this.j);
+            
             let rest_id_value = Cookies.get(`restaurant_id`);
 
             axios({
@@ -446,270 +449,302 @@ export default {
 
             });
 
-            console.log(this.menu_get_holder);
+ 
 
         }
     }
 </script>
 
 <style scoped>
+
+.parent{
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.header_div{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+.header_div>h2{
+    color: #FFFFFF;
+    background-color: #003F91;
+    padding: 10px;
+    border-radius: 10px;
+    width: 85%;
+}
+
+.parent_div{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-auto-flow: row;
+}
+
+.span_1{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 5vh 1fr;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.span_1>h2{
+margin-bottom: 10px;
+color: #FFFFFF;
+background-color: #003F91;
+border-radius: 10px;
+padding: 10px;
+}
+.span_1>img{
+    width: 50%;
+    margin-top: 20px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+
+    color: #003F91;
+    border-width: 10px;
+    border-style: solid;
+}
+.span_2{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #003F91;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.span_2>button{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: #FFFFFF;
+    color: #003F91;
+    padding: 10px;
+
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.span_3{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    width: 80%;
+
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+}
+.span_3>div{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    grid-template-rows: 10vh 6vh 8vh;
+    width: 100%;
+    background-color: #003F91;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+}
+
+.span_3>div>button{
+    display: grid;
+justify-items: center;
+align-items: center;
+background-color: #FFFFFF;
+color: #003F91;
+width: 25%;
+padding: 10px;
+border-radius: 10px;
+}
+
+.text_decor{
+    color: #003F91;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+.delete_div{
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 70%;
+    background-color: #003F91;
+    padding-top: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+
+}
+.delete_div>button{
+
+    width: 50%;
+display: grid;
+justify-items: center;
+align-items: center;
+background-color: #FFFFFF;
+color: #003F91;
+
+padding: 10px;
+border-radius: 10px;
+
+
+}
+@media only screen and (min-width: 770px){
+
+
+.parent{
+
+
+}
+
+.header_div{
+
+}
+
+.header_div>h2{
+
+}
+
+
 .parent_div{
 
-    display: grid;
-
-    grid-auto-flow: row;
-
-    justify-items: center;
-
-    align-items: center;
-
-    width: 100%;
-
 }
 
-.parent_div>.span_1{
-
-    display: grid;
-
-    align-items: center;
-
-    justify-items: center;
-
-    background-color: #003F91;
-
-    width: 80%;
-
-    grid-template-rows: 9vh 30vh;
-
-    border-radius: 15px;
-
-    margin-bottom: 15px;
-
-    
-}
-.parent_div>.span_2{
-
-    display: grid;
-
-    align-items: center;
-
-    justify-items: center;
-
-    background-color: #003F91;
-
-    width: 60%;
-
-    grid-template-columns: 1fr 1fr;
-
-    height: 10vh;
-
-    border-radius: 15px;
-    
-}
-.parent_div>.span_2>button{
-
-    color: #003F91;
-
-    background-color: #FFFFFF;
-
-    padding: 10px;
-
-    height: 40px;
-
-    width: 75px;
-
+.span_1{
 
 }
-.parent_div>.span_3{
-
-    display: grid;
-
-    align-items: center;
-
-    justify-items: center;
-
-    background-color: #003F91;
-
-    width: 80%;
-    
-    grid-template-rows: 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh;
-
-    border-radius: 15px;
-
-    margin-bottom: 5px;
-
-    margin-top: 15px;
-
-}
-
-.parent_div>.span_3>p{
-
-    color: #003F91;
-
-    background-color: #FFFFFF;
-
-    padding: 10px;
-
-    border-radius: 10px;
-
-    border-radius: 10px;
-
-    
-}
-
-.parent_div>.span_3>button{
-
-    color: #003F91;
-
-    background-color: #FFFFFF;
-
-    padding: 10px;
-
-    height: 40px;
-
-    width: 75px;
-}
-.span_1>img {
-
-    width: 150px;
-    height: 150px;
-
-    border-radius: 50%;
-    border-style: solid;
-    color: #FFFFFF;
-    border-width: 10px;
-
-}
-
-
-
-.span_1>p{
-
-color: #FFFFFF;
-}
-
 .span_1>h2{
 
-    color: #FFFFFF;
+}
+.span_1>img{
+
+}
+.span_2{
+
 }
 
-.span_1>.text_decor{
+.span_2>button{
 
-    color: #003F91;
-
-    padding: 10px;
-
-    background-color: #FFFFFF;
-
-    border-radius: 10px;
 }
-
-
-@media only screen and (min-width: 770px){
-.parent_div>.span_1{
-
-
-width: 75%;
+.span_3{
 
 
 
 }
-.parent_div>.span_2{
-
-
-width: 60%;
-
-
-}
-.parent_div>.span_2>button{
-
-
-
-
-}
-.parent_div>.span_3{
-
-
-width: 75%;
+.span_3>div{
 
 
 }
 
+.span_3>div>button{
+}
+
+.text_decor{
+
+
+}
+.delete_div{
+
+
+
+}
+.delete_div>button{
+
+
+
+
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 @media only screen and (min-width: 1025px){
-.parent_div>.span_1{
 
-display: grid;
-
-align-items: center;
-
-justify-items: center;
-
-background-color: #003F91;
-
-width: 50%;
-
-grid-template-rows: 5vh 25vh;
-
-border-radius: 15px;
+.parent{
 
 
 }
-.parent_div>.span_2{
 
-display: grid;
+.header_div{
 
-align-items: center;
+}
 
-justify-items: center;
+.header_div>h2{
+width: 100%;
+}
+.parent_div{
 
-background-color: #003F91;
+}
 
+.span_1{
+
+}
+.span_1>h2{
+
+}
+.span_1>img{
 width: 25%;
-
-grid-template-columns: 1fr 1fr;
-
-height: 10vh;
-
-border-radius: 15px;
-
-}    
-
-
-.parent_div>.span_3{
-
-display: grid;
-
-align-items: center;
-
-justify-items: center;
-
-background-color: #003F91;
-
-width: 50%;
-
-grid-template-rows: 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh 5vh 10vh 10vh;
-
-border-radius: 15px;
-
-margin-bottom: 25px;
+}
+.span_2{
 
 }
+
+.span_2>button{
+
+}
+.span_3{
+
+
+
+}
+.span_3>div{
+
+
 }
 
+.span_3>div>button{
+}
+
+.text_decor{
+
+
+}
+.delete_div{
+
+
+
+}
+.delete_div>button{
+
+
+
+
+}
+    
+}
 </style>

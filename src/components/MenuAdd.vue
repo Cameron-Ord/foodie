@@ -1,23 +1,38 @@
 <template>
-                    <span class="span_1">
+        <div class="parent">
+            <span class="span_1">
 
-                        <h1>Add, modify, or remove your menu items:</h1>
+                <span class="special_span">
+                    <h1>Add, modify, or remove your menu items:</h1>
+                </span>
+     
 
-                        <!--inputs for adding products-->
+                <!--inputs for adding products-->
 
-                        <p>Name:</p>
-                        <input type="text" ref="Name_Box_Add">
-                        <p>Description:</p>
-                        <input type="text" ref="Desc_Box_Add">
-                        <p>Image:</p>
-                        <input type="text" ref="Image_Box_Add">
-                        <p>Price:</p>
-                        <input type="text" ref="Price_Box_Add">
+                <div>
+                <p>Name:</p>
+                <input type="text" ref="Name_Box_Add">
+                </div>
+                <div>
+                <p>Description:</p>
+                <input type="text" ref="Desc_Box_Add">
+                </div>
+                <div>
+                <p>Image:</p>
+                <input type="text" ref="Image_Box_Add">
+                </div>
+                <div>
+                <p>Price:</p>
+                <input type="text" ref="Price_Box_Add">
+                </div>
+                
+                <span class="special_span">
+                <button @click="add_product">Add</button>
+                </span>
 
-                        <button @click="add_product">Add</button>
 
-
-                    </span>
+            </span>
+        </div>
 </template>
 
 <script>
@@ -46,15 +61,13 @@ import Cookies from 'vue-cookies';
 
             let rest_id_value = Cookies.get(`restaurant_id`);
 
-            console.log(this.$refs[`Name_Box_Add`][`value`]);
-
             if (rest_id_value !== undefined) {
 
                 axios({
 
                     method: `POST`,
 
-                    url: `https://foodie.bymoen.codes/api/menu`,
+                    url: `${process.env.VUE_APP_BASE_DOMAIN}/api/menu`,
 
                     headers: {
 
@@ -99,100 +112,133 @@ import Cookies from 'vue-cookies';
     }
 </script>
 
+
 <style scoped>
-
-.span_1 {
-
-
-display: grid;
-
-justify-items: center;
-
-align-items: center;
-
-text-align: center;
-
-grid-template-rows: 15vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh 5vh 10vh;
-
-background-color: #003F91;
-
-width: 90%;
-
-border-radius: 15px;
-
-margin-bottom: 25px;
+.parent{
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
 }
 
-.span_1>button{
+.span_1{
 
-    color: #003F91;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    grid-template-rows: 10vh 1fr 1fr 1fr 1fr 10vh;
+    width: 80%;
 
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    color: #FFFFFF;
+}
+
+.special_span>button{
     background-color: #FFFFFF;
-
+    color: #003F91;
     padding: 10px;
-
-    height: 40px;
-
-    width: 75px;
+    width: 45%;
 }
-
-.span_1>p{
-
-color: #003F91;
-
-background-color: #FFFFFF;
-
-padding: 10px;
-
-border-radius: 10px;
-
-
-}
-
 .span_1>h1{
 
-color: #FFFFFF;
+    width: 90%;
+}
 
-width: 75%;
+.special_span{
+    background-color: #003F91;
+    width: 90%;
+    padding-top: 10px;
+
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+.span_1>div{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 8vh 8vh;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #003F91;
+    width: 100%;
+    border-radius: 10px;
 
 }
 
-
-
-
-
-
-
-
+.span_1>div>p{
+    color: #003F91;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+}
 @media only screen and (min-width: 770px){
-
-.span_1 {
-
-width: 75%;
+.parent{
 
 }
 
+.span_1{
+
+
+}
+
+.special_span>button{
+
+}
+.span_1>h1{
+
+}
+
+.special_span{
+
+}
+.span_1>div{
+
+
+}
+
+.span_1>div>p{
+
 }
 
 
-
-
-
-
-
-
-
+}
 
 
 @media only screen and (min-width: 1025px){
 
-.span_1 {
+.parent{
 
-width: 50%;
+}
+
+.span_1{
+
+    width: 70%;
+
+}
+
+.special_span>button{
+width: 60%;
+}
+.span_1>h1{
+
+}
+
+.special_span{
+width: 75%;
+}
+.span_1>div{
+
+
+}
+
+.span_1>div>p{
 
 }
 
     
 }
-
 </style>

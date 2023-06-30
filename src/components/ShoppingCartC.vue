@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="shopping_cart_items !== null">
 
         <main class="page_main">
 
@@ -74,13 +74,7 @@ import Cookies from 'vue-cookies';
                 let rest_id_var = Cookies.get(`restaurant_selected`);
 
                 let menu_item_no = this.product_id;
-               
-                console.log(this.product_id);
-
-                console.log(token_var , `token`);
-
-           
-            
+        
                 
                 axios({
 
@@ -106,10 +100,16 @@ import Cookies from 'vue-cookies';
                 }).then((response)=>{
                  
                     response;
+                    
                 Cookies.remove(`food_cart`);
 
-                this.$router.push(`/AccountProfile`);
+                if(menu_item_no !== undefined){
 
+                    this.$router.push(`/AccountProfile`);
+
+                }
+
+        
                 //on post success, removes cart cookie and pushes to your account page//
 
                 }).catch((error)=>{
@@ -130,7 +130,7 @@ import Cookies from 'vue-cookies';
             //defining variables on mount//
 
             this.shopping_cart_items = Cookies.get(`food_cart`);
-            console.log(this.shopping_cart_items, `cart`);
+           
         
 
             for(let i = 0; i < this.shopping_cart_items.length; i++){
@@ -139,7 +139,6 @@ import Cookies from 'vue-cookies';
 
             }
 
-            console.log(this.product_id);
 
         }
     }

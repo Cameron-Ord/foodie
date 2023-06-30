@@ -72,7 +72,7 @@ import PageFooter from '@/components/PageFooter.vue';
 
                 let restaurant = this.restaurants[button_clicker];
 
-                Cookies.set(`restaurant_selected`, restaurant[`restaurant_id`]);
+                Cookies.set(`restaurant_selected`, restaurant[`id`]);
 
                 this.$router.push(`/PublicPage`);
 
@@ -87,16 +87,14 @@ import PageFooter from '@/components/PageFooter.vue';
 
                 method: `GET`,
 
-                url:`https://foodie.bymoen.codes/api/restaurants`,
+                url:`${process.env.VUE_APP_BASE_DOMAIN}/api/restaurants`,
 
-                headers:{
 
-                    'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
-                },
 
             }).then((response)=>{
 
                 response;
+       
 
                 for(let i = 0; i < response[`data`].length; i = i +1){
 
@@ -146,8 +144,6 @@ import PageFooter from '@/components/PageFooter.vue';
     align-items: center;
 
     width: 100%;
-
-    grid-template-columns: 1fr 1fr;
 }
 
 .page_main>.section_main>.page_article_1{
@@ -158,7 +154,9 @@ import PageFooter from '@/components/PageFooter.vue';
     
     align-items: center;
 
-    width: 100%;
+  
+
+        width: 100%;
 }
 
 .page_main>.section_main>.page_article_1>.rest_span{
@@ -171,9 +169,9 @@ import PageFooter from '@/components/PageFooter.vue';
 
     text-align: center;
 
-    grid-template-rows: 10vh 25vh 6vh 8vh 1fr 12vh;
+    grid-template-rows: 15vh 25vh 6vh 8vh 1fr 12vh;
 
-    width: 90%;
+    width: 80%;
 
     margin-top: 25px;
 
@@ -186,6 +184,11 @@ import PageFooter from '@/components/PageFooter.vue';
     border-radius: 15px;
 
     min-height: 80vh;
+}
+.page_main>.section_main>.page_article_1>.rest_span>h1{
+
+    width: 75%;
+    margin-top: 10px;
 }
 
 
@@ -264,9 +267,14 @@ import PageFooter from '@/components/PageFooter.vue';
 grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
 
 }
+
+.page_main>.section_main{
+
+grid-template-columns: 1fr 1fr;
+}
 .page_main>.section_main>.page_article_1>.rest_span{
 
-width: 85%;
+width: 75%;
 
 min-height: 80vh;
 
@@ -327,6 +335,8 @@ grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
     align-items: center;
 
     width: 100%;
+
+    grid-auto-flow: row;
 
     grid-template-columns: 1fr 1fr 1fr;
 }

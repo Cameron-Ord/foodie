@@ -56,10 +56,7 @@ import Cookies from 'vue-cookies';
                     url: `https://foodie.bymoen.codes/api/restaurant-login`,
 
                     headers:{
-
-
-                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`
-
+                        'x-api-key': `qK2iR1gTkkAjPH0kfGDY`,
                     },
 
                     data:{

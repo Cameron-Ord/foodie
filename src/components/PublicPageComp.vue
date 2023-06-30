@@ -33,11 +33,13 @@
 
         </div>
 
-        <article class="article_2">
+        <div class="div_loop">
+
+        <article class="article_2" v-for="(menu_item, i) in rest_menu" :key="i">
 
             <!--same operation as getting the restaurant info from axios, but with the menu-->
 
-            <span class="span_menu" v-for="(menu_item, i) in rest_menu" :key="i">
+            <span class="span_menu">
 
                 <h4>{{ menu_item[`name`] }}</h4>
 
@@ -50,6 +52,7 @@
             </span>
 
         </article>
+        </div>
 
         <!--if the food cart variable is not null, display-->
 
@@ -325,6 +328,13 @@ export default {
     
 }
 
+.div_loop{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
 .article_2{
 
     display: grid;
@@ -338,7 +348,9 @@ export default {
     text-align: center;
 
     margin-bottom: 25px;
+    width: 100%;
 }
+
 
 
 .article_2>.span_menu{
@@ -482,7 +494,7 @@ border-radius: 50px;
 
 .article_2>.span_menu{
 
-width: 75%;
+width: 85%;
 
 }
 
@@ -498,6 +510,14 @@ width: 75%;
 
 width: 50%;
 
+}
+
+.div_loop{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
 }
     
 }
@@ -520,7 +540,7 @@ width: 50%;
 .menu_div>h1{
 
 
-    width: 50%;
+    width: 25%;
 
 }
 .article_1{
@@ -532,7 +552,7 @@ width: 50%;
 
 .article_1>.span_rest{
 
-width: 75%;
+width: 40%;
 
 
 
@@ -557,9 +577,18 @@ width: 75%;
 
 }
 
+.div_loop{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+
+    grid-auto-flow: column;
+}
+
 .landing_div>img{
 
-    width: 90%;
+    width: 50%;
     
     padding-top: 15px;
 
@@ -585,7 +614,7 @@ width: 100%;
 
 .article_2>.span_menu{
 
-width: 90%;
+width: 70%;
 
 }
 

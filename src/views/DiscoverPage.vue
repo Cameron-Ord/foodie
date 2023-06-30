@@ -7,11 +7,11 @@
 
         <main class="page_main">
             <section class="section_main">
-                <article class="page_article_1">
+                <article class="page_article_1" v-for="(restaurant, i) in restaurants" :key="i">
 
                     <!--a loop for all the restaurants stored in the restaurants variable-->
 
-                    <span class="rest_span" v-for="(restaurant, i) in restaurants" :key="i"> 
+                    <span class="rest_span"> 
 
                         <h1 class="rest_name">{{ restaurant[`name`] }}</h1>
 
@@ -146,6 +146,8 @@ import PageFooter from '@/components/PageFooter.vue';
     align-items: center;
 
     width: 100%;
+
+    grid-template-columns: 1fr 1fr;
 }
 
 .page_main>.section_main>.page_article_1{
@@ -156,9 +158,7 @@ import PageFooter from '@/components/PageFooter.vue';
     
     align-items: center;
 
-    grid-auto-flow: row;
-
-        width: 100%;
+    width: 100%;
 }
 
 .page_main>.section_main>.page_article_1>.rest_span{
@@ -173,7 +173,7 @@ import PageFooter from '@/components/PageFooter.vue';
 
     grid-template-rows: 10vh 25vh 6vh 8vh 1fr 12vh;
 
-    width: 80%;
+    width: 90%;
 
     margin-top: 25px;
 
@@ -266,7 +266,7 @@ grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
 }
 .page_main>.section_main>.page_article_1>.rest_span{
 
-width: 75%;
+width: 85%;
 
 min-height: 80vh;
 
@@ -328,7 +328,7 @@ grid-template-columns: repeat(auto-fit, minmax(770px, 1fr));
 
     width: 100%;
 
-    grid-auto-flow: row;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .page_main>.section_main>.page_article_1{

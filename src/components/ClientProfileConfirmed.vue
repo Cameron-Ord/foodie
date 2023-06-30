@@ -1,5 +1,7 @@
 <template>
     <div class="parent">
+
+        <!--displaying content-->
         <span v-if="sort_confirmed_orders !== undefined" class="incomp">
 
         <h1>Current Orders:</h1>
@@ -34,6 +36,7 @@ import Cookies from 'vue-cookies';
             }
         },
 
+        //on mount, calls the get_order function to retrieve all associated orders
         mounted(){
             this.get_order();
 

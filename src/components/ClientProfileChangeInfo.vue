@@ -2,7 +2,7 @@
     <div class="parent">
 
         <span class="article_1_span_3">
-
+        <!--displaying content-->
         <span class="special_div">
         <h1>Edit your profile:</h1>
         </span>
@@ -45,7 +45,7 @@ import Cookies from 'vue-cookies';
 
             }
         },
-
+            //patch api calls for profile information
         methods:{
         change_email() {
 
